@@ -5,8 +5,8 @@ try{
       x[i].value="NIL";
     }
 
-    x = myframe.document.querySelectorAll('input[type="radio"');
-    for (i = 1; i < x.length; i++){
+    x = myframe.document.querySelectorAll('input[type="radio"]');
+    for (i = 2; i < x.length; i++){
         x[i].click();
     }
 
