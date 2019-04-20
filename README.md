@@ -10,3 +10,4 @@ ERP AUTO FEEDBACK
     6. Fill up the captcha and submit.
     
 Enjoy!!!
+[Disclaimer: The developer does not hold any responsibility for the use / abuse of this tool. Use it at your own discretion.]
