@@ -11,3 +11,7 @@ ERP AUTO FEEDBACK
     
 Enjoy!!!
 [Disclaimer: The developer does not hold any responsibility for the use / abuse of this tool. Use it at your own discretion.]
+
+[UPDATE] Firefox now shows scam warning on copy pasting commands in the developer console.
+To avoid that, simply enter the command `allow pasting` in the console.
+After running that command, copy pasting will start to work.
