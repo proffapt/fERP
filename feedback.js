@@ -6,7 +6,10 @@ try{
     }
 
     x = myframe.document.querySelectorAll('input[type="radio"]');
-    for (i = 3; i < x.length; i++){
+    for (i = 1; i < x.length; i++){
+        if (x[i].getAttribute('name') == 'check'){
+            continue;
+        }
         x[i].click();
     }
 
