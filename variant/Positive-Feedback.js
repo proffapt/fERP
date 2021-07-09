@@ -7,8 +7,7 @@ try{
                     "They make sure that the assignment load is not a lot on the students"
                   ];
 
-    var flag = Math.floor(Math.random() * scripts.length);
-    x[0].value=scripts[flag];
+    x[0].value=scripts[Math.floor(Math.random() * scripts.length)];
 
     x[1].value = "Nothing as such";  // this is the default Weakness
     x[3].value = "Nothing as such";  // replace with relevant text
@@ -19,8 +18,7 @@ try{
                 "The course is designed to ensure that the students are not left behind", "This course held its importance in online sem too"
               ];
 
-    flag = Math.floor(Math.random() * scripts.length);
-    x[2].value=scripts[flag];
+    x[2].value=scripts[Math.floor(Math.random() * scripts.length)];
 
     x[4].value = "No suggestions as such";
 
