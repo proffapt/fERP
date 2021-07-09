@@ -15,3 +15,6 @@ Enjoy!!!
 [UPDATE] Firefox now shows scam warning on copy pasting commands in the developer console.
 To avoid that, simply enter the command `allow pasting` in the console.
 After running that command, copy pasting will start to work.
+
+[UPDATE] `variants/PosFeedback.js` is added, which replaces the word `NIL` with positive feedback for the instructor and the course randomly selected from a list of comments.
+Follow the same steps to use the script.
