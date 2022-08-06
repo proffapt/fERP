@@ -2,6 +2,8 @@ fERP - Feedback ERP
 ====================
 Automate the process of filling up the feedback form in ERP.
 
+**Disclaimer**: The developer does not hold any responsibility for the use / abuse of this tool. Use it at your own discretion.
+
     1. Open the feedback form of ERP.
     2. Click on the subject code and the professor button.
     3. Open console in browser.
@@ -11,11 +13,9 @@ Automate the process of filling up the feedback form in ERP.
     6. Fill up the captcha and submit.
     
 Enjoy!!!<br>
-[**Disclaimer**: The developer does not hold any responsibility for the use / abuse of this tool. Use it at your own discretion.]
 
-[**UPDATE**] Firefox now shows scam warning on copy pasting commands in the developer console.
-To avoid that, simply enter the command `allow pasting` in the console.
+ 
+> [**FIX**] Firefox shows scam warning on copy pasting commands into the console!
+
+To avoid that, simply enter the command `allow pasting` in the console.<br>
 After running that command, copy pasting will start to work.
-
-[**UPDATE**] `variant/Positive-Feedback.js` is added, which replaces the word `NIL` with positive feedback for the instructor and the course randomly selected from a list of comments.
-Follow the same steps to use the script.
