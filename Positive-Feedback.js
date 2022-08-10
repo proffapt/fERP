@@ -1,9 +1,8 @@
 try{
     var x = myframe.document.querySelectorAll('textarea');
-    var scripts = [ "The teacher is great and understanding", "They have deep understanding and clarity of the subject", 
-                    "They clear doubts and make sure the students understand the concepts", "They are caring and clear our doubts",
-                    "They ensure that the speed of the lecture is perfect for everyone", "They are understanding of the students problems in network and connectivity", 
-                    "They release the slides an materials as soon as possible", "They make sure that the assignment load is not a lot on students"
+    var scripts = [ "The teacher is understanding, approachable and caring", "They have deep understanding and clarity of the subject", 
+                    "They clear doubts and make sure the students understand the concepts", "They ensure that the speed of the lecture is perfect for everyone", 
+                    "They release the slides and materials as soon as possible", "They make sure that the assignment load is not a lot on students"
                   ];
 
     x[0].value=scripts[Math.floor(Math.random() * scripts.length)];
@@ -12,9 +11,9 @@ try{
     x[3].value = "Nothing as such";  // replace with relevant text
 
     scripts = [ "The course is well structured and gave me a great understanding of the fundamental concepts",
-                "It is good for real life applications", "We have enough number of tests to make the course thorough",
-                "The course conveys the essence of the subject to the students at its best", "The course content is intuitive",
-                "The course is designed to ensure that the students are not left behind"
+                "It is good for real life applications", "It had enough number of tests to make the course thorough",
+                "It conveys the essence of the subject to the students at its best", "It's content is intuitive",
+                "It is designed to ensure that the students are not left behind", "Overall it was interesting to study the course"
               ];
 
     x[2].value=scripts[Math.floor(Math.random() * scripts.length)];
