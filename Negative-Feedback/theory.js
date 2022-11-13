@@ -1,7 +1,7 @@
 try{
     var textBox = myframe.document.querySelectorAll('textarea');
     var teacherWeaknesses = [ "The teacher is not approachable", "The teacher doesn't make sure the students understand the concepts", 
-					"The teacher ensures that the speed of the lecture is perfect for everyone", "The teacher is less engaging",
+					"The teacher doesn't ensures that the speed of the lecture is perfect for everyone", "The teacher is less engaging",
                     "The teacher doesn't release the slides and materials on time", "The teacher gives too much workload in form of assignments"
                   ];
 
