@@ -1,0 +1,17 @@
+{
+	"manifest_version": 2,
+	"name": "fERP",
+	"description": "Automates the process of filling up feedback form in ERP for IIT KGP students",
+	"homepage_url": "https://github.com/proffapt/fERP",
+	"version": "1.0",
+
+	"permissions": [
+		"activeTab",
+		"*://erp.iitkgp.ac.in/IIT_ERP*/*"
+	  ],
+
+	"browser_action": {
+		"default_title": "fERP",
+		"default_popup": "main.html"
+	  }
+}

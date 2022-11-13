@@ -12,8 +12,7 @@
 	flex-direction: column;
 }
 
-#primary_options {
-	height: var(--body-height);
+#select_course {
 	overflow: scroll;
 	overflow-x: hidden;
 
@@ -24,19 +23,19 @@
 	padding: 1px;
 }
 
-#primary_options div {
+#select_course div {
 	height: 15px;
 }
 
-#primary_options div:not(:last-child) {
+#select_course div:not(:last-child) {
 	margin-bottom: 4px;
 }
 
-#primary_options fieldset {
+#select_course fieldset {
 	margin-bottom: 10px;
 }
 
-#primary_options fieldset:not(:last-child) {
+#select_course fieldset:not(:last-child) {
 	margin-bottom: 20px;
 }
 
@@ -53,24 +52,4 @@ fieldset legend * {
 
 label {
 	position: relative;
-}
-
-.tooltip {
-	position: absolute;
-	height: 95%;
-
-	/* center vertically */
-	top: 50%;
-	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
-
-	margin-left: 1px;
-}
-
-.tooltip:hover {
-	height: 110%;
-}
-
-.option_name_container {
-	cursor: default;
 }

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>fERP</title>
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/body.css">
+	<link rel="stylesheet" type="text/css" href="css/general.css">
+</head>
+
+<body>
+	<div id='header'>
+		<div id='header-contents'>
+			<a href='https://github.com/proffapt/fERP' target='_blank'>
+				<img id='header-logo' src="images/logo.svg"></img>
+			</a>
+
+			<div id='header-text'>fERP</div>
+
+		</div>
+
+		<div id="select_course">
+			<fieldset>
+				<legend>Select the course type</legend>
+
+				<div>
+					<input type="radio" id="theory_course" class="theory_course" value="theory_course" name="course" />
+					<label for="theory_course">
+						Theory
+					</label>
+				</div>
+
+				<div>
+					<input type="radio" id="lab_course" class="lab_course" value="lab_course" name="course" />
+					<label for="lab_course">
+						Laboratory
+					</label>
+				</div>
+			</fieldset>
+		</div>
+
+		<div id="select_feedback_type">
+			<fieldset>
+				<legend>Select the feedback type</legend>
+
+				<div>
+					<input type="radio" id="positive_feedback" class="positive_feedback" value="positive_feedback" name="feedback" />
+					<label for="positive_feedback">
+						Positive Feedback
+					</label>
+				</div>
+
+				<div>
+					<input type="radio" id="neutral_feedback" class="neutral_feedback" value="neutral_feedback" name="feedback" />
+					<label for="neutral_feedback">
+						Neutral Feedback
+					</label>
+				</div>
+
+				<div>
+					<input type="radio" id="negative_feedback" class="negative_feedback" value="negative_feedback" name="feedback" />
+					<label for="negative_feedback">
+						Negative Feedback
+					</label>
+				</div>
+			</fieldset>
+		</div>
+
+		<div id="fill_feedback_button" align="center">
+			<button type="button" id="fill_the_form_button" onclick="handleClick()"><b>Fill the Form</b></button>
+		</div>
+
+
+		<div id='footer'>
+			<a id='about_button' href='https://proffapt.github.io' title='About me (proffapt)' target='_blank'>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490.4 490.4">
+					<path class='footer-path'
+						d="M59.7,86.8c22.6-22.6,52.7-35.1,84.7-35.1s62.2,12.5,84.9,35.2l7.4,7.4c2.3,2.3,5.4,3.6,8.7,3.6l0,0c3.2,0,6.4-1.3,8.7-3.6l7.2-7.2c22.7-22.7,52.8-35.2,84.9-35.2c32,0,62.1,12.5,84.7,35.1c22.7,22.7,35.1,52.8,35.1,84.8s-12.5,62.1-35.2,84.8L251,436.4c-2.9,2.9-8.2,2.9-11.2,0l-180-180c-22.7-22.7-35.2-52.8-35.2-84.8C24.6,139.6,37.1,109.5,59.7,86.8z"
+						fill="white" stroke="black" stroke-width="30" />
+				</svg>
+			</a>
+
+			<a id='info_button' href='https://github.com/proffapt/fERP/blob/main/README.md' title='Info'
+				target="_blank">
+				<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+					<path class='footer-path' d="M16,12a2,2,0,1,1,2-2A2,2,0,0,1,16,12Zm0-2Z" />
+					<path class='footer-path'
+						d="M16,29A13,13,0,1,1,29,16,13,13,0,0,1,16,29ZM16,5A11,11,0,1,0,27,16,11,11,0,0,0,16,5Z" />
+					<path class='footer-path' d="M16,24a2,2,0,0,1-2-2V16a2,2,0,0,1,4,0v6A2,2,0,0,1,16,24Zm0-8v0Z" />
+				</svg>
+			</a>
+
+			<a id='bug_button' href='https://github.com/proffapt/fERP/issues' title='Report a Bug / Feature Request'
+				target="_blank">
+				<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+					<path class='footer-path'
+						d="M6.188,52.173A2,2,0,0,0,5,54v8H9V55.3l6.992-3.108a17.968,17.968,0,0,0,32.016,0L55,55.3V62h4V54a2,2,0,0,0-1.188-1.827l-8.39-3.729a17.858,17.858,0,0,0,.511-3.115l7.879-3.5A2,2,0,0,0,59,40V32H55v6.7l-5,2.223V30.3l7.812-3.472A2,2,0,0,0,59,25V17H55v6.7l-5.325,2.367A6.006,6.006,0,0,0,44,22H42V18a7.941,7.941,0,0,0-.99-3.847l3.239-2.591A2,2,0,0,0,45,10V5H41V9.039l-2.747,2.2A7.939,7.939,0,0,0,34,10H30a7.939,7.939,0,0,0-4.253,1.237L23,9.039V5H19v5a2,2,0,0,0,.751,1.562l3.239,2.591A7.941,7.941,0,0,0,22,18v4H20a6.006,6.006,0,0,0-5.675,4.067L9,23.7V17H5v8a2,2,0,0,0,1.188,1.827L14,30.3V40.923L9,38.7V32H5v8a2,2,0,0,0,1.188,1.827l7.879,3.5a17.858,17.858,0,0,0,.511,3.115ZM18,44V34H30V57.84A14.009,14.009,0,0,1,18,44ZM34,57.84V34H46V44A14.009,14.009,0,0,1,34,57.84ZM26,18a4,4,0,0,1,4-4h4a4,4,0,0,1,4,4v4H26Zm-6,8H44a2,2,0,0,1,2,2v2H18V28A2,2,0,0,1,20,26Z" />
+				</svg>
+			</a>
+		</div>
+
+		<script src="js/main.js"></script>
+		<script src="js/feedback.js"></script>
+</body>
+
+</html>

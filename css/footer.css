@@ -1,12 +1,3 @@
-html[dark_mode='true'] .footer-path {
-	fill: var(--body-color);
-}
-
-html[dark_mode='true'] #about_button .footer-path {
-	stroke: var(--body-color);
-	fill: var(--body-background-color);
-}
-
 #footer {
 	position: relative;
 	text-align: center;
