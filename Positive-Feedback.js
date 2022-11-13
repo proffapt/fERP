@@ -25,13 +25,13 @@ try{
     }
 
     x = myframe.document.querySelectorAll('input[type="radio"]');
-    for (i = 1; i < x.length; i++){
-      if (x[i].getAttribute('name') == 'check') {
-        continue;
-      }
+
+    for (i = 5; i < x.length-10; i+=5){
       x[i].click();
     }
-
+	x[18].click();
+    x[53].click();
+    x[58].click();
   }catch(err){
     console.log(err);
 }
