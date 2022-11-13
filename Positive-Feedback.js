@@ -28,8 +28,13 @@ try{
 
     radioButton = myframe.document.querySelectorAll('input[type="radio"]');
 
-    for (i = 5; i < radioButton.length-10; i+=5){
-      radioButton[i].click(); // Clicks `Excellent` everywhere
+    for (i = 1; i < radioButton.length-10; i+=5){
+		// Clicks `Excellent` OR `Very Good` everywhere
+		if (Math.floor(Math.random()*2)){
+			radioButton[i+3].click();
+		}else{
+			radioButton[i+4].click();
+		}
     }
 	radioButton[18].click(); // Clicks `Just Right` for pace
     radioButton[53].click(); // Clicks `Average` for efforts
