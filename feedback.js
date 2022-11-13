@@ -7,7 +7,10 @@ try{
 
   radioButton = myframe.document.querySelectorAll('input[type="radio"]');
 
-  for (i = 1; i < radioButton.length-10; i+=5){
+	// Calculating the start index for filling up the radio buttons
+	var start = 0; for (i=0 ; radioButton[i].getAttribute('name') == 'check'; i++, start++){}
+
+  for (i = start; i < radioButton.length-10; i+=5){
 	  // Clicks `Good` OR `Very Good` everywhere
 	  if (Math.floor(Math.random()*2)){
 		  radioButton[i+2].click();
@@ -16,7 +19,7 @@ try{
 	  }
   }
   // Randomising selection between `Heavy` & `Average` for Efforts and Workload
-  for (i=53; i<radioButton.length; i+=5)
+  for (i=start+52; i<radioButton.length; i+=5)
   if (Math.floor(Math.random()*2)){
 	  radioButton[i].click();
   }else{
