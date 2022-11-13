@@ -11,10 +11,10 @@ try{
     textBox[1].value = "Nothing as such";  // this is the default Weakness
     textBox[3].value = "Nothing as such";  // replace with relevant text
 
-    courseStrengths = [ "The course is well structured and gave me a great understanding of the fundamental concepts",
-                "The course is good for real life applications", "The course had enough number of tests to make the course thorough",
-                "The course conveys the essence of the subject to the students at its best", "The course's content is intuitive",
-                "The course is designed to ensure that the students are not left behind", "Overall the course was interesting and fun to study!"
+    courseStrengths = [ "This course is well structured and gave me a great understanding of the fundamental concepts",
+                "This course is good for real life applications", "This course had enough number of tests to make the course thorough",
+                "This course conveys the essence of the subject to the students at its best", "This course's content is intuitive",
+                "This course is designed to ensure that the students are not left behind", "Overall this course was interesting and fun to study!"
               ];
 
 	// Randomly selecting course's strengths from the array created above
