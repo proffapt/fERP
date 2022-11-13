@@ -5,6 +5,7 @@ try{
                     "They release the slides and materials as soon as possible", "They make sure that the assignment load is not a lot on students"
                   ];
 
+	// Randomly selecting teacher's strengths from the array created above
     textBox[0].value=teacherStrengths[Math.floor(Math.random() * teacherStrengths.length)];
 
     textBox[1].value = "Nothing as such";  // this is the default Weakness
@@ -16,6 +17,7 @@ try{
                 "It is designed to ensure that the students are not left behind", "Overall it was interesting to study the course"
               ];
 
+	// Randomly selecting course's strengths from the array created above
     textBox[2].value=courseStrengths[Math.floor(Math.random() * courseStrengths.length)];
 
     textBox[4].value = "No suggestions as such, so far so good";
@@ -27,11 +29,11 @@ try{
     radioButton = myframe.document.querySelectorAll('input[type="radio"]');
 
     for (i = 5; i < radioButton.length-10; i+=5){
-      radioButton[i].click();
+      radioButton[i].click(); // Clicks `Excellent` everywhere
     }
-	radioButton[18].click();
-    radioButton[53].click();
-    radioButton[58].click();
+	radioButton[18].click(); // Clicks `Just Right` for pace
+    radioButton[53].click(); // Clicks `Average` for efforts
+    radioButton[58].click(); // Clicks `Average` for Workload
   }catch(err){
     console.log(err);
 }
