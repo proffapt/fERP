@@ -1,5 +1,5 @@
-var textBox = myframe.document.querySelectorAll('textarea');
-var radioButton = myframe.document.querySelectorAll('input[type="radio"]');
+var textBox = document.querySelectorAll('textarea');
+var radioButton = document.querySelectorAll('input[type="radio"]');
 
 // Calculating the start index for filling up the radio buttons
 // Basically, ignoring radio buttons designated for selecting profs.
