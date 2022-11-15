@@ -288,4 +288,11 @@ function negative_lab_feedback() {
 	}
 }
 
-positive_theory_feedback();
+var ta = document.querySelectorAll('textarea');
+console.log(ta.length);
+
+if (ta.length == 5) {
+	positive_theory_feedback();
+} else {
+	positive_lab_feedback();
+}

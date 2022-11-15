@@ -19,85 +19,38 @@
 				<div id="header-text">fERP</div>
 			</div>
 
-			<div id="select_course">
-				<fieldset>
-					<legend>Select the course type</legend>
-
-					<div>
-						<input
-							type="radio"
-							id="theory_course"
-							class="theory_course"
-							value="theory_course"
-							name="course"
-						/>
-						<label for="theory_course"> Theory </label>
-					</div>
-
-					<div>
-						<input
-							type="radio"
-							id="lab_course"
-							class="lab_course"
-							value="lab_course"
-							name="course"
-						/>
-						<label for="lab_course"> Laboratory </label>
-					</div>
-				</fieldset>
-			</div>
-
 			<div id="select_feedback_type">
 				<fieldset>
 					<legend>Select the feedback type</legend>
+				<div id="positive_feedback_type">
+					<button
+						type="button"
+						id="positive_feedback"
+					>
+						<b>Positive Feedback</b>
+					</button>
+				</div>
 
-					<div>
-						<input
-							type="radio"
-							id="positive_feedback"
-							class="positive_feedback"
-							value="positive_feedback"
-							name="feedback"
-						/>
-						<label for="positive_feedback">
-							Positive Feedback
-						</label>
-					</div>
+				<div id="neutral_feedback_type">
+					<button
+						type="button"
+						id="neutral_feedback"
+					>
+						<b>Neutral Feedback</b>
+					</button>
+				</div>
 
-					<div>
-						<input
-							type="radio"
-							id="neutral_feedback"
-							class="neutral_feedback"
-							value="neutral_feedback"
-							name="feedback"
-						/>
-						<label for="neutral_feedback"> Neutral Feedback </label>
-					</div>
-
-					<div>
-						<input
-							type="radio"
-							id="negative_feedback"
-							class="negative_feedback"
-							value="negative_feedback"
-							name="feedback"
-						/>
-						<label for="negative_feedback">
-							Negative Feedback
-						</label>
-					</div>
+				<div id="negative_feedback_type">
+					<button
+						type="button"
+						id="negative_feedback"
+					>
+						<b>Negative Feedback</b>
+					</button>
+				</div>
 				</fieldset>
 			</div>
 
-			<div id="fill_feedback_button" class="button" align="center">
-				<button
-					type="button"
-					id="fill_the_form_button"
-				>
-					<b>Fill the Form</b>
-				</button>
-			</div>
 
 			<div id="footer">
 				<a
