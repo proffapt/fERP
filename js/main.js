@@ -1,6 +1,6 @@
-const positiveFeedbackButton = document.getElementById("positive_feedback");
-const neutralFeedbackButton = document.getElementById("neutral_feedback");
-const negativeFeedbackButton = document.getElementById("negative_feedback");
+const positiveFeedbackButton = document.getElementById("positive_feedback_btn");
+const neutralFeedbackButton = document.getElementById("neutral_feedback_btn");
+const negativeFeedbackButton = document.getElementById("negative_feedback_btn");
 
 positiveFeedbackButton.addEventListener("click", () => {
 	browser.tabs.executeScript({ file: "/js/positive_feedback.js" })
