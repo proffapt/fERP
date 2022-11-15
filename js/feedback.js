@@ -1,6 +1,6 @@
 function positive_theory_feedback() {
 	try {
-		var textBox = myframe.document.querySelectorAll('textarea');
+		var textBox = document.querySelectorAll('textarea');
 		var teacherStrengths = [
 			"The teacher is understanding, approachable and caring",
 			"The teacher has deep understanding and clarity of the subject",
@@ -35,7 +35,7 @@ function positive_theory_feedback() {
 			textBox[i].value = "NIL";
 		}
 
-		radioButton = myframe.document.querySelectorAll('input[type="radio"]');
+		radioButton = document.querySelectorAll('input[type="radio"]');
 
 		// Calculating the start index for filling up the radio buttons
 		var start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
@@ -59,7 +59,7 @@ function positive_theory_feedback() {
 
 function positive_lab_feedback() {
 	try {
-		var textBox = myframe.document.querySelectorAll('textarea');
+		var textBox = document.querySelectorAll('textarea');
 		var teacherStrengths = [
 			"The teacher is understanding, approachable and caring",
 			"The teacher has deep understanding and clarity of the subject",
@@ -77,7 +77,7 @@ function positive_lab_feedback() {
 			textBox[i].value = "NIL";
 		}
 
-		radioButton = myframe.document.querySelectorAll('input[type="radio"]');
+		radioButton = document.querySelectorAll('input[type="radio"]');
 
 		// Calculating the start index for filling up the radio buttons
 		var start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
@@ -100,13 +100,13 @@ function positive_lab_feedback() {
 
 function neutral_theory_feedback() {
 	try {
-		var textBox = myframe.document.querySelectorAll('textarea');
+		var textBox = document.querySelectorAll('textarea');
 		var i = 0;
 		for (i = 0; i < textBox.length; i++) {
 			textBox[i].value = "Nothing as such";
 		}
 
-		radioButton = myframe.document.querySelectorAll('input[type="radio"]');
+		radioButton = document.querySelectorAll('input[type="radio"]');
 
 		// Calculating the start index for filling up the radio buttons
 		var start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
@@ -134,13 +134,13 @@ function neutral_theory_feedback() {
 
 function neutral_lab_feedback() {
 	try {
-		var textBox = myframe.document.querySelectorAll('textarea');
+		var textBox = document.querySelectorAll('textarea');
 		var i = 0;
 		for (i = 0; i < textBox.length; i++) {
 			textBox[i].value = "Nothing as such";
 		}
 
-		radioButton = myframe.document.querySelectorAll('input[type="radio"]');
+		radioButton = document.querySelectorAll('input[type="radio"]');
 
 		// Calculating the start index for filling up the radio buttons
 		var start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
@@ -168,7 +168,7 @@ function neutral_lab_feedback() {
 
 function negative_theory_feedback() {
 	try {
-		var textBox = myframe.document.querySelectorAll('textarea');
+		var textBox = document.querySelectorAll('textarea');
 		var teacherWeaknesses = [
 			"The teacher is not approachable",
 			"The teacher doesn't make sure the students understand the concepts",
@@ -207,7 +207,7 @@ function negative_theory_feedback() {
 			textBox[i].value = "NIL";
 		}
 
-		radioButton = myframe.document.querySelectorAll('input[type="radio"]');
+		radioButton = document.querySelectorAll('input[type="radio"]');
 
 		// Calculating the start index for filling up the radio buttons
 		var start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
@@ -240,7 +240,7 @@ function negative_theory_feedback() {
 
 function negative_lab_feedback() {
 	try {
-		var textBox = myframe.document.querySelectorAll('textarea');
+		var textBox = document.querySelectorAll('textarea');
 		var teacherWeaknesses = [
 			"The teacher is not approachable",
 			"The teacher doesn't make sure the students understand the concepts",
@@ -263,7 +263,7 @@ function negative_lab_feedback() {
 			textBox[i].value = "NIL";
 		}
 
-		radioButton = myframe.document.querySelectorAll('input[type="radio"]');
+		radioButton = document.querySelectorAll('input[type="radio"]');
 
 		// Calculating the start index for filling up the radio buttons
 		var start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
@@ -287,3 +287,5 @@ function negative_lab_feedback() {
 		console.log(err);
 	}
 }
+
+positive_theory_feedback();
