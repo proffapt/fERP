@@ -17,3 +17,7 @@ Automate the process of filling up the feedback form in ERP.
 
 To avoid that, simply enter the command `allow pasting` in the console.<br>
 After running that command, copy pasting will start to work.
+
+***
+
+## I am working on an extension for this very purpose, for details, check https://github.com/proffapt/fERP/issues/3
