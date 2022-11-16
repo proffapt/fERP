@@ -10,7 +10,8 @@ checkBox.addEventListener("click", () => {
 	else isChecked = false;
 });
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-	sendResponse({ status: isChecked });
+	if (request.request == "getStatusOfAll")
+		sendResponse({ all: isChecked });
 });
 
 positiveFeedbackButton.addEventListener("click", () => {

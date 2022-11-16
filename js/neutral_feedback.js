@@ -1,16 +1,14 @@
 var textBox, radioButton, start, course, prof, profCounter = 0, courseCounter = 0;
 
 browser.runtime.sendMessage({ 
-	allStatus: "getStatusOfAll", 
-	feedbackType: "getTypeOfFeedback"
-	}).then((all) => {
-	console.log("You want to fill all? : ", all.status);
-	console.log("feedback type = ", all.feedback);
+	request: "getStatusOfAll", 
+	}).then((preference) => {
+	console.log("User wants to save the preference for feedback type? : ", preference.all);
 	try {
-		if (!all.status) {
-			console.log("Have to choose the variant for every prof");
+		if (!preference.all) {
 			fill_form();
 			console.log("form filled");
+			console.log("Choose next feedback type");
 		} else {
 			console.log("Just fill the captcha, rest I will handle");
 			course = document.querySelectorAll('a[href="javascript:void(0)"]');

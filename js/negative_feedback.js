@@ -1,11 +1,60 @@
-var textBox = document.querySelectorAll('textarea');
-var radioButton = document.querySelectorAll('input[type="radio"]');
+var textBox, radioButton, start, course, prof, profCounter = 0, courseCounter = 0;
 
-// Calculating the start index for filling up the radio buttons
-// Basically, ignoring radio buttons designated for selecting profs.
-var start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
+browser.runtime.sendMessage({ 
+	request: "getStatusOfAll", 
+	}).then((preference) => {
+	console.log("User wants to save the preference for feedback type? : ", preference.all);
+	try {
+		if (!preference.all) {
+			fill_form();
+			console.log("form filled");
+			console.log("Choose next feedback type");
+		} else {
+			console.log("Just fill the captcha, rest I will handle");
+			course = document.querySelectorAll('a[href="javascript:void(0)"]');
+			prof = document.querySelectorAll('input[name="check"]');
+			handleCourse();
+		}
+	} catch (err) {
+		console.error(err);
+	}
+});
+
+function handleCourse() {
+	course[courseCounter].click(); courseCounter++;
+	profCounter = 0;
+	handleProf();
+	if (courseCounter < course.length) {
+		var submitButton = document.getElementById("sub");
+		submitButton.addEventListener("click", handleCourse);
+		console.log("Waiting to go to next course, please fill the form");
+	} else return;
+}
+
+function handleProf() {
+	prof[profCounter].click(); profCounter++;
+	fill_form();
+	console.log("Form filled");
+
+	if (profCounter < prof.length) {
+		var submitButton = document.getElementById("sub");
+		submitButton.addEventListener("click", handleProf);
+		console.log("Waiting to go to next prof, please fill the form");
+	} else return;
+}
+
+function fill_form() {
+	textBox = document.querySelectorAll('textarea');
+
+	if (textBox.length == 5) theory_course();
+	else lab_course();
+}
 
 function theory_course() {
+	textBox = document.querySelectorAll('textarea');
+	radioButton = document.querySelectorAll('input[type="radio"]');
+	start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
+
 	var teacherWeaknesses = [
 		"The teacher is not approachable",
 		"The teacher doesn't make sure the students understand the concepts",
@@ -55,6 +104,10 @@ function theory_course() {
 }
 
 function lab_course() {
+	textBox = document.querySelectorAll('textarea');
+	radioButton = document.querySelectorAll('input[type="radio"]');
+	start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
+
 	var teacherWeaknesses = [
 		"The teacher is not approachable",
 		"The teacher doesn't make sure the students understand the concepts",
@@ -83,11 +136,4 @@ function lab_course() {
 	for (i = start + 48; i < start + 54; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i].click();
 		else radioButton[i + 1].click();
-}
-
-try {
-	if (textBox.length == 5) theory_course();
-	else lab_course();
-} catch(err) {
-	console.error(err);
 }
