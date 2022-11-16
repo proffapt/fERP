@@ -3,7 +3,7 @@ var all;
 all = true;
 // get all's state from main.js
 
-var textBox, radioButton, start;
+var textBox, radioButton, start, profCounter = 0, courseCounter = 0;
 
 try {
 	if (!all) {
@@ -12,8 +12,6 @@ try {
 		console.log("Just fill the captcha, rest I will handle");
 		var course = document.querySelectorAll('a[href="javascript:void(0)"]');
 		var prof = document.querySelectorAll('input[name="check"]');
-		var profCounter = 0;
-		var courseCounter = 0;
 		handleCourse();
 	}
 } catch(err) {
@@ -22,11 +20,12 @@ try {
 
 function handleCourse(){
 	course[courseCounter].click(); courseCounter++;
-	handleProf();
 	profCounter = 0;
+	handleProf();
 	if (courseCounter < course.length){
 		var submitButton = document.getElementById("sub");
 		submitButton.addEventListener("click", handleCourse);
+		console.log("Waiting to go to next course, please fill the form");
 	} else return; 
 }
 
@@ -38,17 +37,12 @@ function handleProf() {
 	if (profCounter < prof.length){
 		var submitButton = document.getElementById("sub");
 		submitButton.addEventListener("click", handleProf);
-		console.log("Going to next prof");
+		console.log("Waiting to go to next prof, please fill the form");
 	} else return; 
 }
 
 function fill_form(){
 	textBox = document.querySelectorAll('textarea');
-	radioButton = document.querySelectorAll('input[type="radio"]');
-
-	// Calculating the start index for filling up the radio buttons
-	// Basically, ignoring radio buttons designated for selecting profs.
-	start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
 
 	if (textBox.length == 5) theory_course();
 	else lab_course();
