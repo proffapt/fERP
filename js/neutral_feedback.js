@@ -1,32 +1,36 @@
-var all;
-// ***************
-all = true;
-// get all's state from main.js
+var textBox, radioButton, start, course, prof, profCounter = 0, courseCounter = 0;
 
-var textBox, radioButton, start, profCounter = 0, courseCounter = 0;
-
-try {
-	if (!all) {
-		fill_form();
-	} else {
-		console.log("Just fill the captcha, rest I will handle");
-		var course = document.querySelectorAll('a[href="javascript:void(0)"]');
-		var prof = document.querySelectorAll('input[name="check"]');
-		handleCourse();
+browser.runtime.sendMessage({ 
+	allStatus: "getStatusOfAll", 
+	feedbackType: "getTypeOfFeedback"
+	}).then((all) => {
+	console.log("You want to fill all? : ", all.status);
+	console.log("feedback type = ", all.feedback);
+	try {
+		if (!all.status) {
+			console.log("Have to choose the variant for every prof");
+			fill_form();
+			console.log("form filled");
+		} else {
+			console.log("Just fill the captcha, rest I will handle");
+			course = document.querySelectorAll('a[href="javascript:void(0)"]');
+			prof = document.querySelectorAll('input[name="check"]');
+			handleCourse();
+		}
+	} catch (err) {
+		console.error(err);
 	}
-} catch(err) {
-	console.error(err);
-}
+});
 
-function handleCourse(){
+function handleCourse() {
 	course[courseCounter].click(); courseCounter++;
 	profCounter = 0;
 	handleProf();
-	if (courseCounter < course.length){
+	if (courseCounter < course.length) {
 		var submitButton = document.getElementById("sub");
 		submitButton.addEventListener("click", handleCourse);
 		console.log("Waiting to go to next course, please fill the form");
-	} else return; 
+	} else return;
 }
 
 function handleProf() {
@@ -34,14 +38,14 @@ function handleProf() {
 	fill_form();
 	console.log("Form filled");
 
-	if (profCounter < prof.length){
+	if (profCounter < prof.length) {
 		var submitButton = document.getElementById("sub");
 		submitButton.addEventListener("click", handleProf);
 		console.log("Waiting to go to next prof, please fill the form");
-	} else return; 
+	} else return;
 }
 
-function fill_form(){
+function fill_form() {
 	textBox = document.querySelectorAll('textarea');
 
 	if (textBox.length == 5) theory_course();
