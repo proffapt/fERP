@@ -9,19 +9,44 @@ checkBox.addEventListener("click", () => {
 	if (checkBox.checked) isChecked = true;
 	else isChecked = false;
 });
-browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-	if (request.request == "getStatusOfAll")
-		sendResponse({ all: isChecked });
-});
+
+var feedback;
 
 positiveFeedbackButton.addEventListener("click", () => {
-	browser.tabs.executeScript({ file: "/js/positive_feedback.js" })
+	feedback = "positive";
+	browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
+		if (request.request == "getStatusOfAll&FeedbackType")
+			sendResponse({
+				all: isChecked,
+				feedback: feedback
+			});
+	});
+	browser.tabs.executeScript({ file: "/js/fill_form.js" })
+	browser.runtime.onMessage.removeListener((request, sender, sendResponse) => {});
 });
 
 neutralFeedbackButton.addEventListener("click", () => {
-	browser.tabs.executeScript({ file: "/js/neutral_feedback.js" })
+	feedback = "neutral";
+	browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
+		if (request.request == "getStatusOfAll&FeedbackType")
+			sendResponse({
+				all: isChecked,
+				feedback: feedback
+			});
+	});
+	browser.tabs.executeScript({ file: "/js/fill_form.js" })
+	browser.runtime.onMessage.removeListener((request, sender, sendResponse) => {});
 });
 
 negativeFeedbackButton.addEventListener("click", () => {
-	browser.tabs.executeScript({ file: "/js/negative_feedback.js" })
+	feedback = "negative";
+	browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
+		if (request.request == "getStatusOfAll&FeedbackType")
+			sendResponse({
+				all: isChecked,
+				feedback: feedback
+			});
+	});
+	browser.tabs.executeScript({ file: "/js/fill_form.js" })
+	browser.runtime.onMessage.removeListener((request, sender, sendResponse) => {});
 });
