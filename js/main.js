@@ -21,7 +21,7 @@ positiveFeedbackButton.addEventListener("click", () => {
 				feedback: feedback
 			});
 	});
-	browser.tabs.executeScript({ file: "/js/fill_form.js" })
+	browser.tabs.executeScript({ file: "/js/feedback.js" })
 	browser.runtime.onMessage.removeListener((request, sender, sendResponse) => {});
 });
 
@@ -34,7 +34,7 @@ neutralFeedbackButton.addEventListener("click", () => {
 				feedback: feedback
 			});
 	});
-	browser.tabs.executeScript({ file: "/js/fill_form.js" })
+	browser.tabs.executeScript({ file: "/js/feedback.js" })
 	browser.runtime.onMessage.removeListener((request, sender, sendResponse) => {});
 });
 
@@ -47,6 +47,6 @@ negativeFeedbackButton.addEventListener("click", () => {
 				feedback: feedback
 			});
 	});
-	browser.tabs.executeScript({ file: "/js/fill_form.js" })
+	browser.tabs.executeScript({ file: "/js/feedback.js" })
 	browser.runtime.onMessage.removeListener((request, sender, sendResponse) => {});
 });
