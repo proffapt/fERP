@@ -16,3 +16,27 @@ fieldset legend * {
 label {
 	position: relative;
 }
+
+#positive_feedback_btn {
+	background-color: green;
+	color: beige;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 1px 1px 3px 1px rgb(0,0,0);
+}
+
+#neutral_feedback_btn {
+	background-color: blue;
+	color: beige;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 1px 1px 3px 1px rgb(0,0,0);
+}
+
+#negative_feedback_btn {
+	background-color: red;
+	color: beige;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 1px 1px 3px 1px rgb(0,0,0);
+}

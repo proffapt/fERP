@@ -10,7 +10,7 @@ For the Roadmap see, https://github.com/proffapt/fERP/issues/3
 
 #### Steps to use this Extension
 
-> The extension is currenty in development phas and only avaliable for FIREFOX.
+> The extension is currenty in development phase and only avaliable for FIREFOX.
 
 1. Clone this branch using `git clone -b extension https://github.com/proffapt/fERP`
 2. Open `Firefox` and paste `about:debugging#/runtime/this-firefox` into the search/url bar.
