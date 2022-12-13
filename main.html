@@ -8,53 +8,38 @@
 	<link rel="stylesheet" type="text/css" href="css/header.css" />
 	<link rel="stylesheet" type="text/css" href="css/body.css" />
 	<link rel="stylesheet" type="text/css" href="css/general.css" />
+	<link rel="icon" type="image/svg" sizes="40x38" href="./images/header_logo.svg">
 </head>
-
 <body>
-	<div id="header">
-		<div id="header-contents">
-			<a href="https://github.com/proffapt/fERP" target="_blank">
-				<img id="header-logo" src="images/logo.svg" />
-			</a>
-
-			<div id="header-text">fERP - feedback ERP</div>
-		</div>
-
-		<div id="select_feedback_type" align="center">
-			<fieldset>
-				<legend>Select the feedback type</legend>
-
-				<input type="checkbox" id="use_for_all" name="all" checked>
-				<label for="all">
-					Use this variant for all courses
-				</label>
-
-				<div id="positive_feedback">
-					<button type="button" id="positive_feedback_btn" class="button">
-						<b>Positive Feedback</b>
-					</button>
-				</div>
-
-				<div id="neutral_feedback">
-					<button type="button" id="neutral_feedback_btn" class="button">
-						<b>Neutral Feedback</b>
-					</button>
-				</div>
-
-				<div id="negative_feedback">
-					<button type="button" id="negative_feedback_btn" class="button">
-						<b>Negative Feedback</b>
-					</button>
-				</div>
-			</fieldset>
-		</div>
-
+	<div class="logo_text">
+        <div class="logo">
+         <a href="https://github.com/proffapt/fERP" target="_blank">
+                <img id="header-logo" src="images/header_logo.svg" />
+            </a>
+            <div id="header-text">fERP - feedback ERP</div>
+        </div>
+		<br>
+        <div class="button_container">
+            <h3 class="feedback"> Select the feedback type</h3>
+                 <input type="checkbox" id="use_for_all" name="all" checked>
+                    <label for="all">
+                        Use this variant for all courses
+                    </label>
+                    <div class="buttons">
+                        <button class="positive_btn" type="button" id="positive_feedback_btn" title="Tell us what you love and how we can improve.">Positive Feedback</button>
+                        <br>
+                        <button class="neutral_btn" type="button" id="neutral_feedback_btn" title="Not sure? Tell us anything">Neutral Feedback</button>
+                        <br>
+                        <button class="negative_btn" type="button" id="negative_feedback_btn" title="Have an issue? We're one click away.">Negative Feedback</button>
+                        </div>
+        </div>
+    </div>
 		<div id="footer">
 			<a id="about_button" href="https://proffapt.github.io" title="About me (proffapt)" target="_blank">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490.4 490.4">
 					<path class="footer-path"
 						d="M59.7,86.8c22.6-22.6,52.7-35.1,84.7-35.1s62.2,12.5,84.9,35.2l7.4,7.4c2.3,2.3,5.4,3.6,8.7,3.6l0,0c3.2,0,6.4-1.3,8.7-3.6l7.2-7.2c22.7-22.7,52.8-35.2,84.9-35.2c32,0,62.1,12.5,84.7,35.1c22.7,22.7,35.1,52.8,35.1,84.8s-12.5,62.1-35.2,84.8L251,436.4c-2.9,2.9-8.2,2.9-11.2,0l-180-180c-22.7-22.7-35.2-52.8-35.2-84.8C24.6,139.6,37.1,109.5,59.7,86.8z"
-						fill="white" stroke="black" stroke-width="30" />
+						fill="none" stroke="black" stroke-width="30" />
 				</svg>
 			</a>
 
