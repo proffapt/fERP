@@ -16,9 +16,9 @@
 	  },
 
 	  "icons": {
-		"16": "images/16x16.png",
-		"32": "images/32x32.png",
-		"64": "images/64x64.png",
-		"128": "images/128x128.png"
+		"16": "images/fERP16.png",
+		"32": "images/fERP32.png",
+		"64": "images/fERP64.png",
+		"128": "images/fERP128.png"
 	  }
 }
