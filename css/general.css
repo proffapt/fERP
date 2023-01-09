@@ -10,16 +10,6 @@ a {
 	color: var(--body-color);
 }
 
-body {
-	min-width: 349px;
-	max-width: 350px;
-	height: fit-content;
-	max-height: 400px;
-
-	padding: 2px 2px 2px 2px;
-	margin: 2px 2px 2px 2px;
-}
-
 body,
 body * {
 	font-size: 14px;
