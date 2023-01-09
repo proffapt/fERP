@@ -1,42 +1,42 @@
 .logo_text{
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     background-color: white;
 }
 .logo{
     display: flex;
     flex-direction: row;
-    width: 400px;
+    width: 300px;
 }
 #header-logo{
-	width: 40px;
-	height: 40px;
+	width: 35px;
+	height: 35px;
 	position: relative;
 }
 #header-text{
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 39px;
     color: 000;
 	margin-left: 10px;
 }
 .button_container{
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 250px;
     background: rgba(245, 235, 160, 0.9);
     border: 1px solid rgba(66, 65, 65, 0.3);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 .feedback{
 	font-style: medium;
     font-weight: 600;
     font-size: 20px;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 10px;
 }
 #use_for_all{
     align-items: center;
@@ -85,5 +85,5 @@
 }
 
 .btn{
-    margin: 10px;
+    margin: 5px;
 }
