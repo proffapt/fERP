@@ -1,62 +1,63 @@
-var textBox, radioButton, start, course, prof, profCounter = 0, courseCounter = 0, profListening = false, courseListening = false;
+var textBox, radioButton, start=0, course, prof, profCounter = 0, courseCounter = 0, profListening = false, courseListening = false;
 
 browser.runtime.sendMessage({
 	request: "getStatusOfAll&FeedbackType",
 }).then((preference) => {
-	console.log("User wants to save the preference for feedback type? : ", preference.all);
-	console.log("Feedback Type = ", preference.feedback);
+	const fill_form = () => {
+		// Logs
+		console.log("User wants to save the preference for feedback type? : ", preference.all);
+		console.log("Feedback Type = ", preference.feedback);
+		//
+	  	textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
+		radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
+
+		// Counting the total number of radiobuttons
+		for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
+
+		if (textBox.length == 5) {
+			switch (preference.feedback) {
+				case "positive":
+					positive_theory_feedback();
+					break;
+				case "neutral":
+					neutral_theory_feedback();
+					break;
+				case "negative":
+					negative_theory_feedback();
+					break;
+			}
+		}
+		else {
+			switch (preference.feedback) {
+				case "positive":
+					positive_lab_feedback();
+					break;
+				case "neutral":
+					neutral_lab_feedback();
+					break;
+				case "negative":
+					negative_lab_feedback();
+					break;
+			}
+		}
+	};
+
 	try {
 		if (!preference.all) {
-			fill_form(preference.feedback);
+			fill_form();
 			console.log("form filled");
-			console.log("Choose next feedback type");
 		} else {
 			console.log("Just fill the captcha, rest I will handle");
 			course = document.querySelectorAll('a[href="javascript:void(0)"]');
 			prof = document.querySelectorAll('input[name="check"]');
 			courseCounter = 0;
 
-			const fill_form = () => {
-				console.log("Feedback Type = ", preference.feedback);
-				textBox = document.querySelectorAll('textarea');
-
-				if (textBox.length == 5) {
-					switch (preference.feedback) {
-						case "positive":
-							try{
-							positive_theory_feedback();
-							} catch (err) {
-								console.error(err);
-							}
-							break;
-						case "neutral":
-							neutral_theory_feedback();
-							break;
-						case "negative":
-							negative_theory_feedback();
-							break;
-					}
-				}
-				else {
-					switch (preference.feedback) {
-						case "positive":
-							positive_lab_feedback();
-							break;
-						case "neutral":
-							neutral_lab_feedback();
-							break;
-						case "negative":
-							negative_lab_feedback();
-							break;
-					}
-				}
-			};
 
 			const handleProf = () => {
 				prof[profCounter].click(); profCounter++;
-				fill_form(preference.feedback);
+				fill_form();
 				console.log("Form filled");
-				var submitButton = document.getElementById("sub");
+				var submitButton = myframe.document.getElementById("sub");
 
 				if (profCounter < prof.length) {
 					if (!courseListening) {
@@ -80,7 +81,7 @@ browser.runtime.sendMessage({
 				course[courseCounter].click(); courseCounter++;
 				profCounter = 0;
 				handleProf();
-				var submitButton = document.getElementById("sub");
+				var submitButton = myframe.document.getElementById("sub");
 
 				if (courseCounter < course.length) {
 					if (!profListening) {
@@ -101,13 +102,12 @@ browser.runtime.sendMessage({
 	} catch (err) {
 		console.error(err);
 	}
+
+	// Append the script to the document's head element
+	document.head.appendChild(script);
 });
 
 function positive_theory_feedback() {
-	textBox = document.querySelectorAll('textarea');
-	radioButton = document.querySelectorAll('input[type="radio"]');
-	start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
-
 	var teacherStrengths = [
 		"The teacher is understanding, approachable and caring",
 		"The teacher has deep understanding and clarity of the subject",
@@ -149,10 +149,6 @@ function positive_theory_feedback() {
 }
 
 function positive_lab_feedback() {
-	textBox = document.querySelectorAll('textarea');
-	radioButton = document.querySelectorAll('input[type="radio"]');
-	start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
-
 	var teacherStrengths = [
 		"The teacher is understanding, approachable and caring",
 		"The teacher has deep understanding and clarity of the subject",
@@ -177,10 +173,6 @@ function positive_lab_feedback() {
 }
 
 function neutral_theory_feedback() {
-	textBox = document.querySelectorAll('textarea');
-	radioButton = document.querySelectorAll('input[type="radio"]');
-	start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
-
 	for (i = 0; i < textBox.length; i++)
 		textBox[i].value = "Nothing as such";
 
@@ -195,10 +187,6 @@ function neutral_theory_feedback() {
 }
 
 function neutral_lab_feedback() {
-	textBox = document.querySelectorAll('textarea');
-	radioButton = document.querySelectorAll('input[type="radio"]');
-	start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
-
 	for (i = 0; i < textBox.length; i++)
 		textBox[i].value = "Nothing as such";
 
@@ -213,10 +201,6 @@ function neutral_lab_feedback() {
 }
 
 function negative_theory_feedback() {
-	textBox = document.querySelectorAll('textarea');
-	radioButton = document.querySelectorAll('input[type="radio"]');
-	start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
-
 	var teacherWeaknesses = [
 		"The teacher is not approachable",
 		"The teacher doesn't make sure the students understand the concepts",
@@ -266,10 +250,6 @@ function negative_theory_feedback() {
 }
 
 function negative_lab_feedback() {
-	textBox = document.querySelectorAll('textarea');
-	radioButton = document.querySelectorAll('input[type="radio"]');
-	start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
-
 	var teacherWeaknesses = [
 		"The teacher is not approachable",
 		"The teacher doesn't make sure the students understand the concepts",
