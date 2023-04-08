@@ -50,6 +50,8 @@ browser.runtime.sendMessage({
 				if (submitButton != null){
 					fill_form();
 					console.log("Form filled");
+					// To bypass confirm() prompt
+					submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
 				} else {
 					if (profCounter < prof.length) handleProf();
 					else handleCourse();
