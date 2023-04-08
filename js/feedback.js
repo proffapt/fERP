@@ -4,9 +4,6 @@ browser.runtime.sendMessage({
 	request: "getStatusOfAll&FeedbackType",
 }).then((preference) => {
 	const fill_form = () => {
-		console.log("User wants to save the preference for feedback type? : ", preference.all);
-		console.log("Feedback Type = ", preference.feedback);
-
 	  	textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
 		radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
 		// Counting the total number of radiobuttons
@@ -44,10 +41,9 @@ browser.runtime.sendMessage({
 		if (!preference.all) {
 			fill_form();
 		} else {
-			console.log("Just fill the captcha, rest I will handle");
-
 			const handleProf = () => {
 				prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+				console.log("Handling prof", profCounter+1)
 				prof[profCounter].click(); profCounter++;
 
 				submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
@@ -58,14 +54,17 @@ browser.runtime.sendMessage({
 					if (profCounter < prof.length) handleProf();
 					else handleCourse();
 				}
+				console.log("Handled prof")
 			};
 
 			const handleCourse = () => {
 				course = document.getElementById('myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
 				if (courseCounter == course.length) return;
+				console.log("Handling course", courseCounter+1)
 				course[courseCounter].click(); courseCounter++;
 
 				profCounter = 0; handleProf();
+				console.log("Handled course")
 			};
 
 			handleCourse();
