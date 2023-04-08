@@ -54,22 +54,6 @@ browser.runtime.sendMessage({
 				if (submitButton != null){
 					fill_form();
 					console.log("Form filled");
-					if (profCounter < prof.length) {
-						if (!courseListening) {
-							profListening = true; submitButton.addEventListener("click", handleProf);
-							submitButton.removeEventListener("click", handleCourse);
-							console.log("Waiting to go to next prof, please fill the form");
-						}
-					} else {
-						if (!profListening) {
-							courseListening = true; submitButton.addEventListener("click", handleCourse);
-							submitButton.removeEventListener("click", handleProf);
-							console.log("all profs in this course handeled");
-							console.log("Waiting to go to next course, please fill the form");
-						}
-						courseListening = false;
-						return;
-					}
 				} else {
 					if (profCounter < prof.length) handleProf();
 					else handleCourse();
@@ -78,23 +62,10 @@ browser.runtime.sendMessage({
 
 			const handleCourse = () => {
 				course = document.getElementById('myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
+				if (courseCounter == course.length) return;
 				course[courseCounter].click(); courseCounter++;
 
 				profCounter = 0; handleProf();
-				submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
-
-				if (courseCounter < course.length) {
-					if (!profListening) {
-						courseListening = true; submitButton.addEventListener("click", handleCourse);
-						submitButton.removeEventListener("click", handleProf);
-						console.log("Waiting to go to next course, please submit the form");
-					}
-					profListening = false;
-				} else {
-					submitButton.removeEventListener("click", handleProf);
-					submitButton.removeEventListener("click", handleCourse);
-					console.log("all courses handeled"); return;
-				}
 			};
 
 			handleCourse();
