@@ -6,9 +6,9 @@ browser.runtime.sendMessage({
 	const fill_form = () => {
 		console.log("User wants to save the preference for feedback type? : ", preference.all);
 		console.log("Feedback Type = ", preference.feedback);
+
 	  	textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
 		radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
-
 		// Counting the total number of radiobuttons
 		for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
 
@@ -51,28 +51,23 @@ browser.runtime.sendMessage({
 				prof[profCounter].click(); profCounter++;
 				submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
 
-				if (submitButton != null) {
-					fill_form();
-					console.log("Form filled");
-					console.log(profCounter, prof.length)
-					if (profCounter < prof.length) {
-						if (!courseListening) {
-							profListening = true; submitButton.addEventListener("click", handleProf);
-							submitButton.removeEventListener("click", handleCourse);
-							console.log("Waiting to go to next prof, please fill the form");
-						}
-					} else {
-						if (!profListening) {
-							courseListening = true; submitButton.addEventListener("click", handleCourse);
-							submitButton.removeEventListener("click", handleProf);
-							console.log("all profs in this course handeled");
-							console.log("Waiting to go to next course, please fill the form");
-						}
-						courseListening = false;
-						return;
+				fill_form();
+				console.log("Form filled");
+				if (profCounter < prof.length) {
+					if (!courseListening) {
+						profListening = true; submitButton.addEventListener("click", handleProf);
+						submitButton.removeEventListener("click", handleCourse);
+						console.log("Waiting to go to next prof, please fill the form");
 					}
 				} else {
-					handleProf();
+					if (!profListening) {
+						courseListening = true; submitButton.addEventListener("click", handleCourse);
+						submitButton.removeEventListener("click", handleProf);
+						console.log("all profs in this course handeled");
+						console.log("Waiting to go to next course, please fill the form");
+					}
+					courseListening = false;
+					return;
 				}
 			};
 
@@ -81,7 +76,6 @@ browser.runtime.sendMessage({
 				course[courseCounter].click(); courseCounter++;
 
 				profCounter = 0; handleProf();
-
 				submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
 
 				if (courseCounter < course.length) {
