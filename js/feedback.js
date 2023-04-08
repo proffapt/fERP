@@ -1,4 +1,4 @@
-var textBox, radioButton, start=0, course, prof, profCounter = 0, courseCounter = 0, profListening = false, courseListening = false;
+var textBox, radioButton, course, prof, profCounter = 0, courseCounter = 0, profListening = false, courseListening = false;
 
 browser.runtime.sendMessage({
 	request: "getStatusOfAll&FeedbackType",
@@ -8,13 +8,8 @@ browser.runtime.sendMessage({
 	}
 
 	const fill_form = () => {
-		console.log("User wants to save the preference for feedback type? : ", preference.all);
-		console.log("Feedback Type = ", preference.feedback);
-
 	  	textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
 		radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
-		// Counting the total number of radiobuttons
-		for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
 
 		if (textBox.length == 5) {
 			switch (preference.feedback) {
@@ -50,30 +45,22 @@ browser.runtime.sendMessage({
 		} else {
 			const handleProf = () => {
 				prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
-				console.log("Handling prof", profCounter+1)
 				prof[profCounter].click(); profCounter++;
 
 				submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
 				if (submitButton != null){
 					fill_form();
-					console.log("Form filled");
 					// To bypass confirm() prompt
 					submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
-					// submitButton.setAttribute("onclick", "console.log('button daba diya')")
 
 					if (profCounter < prof.length) {
 						submitButton.addEventListener("click", async () => {
-							console.log("Waiting for the form to submit");
 							await sleep(3000);
-							console.log("wait is over, handling the next prof")
 							handleProf();
 						})
 					} else {
 						submitButton.addEventListener("click", async () => {
-							console.log("Waiting for the form to submit");
 							await sleep(3000);
-							console.log("all profs in this course handeled");
-							console.log("wait is over, handling the next course")
 							handleCourse();
 						})
 					}
@@ -81,17 +68,14 @@ browser.runtime.sendMessage({
 					if (profCounter < prof.length) handleProf();
 					else handleCourse();
 				}
-				console.log("Handled prof")
 			};
 
 			const handleCourse = () => {
 				course = document.getElementById('myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
 				if (courseCounter == course.length) return;
-				console.log("Handling course", courseCounter+1)
 				course[courseCounter].click(); courseCounter++;
 
 				profCounter = 0; handleProf();
-				console.log("Handled course")
 			};
 
 			handleCourse();
@@ -134,12 +118,13 @@ function positive_theory_feedback() {
 		textBox[i].value = "NIL"; // extra spaces "NIL"ed
 
 	// Clicks `Excellent` OR `Very Good` everywhere
-	for (i = start; i < radioButton.length - 10; i += 5)
+	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+	for (i = prof.length; i < radioButton.length - 10; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i + 3].click();
 		else radioButton[i + 4].click();
-	radioButton[start + 17].click(); // Clicks `Just Right` for pace
-	radioButton[start + 52].click(); // Clicks `Average` for efforts
-	radioButton[start + 57].click(); // Clicks `Average` for Workload
+	radioButton[prof.length + 17].click(); // Clicks `Just Right` for pace
+	radioButton[prof.length + 52].click(); // Clicks `Average` for efforts
+	radioButton[prof.length + 57].click(); // Clicks `Average` for Workload
 }
 
 function positive_lab_feedback() {
@@ -159,23 +144,25 @@ function positive_lab_feedback() {
 		textBox[i].value = "NIL"; // extra spaces "NIL"ed
 
 	// Clicks `Excellent` OR `Very Good` everywhere
-	for (i = start; i < radioButton.length; i += 5)
+	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+	for (i = prof.length; i < radioButton.length; i += 5)
 		if (Math.floor(Math.random() * 2))radioButton[i + 3].click();
 		else radioButton[i + 4].click();
-	radioButton[start + 47].click(); // Clicks `Average` for efforts
-	radioButton[start + 52].click(); // Clicks `Average` for Workload
+	radioButton[prof.length + 47].click(); // Clicks `Average` for efforts
+	radioButton[prof.length + 52].click(); // Clicks `Average` for Workload
 }
 
 function neutral_theory_feedback() {
 	for (i = 0; i < textBox.length; i++)
 		textBox[i].value = "Nothing as such";
 
+	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 	// Clicks `Good` OR `Very Good` everywhere
-	for (i = start; i < radioButton.length - 10; i += 5)
+	for (i = prof.length; i < radioButton.length - 10; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i + 2].click();
 		else radioButton[i + 3].click();
 	// Randomising selection between `Heavy` & `Average` for Efforts and Workload
-	for (i = start + 52; i < radioButton.length; i += 5)
+	for (i = prof.length + 52; i < radioButton.length; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i].click();
 		else radioButton[i + 1].click();
 }
@@ -184,12 +171,13 @@ function neutral_lab_feedback() {
 	for (i = 0; i < textBox.length; i++)
 		textBox[i].value = "Nothing as such";
 
+	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 	// Clicks `Good` OR `Very Good` everywhere
-	for (i = start; i < radioButton.length; i += 5)
+	for (i = prof.length; i < radioButton.length; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i + 2].click();
 		else radioButton[i + 3].click();
 	// Randomising selection between `Heavy` & `Average` for Efforts and Workload
-	for (i = start + 47; i < start + 53; i += 5)
+	for (i = prof.length + 47; i < prof.length + 53; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i].click();
 		else radioButton[i + 1].click();
 }
@@ -230,15 +218,16 @@ function negative_theory_feedback() {
 	for (i = 5; i < textBox.length; i++)
 		textBox[i].value = "NIL"; // extra spaces "NIL"ed
 
+	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 	// Clicks `Poor` OR `Fair` everywhere
-	for (i = start; i < radioButton.length - 10; i += 5)
+	for (i = prof.length; i < radioButton.length - 10; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i].click();
 		else radioButton[i + 1].click();
 	// Randomising selection between `Too Slow` & `Too Fast`
-	if (Math.floor(Math.random() * 2)) radioButton[start + 15].click();
-	else radioButton[start + 19].click();
+	if (Math.floor(Math.random() * 2)) radioButton[prof.length + 15].click();
+	else radioButton[prof.length + 19].click();
 	// Randomising selection between `Heavy` & `Very Heavy` for Efforts and Workload
-	for (i = start + 53; i < radioButton.length; i += 5)
+	for (i = prof.length + 53; i < radioButton.length; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i].click();
 		else radioButton[i + 1].click();
 }
@@ -264,12 +253,13 @@ function negative_lab_feedback() {
 	for (i = 3; i < textBox.length; i++)
 		textBox[i].value = "NIL"; // extra spaces "NIL"ed
 
+	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 	// Clicks `Poor` OR `Fair` everywhere
-	for (i = start; i < radioButton.length; i += 5)
+	for (i = prof.length; i < radioButton.length; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i].click();
 		else radioButton[i + 1].click();
 	// Randomising selection between `Heavy` & `Very Heavy` for Efforts and Workload
-	for (i = start + 48; i < start + 54; i += 5)
+	for (i = prof.length + 48; i < prof.length + 54; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i].click();
 		else radioButton[i + 1].click();
 }
