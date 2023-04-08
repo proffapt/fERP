@@ -10,6 +10,7 @@ browser.runtime.sendMessage({
 	const fill_form = () => {
 	  	textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
 		radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
+		prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 
 		if (textBox.length == 5) {
 			switch (preference.feedback) {
@@ -118,7 +119,6 @@ function positive_theory_feedback() {
 		textBox[i].value = "NIL"; // extra spaces "NIL"ed
 
 	// Clicks `Excellent` OR `Very Good` everywhere
-	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 	for (i = prof.length; i < radioButton.length - 10; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i + 3].click();
 		else radioButton[i + 4].click();
@@ -144,7 +144,6 @@ function positive_lab_feedback() {
 		textBox[i].value = "NIL"; // extra spaces "NIL"ed
 
 	// Clicks `Excellent` OR `Very Good` everywhere
-	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 	for (i = prof.length; i < radioButton.length; i += 5)
 		if (Math.floor(Math.random() * 2))radioButton[i + 3].click();
 		else radioButton[i + 4].click();
@@ -156,7 +155,6 @@ function neutral_theory_feedback() {
 	for (i = 0; i < textBox.length; i++)
 		textBox[i].value = "Nothing as such";
 
-	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 	// Clicks `Good` OR `Very Good` everywhere
 	for (i = prof.length; i < radioButton.length - 10; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i + 2].click();
@@ -171,7 +169,6 @@ function neutral_lab_feedback() {
 	for (i = 0; i < textBox.length; i++)
 		textBox[i].value = "Nothing as such";
 
-	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 	// Clicks `Good` OR `Very Good` everywhere
 	for (i = prof.length; i < radioButton.length; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i + 2].click();
@@ -218,7 +215,6 @@ function negative_theory_feedback() {
 	for (i = 5; i < textBox.length; i++)
 		textBox[i].value = "NIL"; // extra spaces "NIL"ed
 
-	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 	// Clicks `Poor` OR `Fair` everywhere
 	for (i = prof.length; i < radioButton.length - 10; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i].click();
@@ -253,7 +249,6 @@ function negative_lab_feedback() {
 	for (i = 3; i < textBox.length; i++)
 		textBox[i].value = "NIL"; // extra spaces "NIL"ed
 
-	prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 	// Clicks `Poor` OR `Fair` everywhere
 	for (i = prof.length; i < radioButton.length; i += 5)
 		if (Math.floor(Math.random() * 2)) radioButton[i].click();
