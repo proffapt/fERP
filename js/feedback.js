@@ -51,7 +51,17 @@ browser.runtime.sendMessage({
 					fill_form();
 					console.log("Form filled");
 					// To bypass confirm() prompt
-					submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+					submitBktton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+
+					if (profCounter < prof.length) {
+						submitButton.addEventListener("click", handleProf);
+						console.log("Waiting to go to next prof, please fill the form");
+					} else {
+						submitButton.addEventListener("click", handleCourse);
+						console.log("all profs in this course handeled");
+						console.log("Waiting to go to next course, please fill the form");
+						return;
+					}
 				} else {
 					if (profCounter < prof.length) handleProf();
 					else handleCourse();
