@@ -4,10 +4,8 @@ browser.runtime.sendMessage({
 	request: "getStatusOfAll&FeedbackType",
 }).then((preference) => {
 	const fill_form = () => {
-		// Logs
 		console.log("User wants to save the preference for feedback type? : ", preference.all);
 		console.log("Feedback Type = ", preference.feedback);
-		//
 	  	textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
 		radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
 
@@ -45,49 +43,52 @@ browser.runtime.sendMessage({
 	try {
 		if (!preference.all) {
 			fill_form();
-			console.log("form filled");
 		} else {
 			console.log("Just fill the captcha, rest I will handle");
-			course = document.querySelectorAll('a[href="javascript:void(0)"]');
-			prof = document.querySelectorAll('input[name="check"]');
-			courseCounter = 0;
-
 
 			const handleProf = () => {
+				prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 				prof[profCounter].click(); profCounter++;
-				fill_form();
-				console.log("Form filled");
-				var submitButton = myframe.document.getElementById("sub");
+				submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
 
-				if (profCounter < prof.length) {
-					if (!courseListening) {
-						profListening = true; submitButton.addEventListener("click", handleProf);
-						submitButton.removeEventListener("click", handleCourse);
-						console.log("Waiting to go to next prof, please fill the form");
+				if (submitButton != null) {
+					fill_form();
+					console.log("Form filled");
+					console.log(profCounter, prof.length)
+					if (profCounter < prof.length) {
+						if (!courseListening) {
+							profListening = true; submitButton.addEventListener("click", handleProf);
+							submitButton.removeEventListener("click", handleCourse);
+							console.log("Waiting to go to next prof, please fill the form");
+						}
+					} else {
+						if (!profListening) {
+							courseListening = true; submitButton.addEventListener("click", handleCourse);
+							submitButton.removeEventListener("click", handleProf);
+							console.log("all profs in this course handeled");
+							console.log("Waiting to go to next course, please fill the form");
+						}
+						courseListening = false;
+						return;
 					}
 				} else {
-					if (!profListening) {
-						courseListening = true; submitButton.addEventListener("click", handleCourse);
-						submitButton.removeEventListener("click", handleProf);
-						console.log("all profs in this course handeled");
-						console.log("Waiting to go to next course, please fill the form");
-					}
-					courseListening = false;
-					return;
+					handleProf();
 				}
 			};
 
 			const handleCourse = () => {
+				course = document.getElementById('myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
 				course[courseCounter].click(); courseCounter++;
-				profCounter = 0;
-				handleProf();
-				var submitButton = myframe.document.getElementById("sub");
+
+				profCounter = 0; handleProf();
+
+				submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
 
 				if (courseCounter < course.length) {
 					if (!profListening) {
 						courseListening = true; submitButton.addEventListener("click", handleCourse);
 						submitButton.removeEventListener("click", handleProf);
-						console.log("Waiting to go to next course, please fill the form");
+						console.log("Waiting to go to next course, please submit the form");
 					}
 					profListening = false;
 				} else {
@@ -102,9 +103,6 @@ browser.runtime.sendMessage({
 	} catch (err) {
 		console.error(err);
 	}
-
-	// Append the script to the document's head element
-	document.head.appendChild(script);
 });
 
 function positive_theory_feedback() {
