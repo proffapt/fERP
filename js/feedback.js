@@ -3,7 +3,14 @@ var textBox, radioButton, start=0, course, prof, profCounter = 0, courseCounter 
 browser.runtime.sendMessage({
 	request: "getStatusOfAll&FeedbackType",
 }).then((preference) => {
+	function sleep(ms) {
+		return new Promise(resolve => setTimeout(resolve, ms));
+	}
+
 	const fill_form = () => {
+		console.log("User wants to save the preference for feedback type? : ", preference.all);
+		console.log("Feedback Type = ", preference.feedback);
+
 	  	textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
 		radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
 		// Counting the total number of radiobuttons
@@ -51,16 +58,24 @@ browser.runtime.sendMessage({
 					fill_form();
 					console.log("Form filled");
 					// To bypass confirm() prompt
-					submitBktton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+					submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+					// submitButton.setAttribute("onclick", "console.log('button daba diya')")
 
 					if (profCounter < prof.length) {
-						submitButton.addEventListener("click", handleProf);
-						console.log("Waiting to go to next prof, please fill the form");
+						submitButton.addEventListener("click", async () => {
+							console.log("Waiting for the form to submit");
+							await sleep(3000);
+							console.log("wait is over, handling the next prof")
+							handleProf();
+						})
 					} else {
-						submitButton.addEventListener("click", handleCourse);
-						console.log("all profs in this course handeled");
-						console.log("Waiting to go to next course, please fill the form");
-						return;
+						submitButton.addEventListener("click", async () => {
+							console.log("Waiting for the form to submit");
+							await sleep(3000);
+							console.log("all profs in this course handeled");
+							console.log("wait is over, handling the next course")
+							handleCourse();
+						})
 					}
 				} else {
 					if (profCounter < prof.length) handleProf();
