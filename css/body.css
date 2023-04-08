@@ -41,6 +41,12 @@
 #use_for_all{
     align-items: center;
 }
+.tooltip {
+  height: 6%;
+}
+.tooltip:hover {
+  height: 5%;
+}
 .buttons{
     text-align: center;
     margin: 15px;
