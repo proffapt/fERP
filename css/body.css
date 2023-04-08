@@ -1,55 +1,49 @@
-:root {
-	--body-height: 400px;
-}
 .logo_text{
-    width: 800px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     background-color: white;
-    margin-left: 150%;
-	margin-top: 15%;
 }
 .logo{
     display: flex;
     flex-direction: row;
+    width: 300px;
 }
 #header-logo{
-	width: 40px;
-	height: 40px;
+	width: 35px;
+	height: 35px;
 	position: relative;
-	margin-left: 60%;
 }
 #header-text{
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 39px;
     color: 000;
-	margin-left: 5%;
+	margin-left: 10px;
 }
 .button_container{
-    width: 600px;
-    height: 400px;
+    width: 300px;
+    height: 250px;
     background: rgba(245, 235, 160, 0.9);
     border: 1px solid rgba(66, 65, 65, 0.3);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    margin-left: 2%;
+    text-align: center;
+    margin-top: 5px;
 }
 .feedback{
-    margin-left: 29%;
-    margin-top:12%;
 	font-style: medium;
     font-weight: 600;
     font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
 }
 #use_for_all{
-    margin-left: 31%;
+    align-items: center;
 }
 .buttons{
-    display: flex;
-    flex-direction: column;
-    margin-left: 32%;
-    margin-top: 2%;
+    text-align: center;
+    margin: 15px;
 }
 .buttons :hover{
 	background-color: #333333; opacity: 70%;
@@ -59,7 +53,7 @@
 	box-shadow: 0 5px #333;
 	transform: translateY(4px);
 }
-.positive_btn{
+#positive_btn{
     width: 200px;
     height: 40px;
     background: #68BE31;
@@ -69,7 +63,7 @@
     color: white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
-.neutral_btn{
+#neutral_btn{
     width: 200px;
     height: 40px;
     background: #5858EC;
@@ -79,7 +73,7 @@
     color: white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
-.negative_btn{
+#negative_btn{
     width: 200px;
     height: 40px;
     background: #F23535;
@@ -88,4 +82,8 @@
 	cursor: pointer;
     color: white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn{
+    margin: 5px;
 }
