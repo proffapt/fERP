@@ -1,23 +1,19 @@
 fERP - Feedback ERP
 ====================
-Automate the process of filling up the feedback form in ERP.
+Automate the process of filling up the feedback form in ERP, to a next level
 
-**Disclaimer**: The developer does not hold any responsibility for the use / abuse of these scripts. **Use them at your own discretion**.
+**Disclaimer**: The developer does not hold any responsibility for the use / abuse of this extension. **Use it at your own discretion**.
 
-#### How to use these scripts?
-1. Open the feedback form (Academic > Feedback form) of ERP.
-2. Click on the subject code and the professor button.
-3. Open console in browser.
-   To do that, press ``F12`` for firefox & ``Ctrl + Shift + J`` in Chrome.
-4. Copy the code from your desired variant of `*_feedback.js` and paste in that console window and hit Enter.
-5. All fields would be filled by now (If not refresh 2-3 times and try again).
-6. Fill up the captcha and submit.
-    
-> [**FIX**] Firefox shows scam warning on copy pasting commands into the console!
+#### Stage of Development
+You can track the stage of development for the extension in this branch, and also contribute if you can.
+For the Roadmap see, https://github.com/proffapt/fERP/issues/3
 
-To avoid that, simply enter the command `allow pasting` in the console.<br>
-After running that command, copy pasting will start to work.
+#### Steps to use this Extension
 
-***
+> The extension is currenty in development phase and only avaliable for FIREFOX.
 
-## I am working on an extension for this very purpose, for details, check https://github.com/proffapt/fERP/issues/3
+1. Clone this branch using `git clone -b extension https://github.com/proffapt/fERP`
+2. Open `Firefox` and paste `about:debugging#/runtime/this-firefox` into the search/url bar.
+3. Click on `Load Temperory Add-on..`, a file explorer window will popup
+4. Navigate to the cloned repository directory and select `manifest.json` file.
+5. The extension will be loaded in your browser.
