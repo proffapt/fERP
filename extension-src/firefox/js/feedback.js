@@ -79,7 +79,7 @@ browser.runtime.sendMessage({
 				profCounter = 0; handleProf();
 			};
 
-			handleCourse();
+			if (courseCounter == 0) handleCourse();
 		}
 	} catch (err) {
 		console.error(err);
