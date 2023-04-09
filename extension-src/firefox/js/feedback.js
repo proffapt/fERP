@@ -54,17 +54,25 @@ browser.runtime.sendMessage({
 					// To bypass confirm() prompt
 					submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
 
-					if (profCounter < prof.length) {
-						submitButton.addEventListener("click", async () => {
-							await sleep(3000);
+					submitButton.addEventListener("click", async () => {
+						await sleep(3000);
+						prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+						if (profCounter < prof.length) {
+							if (submitButton == null) {
+								fill_form();
+								submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+							}
+							profCounter--;
 							handleProf();
-						})
-					} else {
-						submitButton.addEventListener("click", async () => {
-							await sleep(3000);
+						} else {
+							if (submitButton == null) {
+								fill_form();
+								submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+							}
+							courseCounter--; 
 							handleCourse();
-						})
-					}
+						}
+					});
 				} else {
 					if (profCounter < prof.length) handleProf();
 					else handleCourse();
