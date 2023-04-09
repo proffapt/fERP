@@ -25,7 +25,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 				}
 			}
 			else {
-				switch (preference.feedback) {
+				switch (request.all) {
 					case "positive":
 						positive_lab_feedback();
 						break;
@@ -76,9 +76,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 					course[courseCounter].click(); courseCounter++;
 
 					profCounter = 0; handleProf();
-				};
+				}
 
-				handleCourse();
+				if (courseCounter == 0) handleCourse();
 			}
 		} catch (err) {
 			console.error(err);
