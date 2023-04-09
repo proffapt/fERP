@@ -12,17 +12,15 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<!-- UPDATE -->
 <div align="center">
   <a href="https://github.com/proffapt/fERP">
-    <img width="140" alt="image" src="https://user-images.githubusercontent.com/86282911/206632284-cb260f57-c612-4ab5-b92b-2172c341ab23.png">
+    <img width="140" alt="image" src="./extension-src/firefox/images/fERP128.png">
   </a>
   
   <h3 align="center">fERP</h3>
 
   <p align="center">
-  <!-- UPDATE -->
-    <i>Project one liner slogan goes here</i>
+    <i>Say goodbye to tedious feedback forms</i>
     <br />
     <a href="https://github.com/proffapt/fERP"><strong>Explore the docs »</strong></a>
     <br />
@@ -41,8 +39,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#supports">Supports</a></li>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#support">Support</a></li>
       </ul>
     </li>
     <li>
@@ -63,36 +60,26 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<!-- UPDATE -->
-<div align="center">
-  <a href="https://github.com/proffapt/fERP">
-    <img width="700" alt="image" src="https://user-images.githubusercontent.com/86282911/206632547-a3b34b47-e7ae-4186-a1e6-ecda7ddb38e6.png">
-  </a>
-</div>
 
-_Detailed explaination of the project goes here_
+<img align="left" width="230" alt="image" src="https://user-images.githubusercontent.com/86282911/230757945-2229d143-2eef-40df-958c-269c6a3c919e.png">
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+The "fERP" extension is a tool designed to automate the process of filling feedback forms for course professors in IIT KGP. This extension saves your time and effort by automatically filling out the forms for you.
+
+With the extension, you have three options for the **type of feedback**: `positive`, `negative`, or `neutral`. The extension generates _randomized feedback responses for each submission_, so you don't have to think of what to write each time.
+
+There are **two modes available for using the extension**. The first mode allows you to select the type of feedback for each form submission, fill in the captcha, and then submit the form. The second mode allows you to select a common type of feedback for all forms and then fill in the captcha and submit each form in succession.
+
+Using the "fERP" extension can save you time and make the process of filling out repetitive feedback forms more efficient.
 
 <div id="supports"></div>
 
-### Supports:
-1. Shells
-    * `bash`
-    * `fish`
-    * `zsh`
-2. OS(s)
-    * `MacOS`[`BSD` based]
-    * any `*nix`[`GNU+Linux` and `Unix`]
+### Support:
+1. **Extension**
+    - Firefox
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-### Built With
-
-This project is made with following langs/frameworks.
-<!-- UPDATE -->
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
+2. **Scripts**
+    - Chromium
+    - Firefox
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -150,13 +137,9 @@ Use this space to show useful examples of how a project can be used. Additional 
 <!-- ROADMAP -->
 ## Roadmap
 <!-- UPDATE -->
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+- [x] Firefox Extension
+- [ ] Chrome Extension
+- [ ] Captcha automation
 
 See the [open issues](https://github.com/proffapt/fERP/issues) for a full list of proposed features (and known issues).
 
@@ -194,7 +177,7 @@ See the [open issues](https://github.com/proffapt/fERP/issues) for a full list o
 
 * [Choose an Open Source License](https://choosealicense.com)
 * [Img Shields](https://shields.io)
-<!-- UPDATE -->
+* [Browser Extension - MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
