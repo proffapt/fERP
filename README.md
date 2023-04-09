@@ -46,10 +46,10 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#using-scripts">Using Scripts</a></li>
+        <li><a href="#installing-extension">Installing Extension</a></li>
         <li><a href="#using-extension">Using Extension</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -87,6 +87,7 @@ There are **two modes available for using the extension**. The first mode allows
 
 Please note that the fERP is currently only compatible with Firefox. If you are using a Chromium-based browser, you can still use the [scripts](./scripts). I am constantly working to make the extension available on other browsers as well, so stay tuned for updates. You can follow the sections below according to your preference:
 - [Using Scripts](#using-scripts)
+- [Installing Extension](#installing-extension)
 - [Using Extension](#using-extension)
 
 ### Using Scripts
@@ -106,7 +107,7 @@ After running that command, copy pasting will start to work.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Using Extension 
+### Installing Extension 
 
 > **Note** Only supports Firefox for now. Sent to mozilla add-on store for review - not approved yet.
 
@@ -118,9 +119,7 @@ After running that command, copy pasting will start to work.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-<!-- USAGE EXAMPLES -->
-## Usage
+### Using Extension
 
 **Add usage video**
 
