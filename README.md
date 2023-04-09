@@ -112,7 +112,9 @@ After running that command, copy pasting will start to work.
 
 ### Installing Extension 
 
-Currently, the extension is not available in any of the official extension/add-on stores. However, you can still install it using the available methods, which may be a bit tedious. Refer to the sections below to read about the steps specific to your browser.
+Currently, the extension is not available in any of the official extension/add-on stores. However, you can still install it using the available methods, which may be a bit tedious. In order to install the extension on any of the browser you will have to either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository
+
+Now, Refer to the sections below to read about further steps specific to your browser.
 
 - [Firefox](#firefox)
 - [Chromium Based Browser](#chromium-based-browsers)
@@ -121,11 +123,10 @@ Currently, the extension is not available in any of the official extension/add-o
 
 > **Note** Currently this extension is not available on add-on store but have sent it for review, steps will be updated as it is approved.
 
-1. Clone this repo using `git clone https://github.com/proffapt/fERP` or just 
-2. Type `about:debugging#/runtime/this-firefox` on search bar
-3. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section
-4. Navigate to `src/firefox` folder in your opened file navigator
-5. Select the `manifest.json` file inside it and press **open**
+1. Open new tab and type `about:debugging#/runtime/this-firefox` on search bar.
+2. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section.
+3. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
+4. Select the `manifest.json` file inside it and press **open**.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -135,10 +136,9 @@ Currently, the extension is not available in any of the official extension/add-o
 
 > **Note** Not published on Chrome Web Store - they require a fee for publishing an extension, and I don't earn :). However, if you would like to support the development of the extension and help me get it published on the Chrome web store, you can consider donating to me via the following link: https://github.com/sponsors/proffapt.
 
-1. Clone this repo using `git clone https://github.com/proffapt/fERP`
-2. Open new tab and type `chrome://extensions` on search bar
-3. Toggle the **DEVELOPER MODE** on top right corner
-4. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
+1. Open new tab and type `chrome://extensions` on search bar.
+2. Toggle the **DEVELOPER MODE** on top right corner.
+3. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
 
 > **Warning** You have to select the whole folder not just any file.
 
