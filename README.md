@@ -46,7 +46,6 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#installing-extension">Installing Extension</a></li>
-        <li><a href="#using-scripts">Using Scripts</a></li>
         <ul>
           <li><a href="#chromium-based-browsers">Chromium Based Browsers</a></li>
           <li><a href="#firefox">Firefox</a></li>
@@ -85,14 +84,11 @@ There are **two modes available for using the extension**. The first mode allows
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This project has undergone some changes and now incorporates scripts into an extension. If you're having issues with the extension, don't worry! You can still use the scripts as standalone files. Below, I've outlined the different use cases for this project and linked to the relevant sections in this documentation.
-
-- [Installing Extension](#installing-extension)
-- [Using Scripts](#using-scripts)
+This project has undergone some changes and now incorporates scripts into an extension. If you're having issues with the extension, don't worry! You can still use the [scripts](./scripts) as standalone files. 
 
 ### Installing Extension 
 
-Currently, the extension is not available in any of the official extension/add-on stores. However, you can still install it using the available methods, which may be a bit tedious. In order to install the extension on any of the browser you will have to either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository
+Currently, the extension is not available in any of the official extension/add-on stores. However, you can still install it using the available methods, which may be a bit tedious. In order to install the extension on any of the browser you will have to either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
 
 Now, Refer to the sections below to read about further steps specific to your browser.
 
@@ -123,26 +119,6 @@ Now, Refer to the sections below to read about further steps specific to your br
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
-### Using Scripts
-
-These steps work fine on both Firefox and [Chromium Based Browsers](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium).
-
-1. Open the feedback form (`Academic` > `Feedback form`) of ERP.
-2. Click on the subject code and the professor button.
-3. Open console in browser.
-   To do that, press ``F12`` for firefox & ``Ctrl + Shift + J`` in Chrome.
-4. Copy the code from your desired variant of `*_feedback.js` from [scripts](./scripts) and paste in that console window and click `Run`.
-5. All fields would be filled by now.
-6. Fill up the captcha and submit.
-    
-> **Note** Firefox shows scam warning on copy pasting commands into the console!
-
-To avoid that, simply enter the command `allow pasting` in the console.<br>
-After running that command, copy pasting will start to work.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Usage
 
