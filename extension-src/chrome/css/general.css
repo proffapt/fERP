@@ -1,0 +1,25 @@
+body {
+	background-color: var(--body-background-color);
+}
+
+body * {
+	color: var(--body-color);
+}
+
+a {
+	color: var(--body-color);
+}
+
+body,
+body * {
+	font-size: 14px;
+	font-family: Helvetica;
+}
+
+.button {
+  margin: 3% auto;
+  padding: 4px;
+  text-align: center;
+  font-size: 1.5em;
+  cursor: pointer;
+}
