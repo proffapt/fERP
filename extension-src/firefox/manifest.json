@@ -15,7 +15,13 @@
 		"default_popup": "main.html"
 	  },
 
-	  "icons": {
+	"browser_specific_settings": {
+		"gecko": {
+    	"id": "proffapt@pm.me"
+		}
+	  },
+
+	"icons": {
 		"16": "images/fERP16.png",
 		"32": "images/fERP32.png",
 		"64": "images/fERP64.png",
