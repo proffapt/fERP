@@ -45,7 +45,7 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#using-scirpts">Using Scripts</a></li>
+        <li><a href="#using-scripts">Using Scripts</a></li>
         <li><a href="#using-extension">Using Extension</a></li>
       </ul>
     </li>
@@ -108,7 +108,7 @@ After running that command, copy pasting will start to work.
 
 ### Using Extension 
 
-> **Note** Only supports Firefox for now.
+> **Note** Only supports Firefox for now. Sent to mozilla add-on store for review - not approved yet.
 
 1. Clone this branch using `git clone https://github.com/proffapt/fERP`
 2. Open `Firefox` and paste `about:debugging#/runtime/this-firefox` into the search/url bar.
@@ -121,14 +121,8 @@ After running that command, copy pasting will start to work.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-<!-- UPDATE -->
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space.
 
-<div align="center">
-  <a href="https://github.com/proffapt/fERP">
-    <img width="1006" alt="image" src="https://user-images.githubusercontent.com/86282911/206632640-40dc440e-5ef3-4893-be48-618f2bd85f37.png">
-  </a>
-</div>
+**Add usage video**
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
