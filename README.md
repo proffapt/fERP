@@ -61,15 +61,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img align="left" width="250" alt="image" src="https://user-images.githubusercontent.com/86282911/230757945-2229d143-2eef-40df-958c-269c6a3c919e.png">
+<img align="left" width="270" alt="image" src="https://user-images.githubusercontent.com/86282911/230757945-2229d143-2eef-40df-958c-269c6a3c919e.png">
 
 The "fERP" extension is a tool designed to automate the process of filling feedback forms for course professors in IIT KGP. This extension saves your time and effort by automatically filling out the forms for you.
 
 With the extension, you have three options for the **type of feedback**: `positive`, `negative`, or `neutral`. The extension generates _randomized feedback responses for each submission_, so you don't have to think of what to write each time.
 
 There are **two modes available for using the extension**. The first mode allows you to select the type of feedback for each form submission, fill in the captcha, and then submit the form. The second mode allows you to select a common type of feedback for all forms and then fill in the captcha and submit each form in succession.
-
-Using the "fERP" extension can save you time and make the process of filling out repetitive feedback forms more efficient.
 
 <div id="supports"></div>
 
