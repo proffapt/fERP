@@ -45,8 +45,8 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#using-scirpts">Using Scripts</a></li>
+        <li><a href="#using-extension">Using Extension</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -85,35 +85,36 @@ There are **two modes available for using the extension**. The first mode allows
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+Please note that the fERP is currently only compatible with Firefox. If you are using a Chromium-based browser, you can still use the [scripts](./scripts). I am constantly working to make the extension available on other browsers as well, so stay tuned for updates. You can follow the sections below according to your preference:
+- [Using Scripts](#using-scripts)
+- [Using Extension](#using-extension)
 
-### Prerequisites
-<!-- UPDATE -->
-You will need to install the following dependencies for the project to work.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+### Using Scripts
+
+1. Open the feedback form (`Academic` > `Feedback form`) of ERP.
+2. Click on the subject code and the professor button.
+3. Open console in browser.
+   To do that, press ``F12`` for firefox & ``Ctrl + Shift + J`` in Chrome.
+4. Copy the code from your desired variant of `*_feedback.js` from [scripts](./scripts) and paste in that console window and click `Run`.
+5. All fields would be filled by now.
+6. Fill up the captcha and submit.
+    
+> **Note** Firefox shows scam warning on copy pasting commands into the console!
+
+To avoid that, simply enter the command `allow pasting` in the console.<br>
+After running that command, copy pasting will start to work.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Installation
+### Using Extension 
 
-_Now since we are done with the setting up of environment suitable for the project to compile/run, let's install and configure the project on your system locally now._
-<!-- UPDATE -->
-1. Clone the repo
-   ```sh
-   git clone https://github.com/proffapt/fERP.git
-   ```
-2. Make the script executable
-   ```sh
-   cd ./fERP
-   chmod +x ./fERP
-   ```
-3. Execute the script
-   ```sh
-   ./fERP
-   ```
+> **Note** Only supports Firefox for now.
+
+1. Clone this branch using `git clone https://github.com/proffapt/fERP`
+2. Open `Firefox` and paste `about:debugging#/runtime/this-firefox` into the search/url bar.
+3. Click on `Load Temperory Add-on..`, a file explorer window will pop-up
+4. Navigate to the cloned repository directory and select `manifest.json` file inside [extension-src/firefox](./extension-src/firefox).
+5. The extension will be loaded in your browser.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
