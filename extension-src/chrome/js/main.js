@@ -14,39 +14,24 @@ var feedback;
 
 positiveFeedbackButton.addEventListener("click", () => {
 	feedback = "positive";
-	browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-		if (request.request == "getStatusOfAll&FeedbackType")
-			sendResponse({
-				all: isChecked,
-				feedback: feedback
-			});
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
 	});
-	browser.tabs.executeScript({ file: "/js/feedback.js" })
-	browser.runtime.onMessage.removeListener((request, sender, sendResponse) => {});
+	chrome.tabs.executeScript({ file: "/js/feedback.js" })
 });
 
 neutralFeedbackButton.addEventListener("click", () => {
 	feedback = "neutral";
-	browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-		if (request.request == "getStatusOfAll&FeedbackType")
-			sendResponse({
-				all: isChecked,
-				feedback: feedback
-			});
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
 	});
-	browser.tabs.executeScript({ file: "/js/feedback.js" })
-	browser.runtime.onMessage.removeListener((request, sender, sendResponse) => {});
+	chrome.tabs.executeScript({ file: "/js/feedback.js" })
 });
 
 negativeFeedbackButton.addEventListener("click", () => {
 	feedback = "negative";
-	browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-		if (request.request == "getStatusOfAll&FeedbackType")
-			sendResponse({
-				all: isChecked,
-				feedback: feedback
-			});
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
 	});
-	browser.tabs.executeScript({ file: "/js/feedback.js" })
-	browser.runtime.onMessage.removeListener((request, sender, sendResponse) => {});
+	chrome.tabs.executeScript({ file: "/js/feedback.js" })
 });

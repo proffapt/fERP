@@ -1,89 +1,89 @@
 var textBox, radioButton, course, prof, profCounter = 0, courseCounter = 0, profListening = false, courseListening = false;
 
-browser.runtime.sendMessage({
-	request: "getStatusOfAll&FeedbackType",
-}).then((preference) => {
-	function sleep(ms) {
-		return new Promise(resolve => setTimeout(resolve, ms));
-	}
-
-	const fill_form = () => {
-	  	textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
-		radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
-		prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
-
-		if (textBox.length == 5) {
-			switch (preference.feedback) {
-				case "positive":
-					positive_theory_feedback();
-					break;
-				case "neutral":
-					neutral_theory_feedback();
-					break;
-				case "negative":
-					negative_theory_feedback();
-					break;
-			}
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+	if (request.action == "getStatusOfAll&FeedbackType") {
+		function sleep(ms) {
+			return new Promise(resolve => setTimeout(resolve, ms));
 		}
-		else {
-			switch (preference.feedback) {
-				case "positive":
-					positive_lab_feedback();
-					break;
-				case "neutral":
-					neutral_lab_feedback();
-					break;
-				case "negative":
-					negative_lab_feedback();
-					break;
-			}
-		}
-	};
 
-	try {
-		if (!preference.all) {
-			fill_form();
-		} else {
-			const handleProf = () => {
-				prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
-				prof[profCounter].click(); profCounter++;
+		const fill_form = () => {
+			textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
+			radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
+			prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 
-				submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
-				if (submitButton != null){
-					fill_form();
-					// To bypass confirm() prompt
-					submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
-
-					if (profCounter < prof.length) {
-						submitButton.addEventListener("click", async () => {
-							await sleep(3000);
-							handleProf();
-						})
-					} else {
-						submitButton.addEventListener("click", async () => {
-							await sleep(3000);
-							handleCourse();
-						})
-					}
-				} else {
-					if (profCounter < prof.length) handleProf();
-					else handleCourse();
+			if (textBox.length == 5) {
+				switch (request.preference) {
+					case "positive":
+						positive_theory_feedback();
+						break;
+					case "neutral":
+						neutral_theory_feedback();
+						break;
+					case "negative":
+						negative_theory_feedback();
+						break;
 				}
-			};
+			}
+			else {
+				switch (preference.feedback) {
+					case "positive":
+						positive_lab_feedback();
+						break;
+					case "neutral":
+						neutral_lab_feedback();
+						break;
+					case "negative":
+						negative_lab_feedback();
+						break;
+				}
+			}
+		};
 
-			const handleCourse = () => {
-				course = document.getElementById('myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
-				if (courseCounter == course.length) return;
-				course[courseCounter].click(); courseCounter++;
+		try {
+			if (!request.all) {
+				fill_form();
+			} else {
+				const handleProf = () => {
+					prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+					prof[profCounter].click(); profCounter++;
 
-				profCounter = 0; handleProf();
-			};
+					submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+					if (submitButton != null){
+						fill_form();
+						// To bypass confirm() prompt
+						submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
 
-			handleCourse();
+						if (profCounter < prof.length) {
+							submitButton.addEventListener("click", async () => {
+								await sleep(3000);
+								handleProf();
+							})
+						} else {
+							submitButton.addEventListener("click", async () => {
+								await sleep(3000);
+								handleCourse();
+							})
+						}
+					} else {
+						if (profCounter < prof.length) handleProf();
+						else handleCourse();
+					}
+				};
+
+				const handleCourse = () => {
+					course = document.getElementById('myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
+					if (courseCounter == course.length) return;
+					course[courseCounter].click(); courseCounter++;
+
+					profCounter = 0; handleProf();
+				};
+
+				handleCourse();
+			}
+		} catch (err) {
+			console.error(err);
 		}
-	} catch (err) {
-		console.error(err);
-	}
+	  }
 });
 
 function positive_theory_feedback() {
