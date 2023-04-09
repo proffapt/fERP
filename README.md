@@ -47,9 +47,13 @@
       <ul>
         <li><a href="#using-scripts">Using Scripts</a></li>
         <li><a href="#installing-extension">Installing Extension</a></li>
-        <li><a href="#using-extension">Using Extension</a></li>
+        <ul>
+          <li><a href="#firefox">Firefox</a></li>
+          <li><a href="#chromium-based-browsers">Chromium Based Browsers</a></li>
+        </ul>
       </ul>
     </li>
+    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -72,12 +76,9 @@ There are **two modes available for using the extension**. The first mode allows
 <div id="supports"></div>
 
 ### Support:
-1. **Extension**
-    - Firefox
+- Firefox
+- [Chromium Based Browsers](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium)
 
-2. **Scripts**
-    - Chromium
-    - Firefox
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -85,12 +86,14 @@ There are **two modes available for using the extension**. The first mode allows
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Please note that the fERP is currently only compatible with Firefox. If you are using a Chromium-based browser, you can still use the [scripts](./scripts). I am constantly working to make the extension available on other browsers as well, so stay tuned for updates. You can follow the sections below according to your preference:
+This project has undergone some changes and now incorporates scripts into an extension. If you're having issues with the extension, don't worry! You can still use the scripts as standalone files. Below, I've outlined the different use cases for this project and linked to the relevant sections in this documentation.
+
 - [Using Scripts](#using-scripts)
 - [Installing Extension](#installing-extension)
-- [Using Extension](#using-extension)
 
 ### Using Scripts
+
+These steps work fine on both Firefox and [Chromium Based Browsers](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium).
 
 1. Open the feedback form (`Academic` > `Feedback form`) of ERP.
 2. Click on the subject code and the professor button.
@@ -109,17 +112,39 @@ After running that command, copy pasting will start to work.
 
 ### Installing Extension 
 
-> **Note** Only supports Firefox for now. Sent to mozilla add-on store for review - not approved yet.
+Currently, the extension is not available in any of the official extension/add-on stores. However, you can still install it using the available methods, which may be a bit tedious. Refer to the sections below to read about the steps specific to your browser.
 
-1. Clone this branch using `git clone https://github.com/proffapt/fERP`
-2. Open `Firefox` and paste `about:debugging#/runtime/this-firefox` into the search/url bar.
-3. Click on `Load Temperory Add-on..`, a file explorer window will pop-up
-4. Navigate to the cloned repository directory and select `manifest.json` file inside [extension-src/firefox](./extension-src/firefox).
-5. The extension will be loaded in your browser.
+- [Firefox](#firefox)
+- [Chromium Based Browser](#chromium-based-browsers)
+
+#### Firefox
+
+> **Note** Currently this extension is not available on add-on store but have sent it for review, steps will be updated as it is approved.
+
+1. Clone this repo using `git clone https://github.com/proffapt/fERP` or just 
+2. Type `about:debugging#/runtime/this-firefox` on search bar
+3. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section
+4. Navigate to `src/firefox` folder in your opened file navigator
+5. Select the `manifest.json` file inside it and press **open**
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Using Extension
+
+#### Chromium Based Browsers
+
+> **Note** Not published on Chrome Web Store - they require a fee for publishing an extension, and I don't earn :). However, if you would like to support the development of the extension and help me get it published on the Chrome web store, you can consider donating to me via the following link: https://github.com/sponsors/proffapt.
+
+1. Clone this repo using `git clone https://github.com/proffapt/fERP`
+2. Open new tab and type `chrome://extensions` on search bar
+3. Toggle the **DEVELOPER MODE** on top right corner
+4. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
+
+> **Warning** You have to select the whole folder not just any file.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Usage
 
 **Add usage video**
 
@@ -130,8 +155,8 @@ After running that command, copy pasting will start to work.
 ## Roadmap
 <!-- UPDATE -->
 - [x] Firefox Extension
-- [ ] Chrome Extension
-- [ ] Captcha automation
+- [x] Chrome Extension
+- [ ] Captcha Automation
 
 See the [open issues](https://github.com/proffapt/fERP/issues) for a full list of proposed features (and known issues).
 
