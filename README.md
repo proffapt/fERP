@@ -45,16 +45,15 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#using-scripts">Using Scripts</a></li>
         <li><a href="#installing-extension">Installing Extension</a></li>
+        <li><a href="#using-scripts">Using Scripts</a></li>
         <ul>
-          <li><a href="#firefox">Firefox</a></li>
           <li><a href="#chromium-based-browsers">Chromium Based Browsers</a></li>
+          <li><a href="#firefox">Firefox</a></li>
         </ul>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
     <li><a href="#miscelleneous">Miscelleneous</a></li>    
@@ -76,9 +75,9 @@ There are **two modes available for using the extension**. The first mode allows
 <div id="supports"></div>
 
 ### Support:
-- Firefox
-- [Chromium Based Browsers](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium)
 
+- [Chromium Based Browsers](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium)
+- Firefox
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -88,8 +87,43 @@ There are **two modes available for using the extension**. The first mode allows
 
 This project has undergone some changes and now incorporates scripts into an extension. If you're having issues with the extension, don't worry! You can still use the scripts as standalone files. Below, I've outlined the different use cases for this project and linked to the relevant sections in this documentation.
 
-- [Using Scripts](#using-scripts)
 - [Installing Extension](#installing-extension)
+- [Using Scripts](#using-scripts)
+
+### Installing Extension 
+
+Currently, the extension is not available in any of the official extension/add-on stores. However, you can still install it using the available methods, which may be a bit tedious. In order to install the extension on any of the browser you will have to either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository
+
+Now, Refer to the sections below to read about further steps specific to your browser.
+
+- [Chromium Based Browser](#chromium-based-browsers)
+- [Firefox](#firefox)
+
+#### Chromium Based Browsers
+
+> **Note** Not published on Chrome Web Store - they require a fee for publishing an extension, and I don't earn :). However, if you would like to support the development of the extension and help me get it published on the Chrome web store, you can consider donating to me via the following link: https://github.com/sponsors/proffapt.
+
+1. Open new tab and type `chrome://extensions` on search bar.
+2. Toggle the **DEVELOPER MODE** on top right corner.
+3. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
+
+> **Warning** You have to select the whole folder not just any file.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+#### Firefox
+
+> **Note** Currently this extension is not available on add-on store but have sent it for review, steps will be updated as it is approved.
+
+1. Open new tab and type `about:debugging#/runtime/this-firefox` on search bar.
+2. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section.
+3. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
+4. Select the `manifest.json` file inside it and press **open**.
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
 
 ### Using Scripts
 
@@ -110,55 +144,9 @@ After running that command, copy pasting will start to work.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Installing Extension 
-
-Currently, the extension is not available in any of the official extension/add-on stores. However, you can still install it using the available methods, which may be a bit tedious. In order to install the extension on any of the browser you will have to either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository
-
-Now, Refer to the sections below to read about further steps specific to your browser.
-
-- [Firefox](#firefox)
-- [Chromium Based Browser](#chromium-based-browsers)
-
-#### Firefox
-
-> **Note** Currently this extension is not available on add-on store but have sent it for review, steps will be updated as it is approved.
-
-1. Open new tab and type `about:debugging#/runtime/this-firefox` on search bar.
-2. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section.
-3. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
-4. Select the `manifest.json` file inside it and press **open**.
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-#### Chromium Based Browsers
-
-> **Note** Not published on Chrome Web Store - they require a fee for publishing an extension, and I don't earn :). However, if you would like to support the development of the extension and help me get it published on the Chrome web store, you can consider donating to me via the following link: https://github.com/sponsors/proffapt.
-
-1. Open new tab and type `chrome://extensions` on search bar.
-2. Toggle the **DEVELOPER MODE** on top right corner.
-3. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
-
-> **Warning** You have to select the whole folder not just any file.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 ## Usage
 
 **Add usage video**
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-<!-- ROADMAP -->
-## Roadmap
-<!-- UPDATE -->
-- [x] Firefox Extension
-- [x] Chrome Extension
-- [ ] Captcha Automation
-
-See the [open issues](https://github.com/proffapt/fERP/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
