@@ -14,7 +14,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/proffapt/fERP">
-    <img width="140" alt="image" src="./extension-src/firefox/images/fERP128.png">
+     <img width="200" src="https://user-images.githubusercontent.com/86282911/230894496-b9402384-bf0a-4bf7-afbf-2207aa2d31be.png">
   </a>
   
   <h3 align="center">fERP</h3>
