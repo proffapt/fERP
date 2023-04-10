@@ -17,12 +17,13 @@
      <img width="200" src="https://user-images.githubusercontent.com/86282911/230894496-b9402384-bf0a-4bf7-afbf-2207aa2d31be.png">
   </a>
   
-  <h3 align="center">fERP</h3>
-
   <p align="center">
     <i>Say goodbye to tedious feedback forms</i>
     <br />
-    <a href="https://github.com/proffapt/fERP"><strong>Explore the docs »</strong></a>
+    <br />
+    <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
+      <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from add-on store" height="58">
+    </a>    
     <br />
     <br />
     <a href="https://github.com/proffapt/fERP/issues">Report Bug</a>
@@ -65,7 +66,7 @@
 
 <img align="left" width="260" alt="image" src="https://user-images.githubusercontent.com/86282911/230757945-2229d143-2eef-40df-958c-269c6a3c919e.png">
 
-The "fERP" extension is a tool designed to automate the process of filling feedback forms for course professors in IIT KGP. This extension saves your time and effort by automatically filling out the forms for you.
+The `fERP` extension is a tool designed to automate the process of filling feedback forms for course professors in IIT KGP. This extension saves your time and effort by automatically filling out the forms for you.
 
 With the extension, you have three options for the **type of feedback**: `positive`, `negative`, or `neutral`. The extension generates _randomized feedback responses for each submission_, so you don't have to think of what to write each time.
 
@@ -88,7 +89,7 @@ This project has undergone some changes and now incorporates scripts into an ext
 
 ### Installing Extension 
 
-Currently, the extension is not available in any of the official extension/add-on stores. However, you can still install it using the available methods, which may be a bit tedious. In order to install the extension on any of the browser you will have to either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
+In order to install the extension on any of the browser - **manually** - you will have to either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
 
 Now, Refer to the sections below to read about further steps specific to your browser.
 
@@ -109,12 +110,22 @@ Now, Refer to the sections below to read about further steps specific to your br
 
 #### Firefox
 
-> **Note** Currently this extension is not available on add-on store but have sent it for review, steps will be updated as it is approved.
+- From the [Mozilla add-on store](https://addons.mozilla.org/en-US/firefox/).
 
-1. Open new tab and type `about:debugging#/runtime/this-firefox` on search bar.
-2. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section.
-3. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
-4. Select the `manifest.json` file inside it and press **open**.
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
+    <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from add-on store" height="58">
+  </a>
+
+  For android you can use extensions on the [Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=en&gl=US) version of Firefox. [Follow this article](https://blog.mozilla.org/addons/2020/09/29/expanded-extension-support-in-firefox-for-android-nightly/) to set it up.
+
+- Manually 
+
+  > **Note** It's rather recommended to install via previous method, but in case you face some problem, it can also be installed using the following steps as well.
+
+  1. Open new tab and type `about:debugging#/runtime/this-firefox` on search bar.
+  2. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section.
+  3. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
+  4. Select the `manifest.json` file inside it and press **open**.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -132,7 +143,7 @@ Now, Refer to the sections below to read about further steps specific to your br
 
    <br>
    
-   > **Note** The form can be filled by just pressing `Enter` key after filling the captcha.
+   > **Note** The form can be submitted just by pressing `Enter` key after filling the captcha.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
