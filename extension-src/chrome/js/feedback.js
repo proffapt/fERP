@@ -76,7 +76,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 						captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
 						captchaText.addEventListener("keydown", async (event) => {
 							if (event.key === "Enter") {
-								console.log("Submit kardiya.. wuhu")
 								await sleep(3000);
 								prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 								if (profCounter < prof.length) {
