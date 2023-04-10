@@ -126,10 +126,13 @@ Now, Refer to the sections below to read about further steps specific to your br
 
    https://user-images.githubusercontent.com/86282911/230883454-5f94fbb0-980c-4dbf-b661-2bb425c11586.mp4
 
-- `Method 2`: Select feedback type once and for all, your job now is to just fill the captcha.
+- `Method 2`: Select feedback type once and for all, your job now is to just fill the captcha and submit the form.
 
    https://user-images.githubusercontent.com/86282911/230883818-0a042a7b-5db9-4690-b7a3-190d69ef3b50.mp4
 
+   <br>
+   
+   > **Note** The form can be filled by just pressing `Enter` key after filling the captcha.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
