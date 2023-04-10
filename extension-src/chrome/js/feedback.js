@@ -72,6 +72,30 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 								handleCourse();
 							}
 						});
+
+						captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
+						captchaText.addEventListener("keydown", async (event) => {
+							if (event.key === "Enter") {
+								console.log("Submit kardiya.. wuhu")
+								await sleep(3000);
+								prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+								if (profCounter < prof.length) {
+									if (submitButton == null) {
+										fill_form();
+										submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+									}
+									profCounter--;
+									handleProf();
+								} else {
+									if (submitButton == null) {
+										fill_form();
+										submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+									}
+									courseCounter--;
+									handleCourse();
+								}
+							}
+						});
 					} else {
 						if (profCounter < prof.length) handleProf();
 						else handleCourse();
