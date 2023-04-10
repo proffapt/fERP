@@ -25,7 +25,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 				}
 			}
 			else {
-				switch (request.all) {
+				switch (request.preference) {
 					case "positive":
 						positive_lab_feedback();
 						break;
