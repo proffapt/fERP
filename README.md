@@ -122,7 +122,14 @@ Now, Refer to the sections below to read about further steps specific to your br
 
 ## Usage
 
-**Add usage video**
+- `Method 1`: Selecting feddback type for individual form.
+
+   https://user-images.githubusercontent.com/86282911/230883454-5f94fbb0-980c-4dbf-b661-2bb425c11586.mp4
+
+- `Method 2`: Select feedback type once and for all, your job now is to just fill the captcha.
+
+   https://user-images.githubusercontent.com/86282911/230883818-0a042a7b-5db9-4690-b7a3-190d69ef3b50.mp4
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
