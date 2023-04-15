@@ -1,4 +1,4 @@
-var textBox, radioButton, course, prof, profCounter = 0, courseCounter = 0, profListening = false, courseListening = false;
+var profCounter = 0, courseCounter = 0;
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.action == "getStatusOfAll&FeedbackType") {
@@ -39,6 +39,18 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 			}
 		};
 
+		const processSubmission = () => {
+			submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+			if (submitButton != null) {
+				profCounter--;
+				handleProf();
+			}
+
+			prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+			if (profCounter < prof.length) handleProf();
+			else handleCourse();
+		}
+
 		try {
 			if (!request.all) {
 				fill_form();
@@ -50,49 +62,18 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 					submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
 					if (submitButton != null){
 						fill_form();
-						// To bypass confirm() prompt
-						submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
 
+						submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
 						submitButton.addEventListener("click", async () => {
 							await sleep(3000);
-							prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
-							if (profCounter < prof.length) {
-								if (submitButton == null) {
-									fill_form();
-									submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
-								}
-								profCounter--;
-								handleProf();
-							} else {
-								if (submitButton == null) {
-									fill_form();
-									submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
-								}
-								courseCounter--;
-								handleCourse();
-							}
+							processSubmission();
 						});
 
 						captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
 						captchaText.addEventListener("keydown", async (event) => {
 							if (event.key === "Enter") {
 								await sleep(3000);
-								prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
-								if (profCounter < prof.length) {
-									if (submitButton == null) {
-										fill_form();
-										submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
-									}
-									profCounter--;
-									handleProf();
-								} else {
-									if (submitButton == null) {
-										fill_form();
-										submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
-									}
-									courseCounter--;
-									handleCourse();
-								}
+								processSubmission();
 							}
 						});
 					} else {
