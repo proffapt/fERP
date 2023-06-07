@@ -3,7 +3,7 @@
 	"name": "fERP",
 	"description": "Automates the process of filling up feedback form in ERP for IIT KGP students",
 	"homepage_url": "https://github.com/proffapt/fERP",
-	"version": "1.2",
+	"version": "1.3",
 
 	"permissions": [
 		"activeTab",
