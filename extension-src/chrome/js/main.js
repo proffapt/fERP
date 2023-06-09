@@ -6,32 +6,44 @@ const checkBox = document.getElementById("use_for_all");
 // Sending status of checkBox to content scripts
 var isChecked = false;
 checkBox.addEventListener("click", () => {
-	if (checkBox.checked) isChecked = true;
-	else isChecked = false;
+  if (checkBox.checked) isChecked = true;
+  else isChecked = false;
 });
 
 var feedback;
 
 positiveFeedbackButton.addEventListener("click", () => {
-	feedback = "positive";
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
-	});
-	chrome.tabs.executeScript({ file: "/js/feedback.js" })
+  feedback = "positive";
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      action: "getStatusOfAll&FeedbackType",
+      preference: feedback,
+      all: isChecked,
+    });
+  });
+  chrome.tabs.executeScript({ file: "/js/feedback.js" });
 });
 
 neutralFeedbackButton.addEventListener("click", () => {
-	feedback = "neutral";
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
-	});
-	chrome.tabs.executeScript({ file: "/js/feedback.js" })
+  feedback = "neutral";
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      action: "getStatusOfAll&FeedbackType",
+      preference: feedback,
+      all: isChecked,
+    });
+  });
+  chrome.tabs.executeScript({ file: "/js/feedback.js" });
 });
 
 negativeFeedbackButton.addEventListener("click", () => {
-	feedback = "negative";
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
-	});
-	chrome.tabs.executeScript({ file: "/js/feedback.js" })
+  feedback = "negative";
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      action: "getStatusOfAll&FeedbackType",
+      preference: feedback,
+      all: isChecked,
+    });
+  });
+  chrome.tabs.executeScript({ file: "/js/feedback.js" });
 });

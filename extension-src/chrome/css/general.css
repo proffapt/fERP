@@ -1,19 +1,19 @@
 body {
-	background-color: var(--body-background-color);
+  background-color: var(--body-background-color);
 }
 
 body * {
-	color: var(--body-color);
+  color: var(--body-color);
 }
 
 a {
-	color: var(--body-color);
+  color: var(--body-color);
 }
 
 body,
 body * {
-	font-size: 14px;
-	font-family: Helvetica;
+  font-size: 14px;
+  font-family: Helvetica;
 }
 
 .button {

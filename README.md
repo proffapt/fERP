@@ -2,13 +2,13 @@
 
 <!-- PROJECT SHIELDS -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links-->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -31,7 +31,6 @@
     <a href="https://github.com/proffapt/fERP/issues">Request Feature</a>
   </p>
 </div>
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -60,8 +59,8 @@
   </ol>
 </details>
 
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 <img align="left" width="260" alt="image" src="./README_image/demo_img.png">
@@ -76,18 +75,18 @@ There are **two modes available for using the extension**. The first mode allows
 
 ### Support:
 
-- [Chromium Based Browsers](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium)
+- [Chromium Based Browsers](<https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium>)
 - Firefox
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
-This project has undergone some changes and now incorporates scripts into an extension. If you're having issues with the extension, don't worry! You can still use the [scripts](./scripts) as standalone files. 
+This project has undergone some changes and now incorporates scripts into an extension. If you're having issues with the extension, don't worry! You can still use the [scripts](./scripts) as standalone files.
 
-### Installing Extension 
+### Installing Extension
 
 In order to install the extension on any of the browser - **manually** - you will have to either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
 
@@ -118,7 +117,7 @@ Now, Refer to the sections below to read about further steps specific to your br
 
   For android you can use extensions on the [Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=en&gl=US) version of Firefox. [Follow this article](https://blog.mozilla.org/addons/2020/09/29/expanded-extension-support-in-firefox-for-android-nightly/) to set it up.
 
-- Manually 
+- Manually
 
   > **Note** It's rather recommended to install via previous method, but in case you face some problem, it can also be installed using the following steps as well.
 
@@ -127,19 +126,17 @@ Now, Refer to the sections below to read about further steps specific to your br
   3. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
   4. Select the `manifest.json` file inside it and press **open**.
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 ## Usage
 
 - `Method 1`: Selecting feddback type for individual form.
 
-   https://user-images.githubusercontent.com/86282911/230883454-5f94fbb0-980c-4dbf-b661-2bb425c11586.mp4
+  https://user-images.githubusercontent.com/86282911/230883454-5f94fbb0-980c-4dbf-b661-2bb425c11586.mp4
 
 - `Method 2`: Select feedback type once and for all, your job now is to just fill the captcha and submit the form.
 
-   https://user-images.githubusercontent.com/86282911/230883818-0a042a7b-5db9-4690-b7a3-190d69ef3b50.mp4
+  https://user-images.githubusercontent.com/86282911/230883818-0a042a7b-5db9-4690-b7a3-190d69ef3b50.mp4
 
    <br>
    
@@ -147,12 +144,12 @@ Now, Refer to the sections below to read about further steps specific to your br
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 <!-- CONTACT -->
+
 ## Contact
 
 <p>
-📫 Arpit Bhardwaj ( aka proffapt ) -   
+📫 Arpit Bhardwaj ( aka proffapt ) -
 
 <a href="https://twitter.com/proffapt">
   <img align="center" alt="proffapt's Twitter " width="22px" src="https://raw.githubusercontent.com/edent/SuperTinyIcons/master/images/svg/twitter.svg" />
@@ -173,23 +170,24 @@ Now, Refer to the sections below to read about further steps specific to your br
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 
-* [Choose an Open Source License](https://choosealicense.com)
-* [Img Shields](https://shields.io)
-* [Browser Extension - MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
+- [Choose an Open Source License](https://choosealicense.com)
+- [Img Shields](https://shields.io)
+- [Browser Extension - MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Miscelleneous
 
 Do consider looking at other paradigms of this documentation
-  - [Change-logs](/.github/CHANGELOG.md)
-  - [License used](/LICENSE.txt)
-  - [Code Of Conduct](/.github/CODE_OF_CONDUCT.md)
-  - [How to contribute?](/.github/CONTRIBUTING.md)
+
+- [Change-logs](/.github/CHANGELOG.md)
+- [License used](/LICENSE.txt)
+- [Code Of Conduct](/.github/CODE_OF_CONDUCT.md)
+- [How to contribute?](/.github/CONTRIBUTING.md)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
