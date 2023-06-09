@@ -64,7 +64,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img align="left" width="260" alt="image" src="https://user-images.githubusercontent.com/86282911/230757945-2229d143-2eef-40df-958c-269c6a3c919e.png">
+<img align="left" width="260" alt="image" src="./README_image/demo_img.png">
 
 The `fERP` extension is a tool designed to automate the process of filling feedback forms for course professors in IIT KGP. This extension saves your time and effort by automatically filling out the forms for you.
 
