@@ -64,7 +64,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img align="left" width="260" alt="image" src="https://user-images.githubusercontent.com/86282911/230757945-2229d143-2eef-40df-958c-269c6a3c919e.png">
+<img align="left" width="260" alt="image" src="https://github.com/proffapt/fERP/assets/86282911/d66c5b20-8c20-4c95-ba2a-220d509ed0ed">
 
 The `fERP` extension is a tool designed to automate the process of filling feedback forms for course professors in IIT KGP. This extension saves your time and effort by automatically filling out the forms for you.
 
@@ -133,13 +133,13 @@ Now, Refer to the sections below to read about further steps specific to your br
 
 ## Usage
 
-- `Method 1`: Selecting feddback type for individual form.
-
-   https://user-images.githubusercontent.com/86282911/230883454-5f94fbb0-980c-4dbf-b661-2bb425c11586.mp4
-
-- `Method 2`: Select feedback type once and for all, your job now is to just fill the captcha and submit the form.
+- `Method 1 [Default]`: Just select the feedback type once - fill captcha, submit, fill cpatcha, submit and repeat.
 
    https://user-images.githubusercontent.com/86282911/230883818-0a042a7b-5db9-4690-b7a3-190d69ef3b50.mp4
+   
+- `Method 2`: Un-select the checkbox - Selecting fedback type for individual professor.
+
+   https://user-images.githubusercontent.com/86282911/230883454-5f94fbb0-980c-4dbf-b661-2bb425c11586.mp4
 
    <br>
    
