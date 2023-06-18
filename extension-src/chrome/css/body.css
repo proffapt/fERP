@@ -1,26 +1,3 @@
-.logo_text{
-    width: 300px;
-    height: 300px;
-    background-color: white;
-}
-.logo{
-    display: flex;
-    flex-direction: row;
-    width: 300px;
-}
-#header-logo{
-	width: 35px;
-	height: 35px;
-	position: relative;
-}
-#header-text{
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 39px;
-    color: 000;
-	margin-left: 10px;
-}
 .button_container{
     width: 300px;
     height: 250px;
@@ -31,6 +8,7 @@
     text-align: center;
     margin-top: 5px;
 }
+
 .feedback{
 	font-style: medium;
     font-weight: 600;
@@ -38,27 +16,34 @@
     text-align: center;
     margin-top: 10px;
 }
+
 #use_for_all{
     align-items: center;
 }
+
 .tooltip {
   height: 6%;
 }
+
 .tooltip:hover {
   height: 5%;
 }
+
 .buttons{
     text-align: center;
     margin: 15px;
 }
+
 .buttons :hover{
 	background-color: #333333; opacity: 70%;
 }
+
 .buttons :active {
 	background-color: #333333;
 	box-shadow: 0 5px #333;
 	transform: translateY(4px);
 }
+
 #positive_btn{
     width: 200px;
     height: 40px;
@@ -69,6 +54,7 @@
     color: white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
+
 #neutral_btn{
     width: 200px;
     height: 40px;
@@ -79,6 +65,7 @@
     color: white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
+
 #negative_btn{
     width: 200px;
     height: 40px;
