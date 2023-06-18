@@ -22,10 +22,11 @@
     <br />
     <br />
     <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
-      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fes.wizcase.com%2Fwp-content%2Fuploads%2F2020%2F01%2FFirefox-logo.png&f=1&nofb=1&ipt=54f117ea1a647cfa7750fd723a289fda26463932664b2b800f59b082de9e48b1&ipo=images" alt="get fERP from firefox add-on store" height="70">
-    </a>    
+      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fes.wizcase.com%2Fwp-content%2Fuploads%2F2020%2F01%2FFirefox-logo.png&f=1&nofb=1&ipt=54f117ea1a647cfa7750fd723a289fda26463932664b2b800f59b082de9e48b1&ipo=images" alt="get fERP from firefox add-on store" height="40">
+    </a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <a href="#chromium-based-browsers">
-      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpnggrid.com%2Fwp-content%2Fuploads%2F2021%2F04%2FGoogle-Chrome-Logo-2048x2048.png&f=1&nofb=1&ipt=7d784732ee026c2c5396637c525dbae3d1e9ae67a2d45dfc0dcf593e0aa5c1b6&ipo=images" alt="get fERP from chrome web store" height="70">
+      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpnggrid.com%2Fwp-content%2Fuploads%2F2021%2F04%2FGoogle-Chrome-Logo-2048x2048.png&f=1&nofb=1&ipt=7d784732ee026c2c5396637c525dbae3d1e9ae67a2d45dfc0dcf593e0aa5c1b6&ipo=images" alt="get fERP from chrome web store" height="40">
     </a>
     <br />
     <br />
@@ -51,6 +52,7 @@
           <li><a href="#chromium-based-browsers">Chromium Based Browsers</a></li>
           <li><a href="#firefox">Firefox</a></li>
         </ul>
+        <li><a href="#features">Features</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -64,7 +66,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img align="left" width="260" alt="image" src="https://github.com/proffapt/fERP/assets/86282911/d66c5b20-8c20-4c95-ba2a-220d509ed0ed">
+<img align="left" width="290" alt="image" src="https://github.com/proffapt/fERP/assets/86282911/d66c5b20-8c20-4c95-ba2a-220d509ed0ed">
 
 The `fERP` extension is a tool designed to automate the process of filling feedback forms for course professors in IIT KGP. This extension saves your time and effort by automatically filling out the forms for you.
 
@@ -135,6 +137,14 @@ Now, Refer to the sections below to read about further steps specific to your br
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Features
+
+- In default mode after filling one form it moves on to next form, be it professor or course.
+  - Continues from the point where first unfilled form exist.
+- Other mode gives user independance of choosing the feedback type for every form.
+- Re-fills the form when it fails to submit for some reason, like - wrong captcha.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Usage
 
