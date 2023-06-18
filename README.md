@@ -22,8 +22,11 @@
     <br />
     <br />
     <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
-      <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from add-on store" height="58">
+      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fes.wizcase.com%2Fwp-content%2Fuploads%2F2020%2F01%2FFirefox-logo.png&f=1&nofb=1&ipt=54f117ea1a647cfa7750fd723a289fda26463932664b2b800f59b082de9e48b1&ipo=images" alt="get fERP from firefox add-on store" height="70">
     </a>    
+    <a href="#chromium-based-browsers">
+      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpnggrid.com%2Fwp-content%2Fuploads%2F2021%2F04%2FGoogle-Chrome-Logo-2048x2048.png&f=1&nofb=1&ipt=7d784732ee026c2c5396637c525dbae3d1e9ae67a2d45dfc0dcf593e0aa5c1b6&ipo=images" alt="get fERP from chrome web store" height="70">
+    </a>
     <br />
     <br />
     <a href="https://github.com/proffapt/fERP/issues">Report Bug</a>
@@ -39,9 +42,6 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#support">Support</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -72,13 +72,6 @@ With the extension, you have three options for the **type of feedback**: `positi
 
 There are **two modes available for using the extension**. The first mode allows you to select the type of feedback for each form submission, fill in the captcha, and then submit the form. The second mode allows you to select a common type of feedback for all forms and then fill in the captcha and submit each form in succession.
 
-<div id="supports"></div>
-
-### Support:
-
-- [Chromium Based Browsers](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium)
-- Firefox
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -98,13 +91,25 @@ Now, Refer to the sections below to read about further steps specific to your br
 
 #### Chromium Based Browsers
 
-> **Note** Not published on Chrome Web Store - they require a fee for publishing an extension, and I don't earn :). However, if you would like to support the development of the extension and help me get it published on the Chrome web store, you can consider donating to me via the following link: https://github.com/sponsors/proffapt.
+<!--
+- From the [chrome web store](https://chrome.google.com/webstore/category/extensions).
 
-1. Open new tab and type `chrome://extensions` on search bar.
-2. Toggle the **DEVELOPER MODE** on top right corner.
-3. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
+  <a href="https://chrome.google.com/webstore/detail/ferp/6969696969696969696969696969">
+    <img src="https://d1kzoyopflesfg.cloudfront.net/wp-content/uploads/2018/11/15064102/ChromeWebStore_Badge_v2_496x150.png" alt="get fERP from chrome web store" height="70">
+  </a>
 
-> **Warning** You have to select the whole folder not just any file.
+- Manually 
+
+  > **Note** It's rather recommended to install via previous method, but in case you face some problem, it can also be installed using the following steps as well.
+-->
+
+  > **Note** Not published on Chrome Web Store - they require a fee for publishing an extension, and I don't earn :). However, if you would like to support the development of the extension and help me get it published on the Chrome web store, you can consider donating to me via the following link: https://github.com/sponsors/proffapt.
+
+  1. Open new tab and type `chrome://extensions` on search bar.
+  2. Toggle the **DEVELOPER MODE** on top right corner.
+  3. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
+
+  > **Warning** You have to select the whole folder not just any file.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -113,7 +118,7 @@ Now, Refer to the sections below to read about further steps specific to your br
 - From the [Mozilla add-on store](https://addons.mozilla.org/en-US/firefox/).
 
   <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
-    <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from add-on store" height="58">
+    <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="60">
   </a>
 
   For android you can use extensions on the [Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=en&gl=US) version of Firefox. [Follow this article](https://blog.mozilla.org/addons/2020/09/29/expanded-extension-support-in-firefox-for-android-nightly/) to set it up.
@@ -133,11 +138,11 @@ Now, Refer to the sections below to read about further steps specific to your br
 
 ## Usage
 
-- `Method 1 [Default]`: Just select the feedback type once - fill captcha, submit, fill cpatcha, submit and repeat.
+- `Method 1 [Default]`: Just select the feedback type __once__ - `fill captcha then submit > fill cpatcha then submit > repeat`.
 
    https://user-images.githubusercontent.com/86282911/230883818-0a042a7b-5db9-4690-b7a3-190d69ef3b50.mp4
    
-- `Method 2`: Un-select the checkbox - Selecting fedback type for individual professor.
+- `Method 2`: Un-select the checkbox - Select fedback type for each professor separately.
 
    https://user-images.githubusercontent.com/86282911/230883454-5f94fbb0-980c-4dbf-b661-2bb425c11586.mp4
 
