@@ -4,10 +4,10 @@ const neutralFeedbackButton = document.getElementById("neutral_btn");
 const negativeFeedbackButton = document.getElementById("negative_btn");
 const checkBox = document.getElementById("use_for_all");
 // Sending status of checkBox to content scripts
-var isChecked = false;
+var isChecked = true;
 checkBox.addEventListener("click", () => {
-	if (checkBox.checked) isChecked = true;
-	else isChecked = false;
+	if (!checkBox.checked) isChecked = false;
+	else isChecked = true;
 });
 
 var feedback;
