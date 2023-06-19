@@ -25,14 +25,10 @@
       <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fes.wizcase.com%2Fwp-content%2Fuploads%2F2020%2F01%2FFirefox-logo.png&f=1&nofb=1&ipt=54f117ea1a647cfa7750fd723a289fda26463932664b2b800f59b082de9e48b1&ipo=images" alt="get fERP from firefox add-on store" height="40">
     </a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="#chromium-based-browsers">
+    <a href="#chrome">
       <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpnggrid.com%2Fwp-content%2Fuploads%2F2021%2F04%2FGoogle-Chrome-Logo-2048x2048.png&f=1&nofb=1&ipt=7d784732ee026c2c5396637c525dbae3d1e9ae67a2d45dfc0dcf593e0aa5c1b6&ipo=images" alt="get fERP from chrome web store" height="40">
     </a>
     <br />
-    <br />
-    <a href="https://github.com/proffapt/fERP/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/proffapt/fERP/issues">Request Feature</a>
   </p>
 </div>
 
@@ -49,7 +45,7 @@
       <ul>
         <li><a href="#installing-extension">Installing Extension</a></li>
         <ul>
-          <li><a href="#chromium-based-browsers">Chromium Based Browsers</a></li>
+          <li><a href="#chrome">Chrome</a></li>
           <li><a href="#firefox">Firefox</a></li>
         </ul>
         <li><a href="#features">Features</a></li>
@@ -84,32 +80,24 @@ This project has undergone some changes and now incorporates scripts into an ext
 
 ### Installing Extension 
 
-In order to install the extension on any of the browser - **manually** - you will have to either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
+The extension is available on [Firefox Add-on Store](https://addons.mozilla.org/en-US/firefox/) but not on [Chrome Web Store](https://chrome.google.com/webstore/category/extensions) thus you will have to install it manually.
 
-Now, Refer to the sections below to read about further steps specific to your browser.
+> **Note** If you would like to support the development of the extension and help me get it published on the Chrome web store, you can consider donating to me via the following link: https://github.com/sponsors/proffapt.
 
-- [Chromium Based Browser](#chromium-based-browsers)
-- [Firefox](#firefox)
-
-#### Chromium Based Browsers
+#### Chrome
 
 <!--
-- From the [chrome web store](https://chrome.google.com/webstore/category/extensions).
 
-  <a href="https://chrome.google.com/webstore/detail/ferp/6969696969696969696969696969">
-    <img src="https://d1kzoyopflesfg.cloudfront.net/wp-content/uploads/2018/11/15064102/ChromeWebStore_Badge_v2_496x150.png" alt="get fERP from chrome web store" height="70">
-  </a>
+<a href="https://chrome.google.com/webstore/detail/ferp/6969696969696969696969696969">
+  <img src="https://d1kzoyopflesfg.cloudfront.net/wp-content/uploads/2018/11/15064102/ChromeWebStore_Badge_v2_496x150.png" alt="get fERP from chrome web store" height="70">
+</a>
 
-- Manually 
-
-  > **Note** It's rather recommended to install via previous method, but in case you face some problem, it can also be installed using the following steps as well.
 -->
 
-  > **Note** Not published on Chrome Web Store - they require a fee for publishing an extension, and I don't earn :). However, if you would like to support the development of the extension and help me get it published on the Chrome web store, you can consider donating to me via the following link: https://github.com/sponsors/proffapt.
-
-  1. Open new tab and type `chrome://extensions` on search bar.
-  2. Toggle the **DEVELOPER MODE** on top right corner.
-  3. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
+  1. Either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
+  2. Open new tab and type `chrome://extensions` on search bar.
+  3. Toggle the **DEVELOPER MODE** on top right corner.
+  4. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
 
   > **Warning** You have to select the whole folder not just any file.
 
@@ -117,22 +105,11 @@ Now, Refer to the sections below to read about further steps specific to your br
 
 #### Firefox
 
-- From the [Mozilla add-on store](https://addons.mozilla.org/en-US/firefox/).
+<a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
+  <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="60">
+</a>
 
-  <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
-    <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="60">
-  </a>
-
-  For android you can use extensions on the [Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=en&gl=US) version of Firefox. [Follow this article](https://blog.mozilla.org/addons/2020/09/29/expanded-extension-support-in-firefox-for-android-nightly/) to set it up.
-
-- Manually 
-
-  > **Note** It's rather recommended to install via previous method, but in case you face some problem, it can also be installed using the following steps as well.
-
-  1. Open new tab and type `about:debugging#/runtime/this-firefox` on search bar.
-  2. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section.
-  3. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
-  4. Select the `manifest.json` file inside it and press **open**.
+For android you can use this extension on [Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=en&gl=US) version of Firefox. [Follow this article](https://blog.mozilla.org/addons/2020/09/29/expanded-extension-support-in-firefox-for-android-nightly/) to set it up.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
