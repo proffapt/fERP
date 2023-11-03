@@ -131,7 +131,7 @@ For android you can use this extension on [Nightly](https://play.google.com/stor
    
 - `Method 2`: Un-select the checkbox - Select fedback type for each professor separately.
 
-   https://user-images.githubusercontent.com/86282911/230883454-5f94fbb0-980c-4dbf-b661-2bb425c11586.mp4
+   https://github.com/proffapt/fERP/assets/86282911/3a4dfc63-b376-4785-9d1b-f32b03f1a849
 
    <br>
    
