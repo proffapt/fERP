@@ -22,11 +22,11 @@
     <br />
     <br />
     <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
-      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fes.wizcase.com%2Fwp-content%2Fuploads%2F2020%2F01%2FFirefox-logo.png&f=1&nofb=1&ipt=54f117ea1a647cfa7750fd723a289fda26463932664b2b800f59b082de9e48b1&ipo=images" alt="get fERP from firefox add-on store" height="40">
+      <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="60">
     </a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="#chrome">
-      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpnggrid.com%2Fwp-content%2Fuploads%2F2021%2F04%2FGoogle-Chrome-Logo-2048x2048.png&f=1&nofb=1&ipt=7d784732ee026c2c5396637c525dbae3d1e9ae67a2d45dfc0dcf593e0aa5c1b6&ipo=images" alt="get fERP from chrome web store" height="40">
+    <a href="manual-chrome">
+      <img src="https://github.com/proffapt/fERP/assets/86282911/ccf656ff-1874-49ac-bdca-a83281520b4c" alt="get fERP from chrome web store" height="60">
     </a>
     <br />
   </p>
@@ -46,7 +46,15 @@
         <li><a href="#installing-extension">Installing Extension</a></li>
         <ul>
           <li><a href="#chrome">Chrome</a></li>
+          <ul>
+            <li><a href="#chrome-webstore">Chrome WebStore</a></li>
+            <li><a href="#manual-chrome">Manually</a></li>
+          </ul>
           <li><a href="#firefox">Firefox</a></li>
+          <ul>
+            <li><a href="#chrome-webstore">Firefox Add-on Store</a></li>
+            <li><a href="#manual-firefox">Manually</a></li>
+          </ul>
         </ul>
         <li><a href="#features">Features</a></li>
       </ul>
@@ -78,39 +86,50 @@ There are **two modes available for using the extension**. The first mode allows
 
 This project has undergone some changes and now incorporates scripts into an extension. If you're having issues with the extension, don't worry! You can still use the [scripts](./scripts) as standalone files. 
 
-### Installing Extension 
+### Installing Extension
 
-The extension is available on [Firefox Add-on Store](https://addons.mozilla.org/en-US/firefox/) but not on [Chrome Web Store](https://chrome.google.com/webstore/category/extensions) thus you will have to install it manually.
-
-> **Note** If you would like to support the development of the extension and help me get it published on the Chrome web store, you can consider donating to me via the following link: https://github.com/sponsors/proffapt.
+It is recommended to install the extension from the respective extension stores for your browsers. However, if you encounter any problems, you can also manually install the extension.
 
 #### Chrome
 
-<!--
+###### Chrome Webstore
 
-<a href="https://chrome.google.com/webstore/detail/ferp/6969696969696969696969696969">
-  <img src="https://d1kzoyopflesfg.cloudfront.net/wp-content/uploads/2018/11/15064102/ChromeWebStore_Badge_v2_496x150.png" alt="get fERP from chrome web store" height="70">
+<a href="#manual-chrome">
+  <img src="https://github.com/proffapt/fERP/assets/86282911/ccf656ff-1874-49ac-bdca-a83281520b4c" alt="get fERP from chrome web store" height="60">
 </a>
 
--->
+<div id="manual-chrome"></div>
 
-  1. Either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
-  2. Open new tab and type `chrome://extensions` on search bar.
-  3. Toggle the **DEVELOPER MODE** on top right corner.
-  4. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
+###### Manual
 
-  > **Warning** You have to select the whole folder not just any file.
+1. Either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
+2. Open new tab and type `chrome://extensions` on search bar.
+3. Toggle the **DEVELOPER MODE** on top right corner.
+4. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
+
+> [!Warning]
+>  You have to select the whole folder not just any file in particular.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 #### Firefox
 
+###### Mozilla Add-on Store
+
 <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
   <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="60">
 </a>
 
-For android you can use this extension on [Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=en&gl=US) version of Firefox. [Follow this article](https://blog.mozilla.org/addons/2020/09/29/expanded-extension-support-in-firefox-for-android-nightly/) to set it up.
+For android you can use this extension on [Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=en&gl=US) version of Firefox. Follow this [article](https://blog.mozilla.org/addons/2020/09/29/expanded-extension-support-in-firefox-for-android-nightly/) to set it up.
 
+<div id="manual-firefox"></div>
+
+###### Manual
+
+1. Open new tab and type `about:debugging#/runtime/this-firefox` on search bar.
+2. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section.
+3. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
+4. Select the `manifest.json` file inside it and press **open**.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -125,22 +144,18 @@ For android you can use this extension on [Nightly](https://play.google.com/stor
 
 ## Usage
 
+> [!Note]
+>  The form can also be submitted by pressing `Enter` key after filling the captcha.
+
 - `Method 1 [Default]`: Just select the feedback type __once__ - `fill captcha then submit > fill cpatcha then submit > repeat`.
 
-
    https://github.com/proffapt/fERP/assets/86282911/21ed8aef-855c-4e29-ab42-d87898f52a0c
-
 
 - `Method 2`: Un-select the checkbox - Select fedback type for each professor separately.
 
    https://github.com/proffapt/fERP/assets/86282911/3a4dfc63-b376-4785-9d1b-f32b03f1a849
 
-   <br>
-   
-   > **Note** The form can be submitted just by pressing `Enter` key after filling the captcha.
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 <!-- CONTACT -->
 ## Contact
