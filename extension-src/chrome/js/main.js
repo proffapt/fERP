@@ -16,22 +16,22 @@ positiveFeedbackButton.addEventListener("click", () => {
 	feedback = "positive";
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
+		chrome.scripting.executeScript({ target: {tabId: tabs[0].id}, files: ['/js/feedback.js'] });
 	});
-	chrome.tabs.executeScript({ file: "/js/feedback.js" })
 });
 
 neutralFeedbackButton.addEventListener("click", () => {
 	feedback = "neutral";
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
+		chrome.scripting.executeScript({ target: {tabId: tabs[0].id}, files: ['/js/feedback.js'] });
 	});
-	chrome.tabs.executeScript({ file: "/js/feedback.js" })
 });
 
 negativeFeedbackButton.addEventListener("click", () => {
 	feedback = "negative";
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
+		chrome.scripting.executeScript({ target: {tabId: tabs[0].id}, files: ['/js/feedback.js'] });
 	});
-	chrome.tabs.executeScript({ file: "/js/feedback.js" })
 });
