@@ -1,43 +1,43 @@
 var profCounter = 0, courseCounter = 0;
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-	if (request.action == "getStatusOfAll&FeedbackType") {
-		function sleep(ms) {
-			return new Promise(resolve => setTimeout(resolve, ms));
-		}
+  if (request.action == "getStatusOfAll&FeedbackType") {
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
-		const fill_form = () => {
-			textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
-			radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
-			prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+    const fill_form = () => {
+      textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
+      radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
+      prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 
-			if (textBox.length == 5) {
-				switch (request.preference) {
-					case "positive":
-						positive_theory_feedback();
-						break;
-					case "neutral":
-						neutral_theory_feedback();
-						break;
-					case "negative":
-						negative_theory_feedback();
-						break;
-				}
-			}
-			else {
-				switch (request.preference) {
-					case "positive":
-						positive_lab_feedback();
-						break;
-					case "neutral":
-						neutral_lab_feedback();
-						break;
-					case "negative":
-						negative_lab_feedback();
-						break;
-				}
-			}
-		};
+      if (textBox.length == 5) {
+        switch (request.preference) {
+        case "positive":
+          positive_theory_feedback();
+          break;
+        case "neutral":
+          neutral_theory_feedback();
+          break;
+        case "negative":
+          negative_theory_feedback();
+          break;
+        }
+      }
+      else {
+        switch (request.preference) {
+        case "positive":
+          positive_lab_feedback();
+          break;
+        case "neutral":
+          neutral_lab_feedback();
+          break;
+        case "negative":
+          negative_lab_feedback();
+          break;
+        }
+      }
+    };
     
     const handleProf = () => {
       prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
@@ -66,17 +66,17 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       }
     };
 
-		const processSubmission = () => {
-			submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
-			if (submitButton != null) {
-				profCounter--;
-				handleProf();
-			} else {
+    const processSubmission = () => {
+      submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+      if (submitButton != null) {
+        profCounter--;
+        handleProf();
+      } else {
         prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
         if (profCounter < prof.length) handleProf();
         else handleCourse();
       }
-		};
+    };
     
     const handleCourse = () => {
       course = document.getElementById('myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
@@ -86,15 +86,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       profCounter = 0; handleProf();
     };
 
-		try {
-			if (!request.all)
-				fill_form();
-			else
-				if (courseCounter == 0) handleCourse();
-		} catch (err) {
-			console.error(err);
-		}
-	  }
+    try {
+      if (!request.all)
+        fill_form();
+      else
+        if (courseCounter == 0) handleCourse();
+    } catch (err) {
+      console.error(err);
+    }
+  }
 });
 
 function positive_theory_feedback() {

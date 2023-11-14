@@ -22,13 +22,13 @@
     <br />
     <br />
     <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
-      <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from add-on store" height="58">
-    </a>    
+      <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="60">
+    </a>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="manual-chrome">
+      <img src="https://github.com/proffapt/fERP/assets/86282911/ccf656ff-1874-49ac-bdca-a83281520b4c" alt="get fERP from chrome web store" height="60">
+    </a>
     <br />
-    <br />
-    <a href="https://github.com/proffapt/fERP/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/proffapt/fERP/issues">Request Feature</a>
   </p>
 </div>
 
@@ -39,18 +39,24 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#support">Support</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#installing-extension">Installing Extension</a></li>
         <ul>
-          <li><a href="#chromium-based-browsers">Chromium Based Browsers</a></li>
+          <li><a href="#chrome">Chrome</a></li>
+          <ul>
+            <li><a href="#chrome-webstore">Chrome WebStore</a></li>
+            <li><a href="#manual-chrome">Manually</a></li>
+          </ul>
           <li><a href="#firefox">Firefox</a></li>
+          <ul>
+            <li><a href="#chrome-webstore">Firefox Add-on Store</a></li>
+            <li><a href="#manual-firefox">Manually</a></li>
+          </ul>
         </ul>
+        <li><a href="#features">Features</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -64,20 +70,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img align="left" width="260" alt="image" src="https://user-images.githubusercontent.com/86282911/230757945-2229d143-2eef-40df-958c-269c6a3c919e.png">
+<img align="left" width="290" alt="image" src="https://github.com/proffapt/fERP/assets/86282911/d66c5b20-8c20-4c95-ba2a-220d509ed0ed">
 
 The `fERP` extension is a tool designed to automate the process of filling feedback forms for course professors in IIT KGP. This extension saves your time and effort by automatically filling out the forms for you.
 
 With the extension, you have three options for the **type of feedback**: `positive`, `negative`, or `neutral`. The extension generates _randomized feedback responses for each submission_, so you don't have to think of what to write each time.
 
 There are **two modes available for using the extension**. The first mode allows you to select the type of feedback for each form submission, fill in the captcha, and then submit the form. The second mode allows you to select a common type of feedback for all forms and then fill in the captcha and submit each form in succession.
-
-<div id="supports"></div>
-
-### Support:
-
-- [Chromium Based Browsers](https://en.wikipedia.org/wiki/Chromium_(web_browser)#Browsers_based_on_Chromium)
-- Firefox
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -87,66 +86,76 @@ There are **two modes available for using the extension**. The first mode allows
 
 This project has undergone some changes and now incorporates scripts into an extension. If you're having issues with the extension, don't worry! You can still use the [scripts](./scripts) as standalone files. 
 
-### Installing Extension 
+### Installing Extension
 
-In order to install the extension on any of the browser - **manually** - you will have to either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
+It is recommended to install the extension from the respective extension stores for your browsers. However, if you encounter any problems, you can also manually install the extension.
 
-Now, Refer to the sections below to read about further steps specific to your browser.
+#### Chrome
 
-- [Chromium Based Browser](#chromium-based-browsers)
-- [Firefox](#firefox)
+###### Chrome Webstore
 
-#### Chromium Based Browsers
+<a href="#manual-chrome">
+  <img src="https://github.com/proffapt/fERP/assets/86282911/ccf656ff-1874-49ac-bdca-a83281520b4c" alt="get fERP from chrome web store" height="60">
+</a>
 
-> **Note** Not published on Chrome Web Store - they require a fee for publishing an extension, and I don't earn :). However, if you would like to support the development of the extension and help me get it published on the Chrome web store, you can consider donating to me via the following link: https://github.com/sponsors/proffapt.
+<div id="manual-chrome"></div>
 
-1. Open new tab and type `chrome://extensions` on search bar.
-2. Toggle the **DEVELOPER MODE** on top right corner.
-3. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
+###### Manual
 
-> **Warning** You have to select the whole folder not just any file.
+1. Either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
+2. Open new tab and type `chrome://extensions` on search bar.
+3. Toggle the **DEVELOPER MODE** on top right corner.
+4. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
+
+> [!Warning]
+>  You have to select the whole folder not just any file in particular.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 #### Firefox
 
-- From the [Mozilla add-on store](https://addons.mozilla.org/en-US/firefox/).
+###### Mozilla Add-on Store
 
-  <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
-    <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from add-on store" height="58">
-  </a>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
+  <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="60">
+</a>
 
-  For android you can use extensions on the [Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=en&gl=US) version of Firefox. [Follow this article](https://blog.mozilla.org/addons/2020/09/29/expanded-extension-support-in-firefox-for-android-nightly/) to set it up.
+For android you can use this extension on [Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=en&gl=US) version of Firefox. Follow this [article](https://blog.mozilla.org/addons/2020/09/29/expanded-extension-support-in-firefox-for-android-nightly/) to set it up.
 
-- Manually 
+<div id="manual-firefox"></div>
 
-  > **Note** It's rather recommended to install via previous method, but in case you face some problem, it can also be installed using the following steps as well.
+###### Manual
 
-  1. Open new tab and type `about:debugging#/runtime/this-firefox` on search bar.
-  2. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section.
-  3. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
-  4. Select the `manifest.json` file inside it and press **open**.
-
+1. Open new tab and type `about:debugging#/runtime/this-firefox` on search bar.
+2. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section.
+3. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
+4. Select the `manifest.json` file inside it and press **open**.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Features
+
+- In default mode after filling one form it moves on to next form, be it professor or course.
+  - Continues from the point where first unfilled form exist.
+- Other mode gives user independance of choosing the feedback type for every form.
+- Re-fills the form when it fails to submit for some reason, like - wrong captcha.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Usage
 
-- `Method 1`: Selecting feddback type for individual form.
+> [!Note]
+>  The form can also be submitted by pressing `Enter` key after filling the captcha.
 
-   https://user-images.githubusercontent.com/86282911/230883454-5f94fbb0-980c-4dbf-b661-2bb425c11586.mp4
+- `Method 1 [Default]`: Just select the feedback type __once__ - `fill captcha then submit > fill cpatcha then submit > repeat`.
 
-- `Method 2`: Select feedback type once and for all, your job now is to just fill the captcha and submit the form.
+   https://github.com/proffapt/fERP/assets/86282911/21ed8aef-855c-4e29-ab42-d87898f52a0c
 
-   https://user-images.githubusercontent.com/86282911/230883818-0a042a7b-5db9-4690-b7a3-190d69ef3b50.mp4
+- `Method 2`: Un-select the checkbox - Select fedback type for each professor separately.
 
-   <br>
-   
-   > **Note** The form can be submitted just by pressing `Enter` key after filling the captcha.
+   https://github.com/proffapt/fERP/assets/86282911/3a4dfc63-b376-4785-9d1b-f32b03f1a849
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 <!-- CONTACT -->
 ## Contact

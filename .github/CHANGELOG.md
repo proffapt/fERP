@@ -1,16 +1,17 @@
 # Changelog
 
-## Firefox Extension v1.2.0
+## Firefox Extension v1.4
 
 ### Added or Changed
-- You can choose the feedback type per feedback form
-- You can also choose a single feedback type for all forms.
-- Support for Enter key. No need to take mouse pointer to submit button and click it.
-  Just fill captcha and press `ENTER`.
+- Updated images with transparent background.
+- Better UI/UX.
+    - Checkbox is checked by default.
+- Linting of code.
 
-## Chrome Extension v1.2.1
-- You can choose the feedback type per feedback form
-- You can also choose a single feedback type for all forms.
-- Support for Enter key. No need to take mouse pointer to submit button and click it.
-  Just fill captcha and press `ENTER`.
-- Fixed Lab feedback failure issue.
+## Chrome Extension v1.3
+
+### Added or Changed
+- Updated images with transparent background.
+- Better UI/UX.
+    - Checkbox is checked by default.
+- Linting of code.
