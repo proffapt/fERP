@@ -127,8 +127,10 @@ For android you can use this extension on [Nightly](https://play.google.com/stor
 
 - `Method 1 [Default]`: Just select the feedback type __once__ - `fill captcha then submit > fill cpatcha then submit > repeat`.
 
-   https://user-images.githubusercontent.com/86282911/230883818-0a042a7b-5db9-4690-b7a3-190d69ef3b50.mp4
-   
+
+   https://github.com/proffapt/fERP/assets/86282911/21ed8aef-855c-4e29-ab42-d87898f52a0c
+
+
 - `Method 2`: Un-select the checkbox - Select fedback type for each professor separately.
 
    https://github.com/proffapt/fERP/assets/86282911/3a4dfc63-b376-4785-9d1b-f32b03f1a849
