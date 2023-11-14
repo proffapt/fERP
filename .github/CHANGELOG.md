@@ -8,7 +8,7 @@
     - Checkbox is checked by default.
 - Linting of code.
 
-## Chrome Extension v1.4
+## Chrome Extension v1.3
 
 ### Added or Changed
 - Updated images with transparent background.
