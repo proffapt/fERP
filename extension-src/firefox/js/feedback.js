@@ -11,8 +11,6 @@ browser.runtime.sendMessage({
     textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
     radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
     prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
-    captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
-    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
 
     if (textBox.length == 5) {
       switch (preference.feedback) {
@@ -41,40 +39,46 @@ browser.runtime.sendMessage({
       }
     }
 
+    addSubmissionListeners();
+  }
+
+  const removeSubmissionListeners = () => {
+    prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+    const profList = Array.from(prof);
+    currProfIndex = profList.findIndex(prof => prof.checked);
+    prof[currProfIndex].click();
+  }
+
+  const addSubmissionListeners = () => {
+    captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
+    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
     submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
-    submitButton.addEventListener("click", async () => {
+
+    const submissionClickHandler = async () => {
         await sleep(3000);
         processSubmission();
-    });
-    // captchaText.addEventListener("keydown", async (event) => {
-    //     if (event.key === "Enter") {
-    //         await sleep(3000);
-    //         processSubmission();
-    //     }
-    // });
-  };
-    
-  const handleProf = () => {
-    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
-    prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
-    console.log("Handling Prof", profCounter)
-    prof[profCounter].click(); profCounter++;
+    };
 
-    if (submitButton != null){
-      fill_form();
-    } else {
-      if (profCounter < prof.length) handleProf();
-      else handleCourse();
-    }
+    const captchaTextEnterKeyDownHandler = (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            submitButton.click();
+        }
+    };
+
+    submitButton.addEventListener("click", submissionClickHandler);
+    captchaText.addEventListener("keydown", captchaTextEnterKeyDownHandler);
   };
 
   const processSubmission = () => {
     submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
     if (submitButton != null) {
-        if (preference.all){
-            profCounter--; handleProf();
-        } else {
-            fill_form()
+        if (!preference.all) {
+            fill_form();
+        }
+        else {
+            profCounter--; 
+            handleProf();
         }
     } else {
         if (preference.all){
@@ -85,10 +89,22 @@ browser.runtime.sendMessage({
     }
   };
 
+  const handleProf = () => {
+    prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+    prof[profCounter].click(); profCounter++;
+
+    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+    if (submitButton != null){
+      fill_form();
+    } else {
+      if (profCounter < prof.length) handleProf();
+      else handleCourse();
+    }
+  };
+
   const handleCourse = () => {
     course = document.getElementById('myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
     if (courseCounter == course.length) return;
-    console.log("Handling Course", courseCounter)
     course[courseCounter].click(); courseCounter++;
 
     profCounter = 0; handleProf();
@@ -99,6 +115,7 @@ browser.runtime.sendMessage({
         handleCourse();
     }
     else if (!preference.all) {
+        removeSubmissionListeners();
         fill_form();
     }
   } catch (err) {
