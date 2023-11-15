@@ -1,37 +1,27 @@
-// getting required elements from the extension
-const positiveFeedbackButton = document.getElementById("positive_btn");
-const neutralFeedbackButton = document.getElementById("neutral_btn");
-const negativeFeedbackButton = document.getElementById("negative_btn");
-const checkBox = document.getElementById("use_for_all");
-
-// Sending status of checkBox to content scripts
+// Fetching status of checkBox
 var isChecked = true;
+const checkBox = document.getElementById("use_for_all");
 checkBox.addEventListener("click", () => {
-	isChecked = checkBox.checked;
+    isChecked = checkBox.checked;
 });
 
-var feedback;
+// Handler for Button Click
+const handleButtonClick = (feedback) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, { action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked });
+        chrome.scripting.executeScript({ target: { tabId: tabs[0].id }, files: ['/js/feedback.js'] });
+    });
+};
 
-positiveFeedbackButton.addEventListener("click", () => {
-	feedback = "positive";
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
-		chrome.scripting.executeScript({ target: {tabId: tabs[0].id}, files: ['/js/feedback.js'] });
-	});
-});
+// Configuring feedback Buttons
+const feedbackButtons = [
+    { id: "positive_btn", type: "positive" },
+    { id: "neutral_btn", type: "neutral" },
+    { id: "negative_btn", type: "negative" }
+];
 
-neutralFeedbackButton.addEventListener("click", () => {
-	feedback = "neutral";
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
-		chrome.scripting.executeScript({ target: {tabId: tabs[0].id}, files: ['/js/feedback.js'] });
-	});
-});
-
-negativeFeedbackButton.addEventListener("click", () => {
-	feedback = "negative";
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		chrome.tabs.sendMessage(tabs[0].id, {action: "getStatusOfAll&FeedbackType", preference: feedback, all: isChecked});
-		chrome.scripting.executeScript({ target: {tabId: tabs[0].id}, files: ['/js/feedback.js'] });
-	});
+// Adding event listeners to button
+feedbackButtons.forEach(button => {
+    const buttonElement = document.getElementById(button.id);
+    buttonElement.onclick = () => { handleButtonClick(button.type) };
 });

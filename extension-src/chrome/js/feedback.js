@@ -1,6 +1,6 @@
 var profCounter = 0, courseCounter = 0;
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(async function(request, sender, sendResponse) {
   if (request.action == "getStatusOfAll&FeedbackType") {
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
@@ -36,42 +36,71 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                 break;
             }
         }
+
+        // console.log("Form Filled!")
+        addSubmissionListeners();
     };
+
+  const removeSubmissionListeners = () => {
+    prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+    const profList = Array.from(prof);
+    currProfIndex = profList.findIndex(prof => prof.checked);
+    // console.log("Removed Submission Listeners:", currProfIndex)
+    prof[currProfIndex].click();
+  }
+
+  const addSubmissionListeners = () => {
+    // console.log("Added Submission Listeners")
+    captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
+    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+    submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+
+    const submissionClickHandler = async () => {
+        await sleep(3000);
+        processSubmission();
+    };
+
+    const captchaTextEnterKeyDownHandler = (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            submitButton.click();
+        }
+    };
+
+    submitButton.addEventListener("click", submissionClickHandler);
+    captchaText.addEventListener("keydown", captchaTextEnterKeyDownHandler);
+  };
+
+  const processSubmission = () => {
+    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+    if (submitButton != null) {
+        if (!request.all) {
+            console.log("Incorrect Captcha:")
+            fill_form();
+        }
+        else {
+            profCounter--; 
+            handleProf();
+        }
+    } else {
+        if (request.all){
+            prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+            if (profCounter < prof.length) handleProf();
+            else handleCourse();
+        }
+    }
+  };
 
     const handleProf = () => {
       prof = document.querySelector('#myframe').contentDocument.querySelectorAll('input[name="check"]');
+      console.log("Handling Prof:", profCounter)
       prof[profCounter].click(); profCounter++;
+      console.log("NOW >", profCounter)
 
       submitButton = document.querySelector('#myframe').contentDocument.getElementById('sub');
       if (submitButton != null) {
         fill_form();
-
-        submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();");
-        submitButton.addEventListener("click", async () => {
-          await sleep(3000);
-          processSubmission();
-        });
-
-        captchaText = document.querySelector('#myframe').contentDocument.getElementById('passline');
-        captchaText.addEventListener("keydown", async (event) => {
-          if (event.key === "Enter") {
-			await sleep(3000);
-            processSubmission();
-          }
-        });
       } else {
-        if (profCounter < prof.length) handleProf();
-        else handleCourse();
-      }
-    };
-
-    const processSubmission = () => {
-      submitButton = document.querySelector('#myframe').contentDocument.getElementById('sub');
-      if (submitButton != null) {
-        profCounter--;
-        handleProf();
-      } else {
-        prof = document.querySelector('#myframe').contentDocument.querySelectorAll('input[name="check"]');
         if (profCounter < prof.length) handleProf();
         else handleCourse();
       }
@@ -80,20 +109,23 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     const handleCourse = () => {
       course = document.querySelector('#myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
       if (courseCounter == course.length) return;
-      console.log(courseCounter)
+      console.log("Handling Course:", courseCounter)
       course[courseCounter].click(); courseCounter++;
 
       profCounter = 0; handleProf();
     };
 
     try {
-      if (!request.all) {
-        fill_form();
-      } else if (courseCounter === 0) {
-        handleCourse();
-      }
+        if (request.all && courseCounter == 0) {
+            handleCourse();
+        }
+        else if (!request.all) {
+            console.log("Button Press:")
+            removeSubmissionListeners();
+            fill_form();
+        }
     } catch (err) {
-      console.error(err);
+        console.error(err);
     }
   }
 });
