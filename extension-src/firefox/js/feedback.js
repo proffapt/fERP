@@ -38,8 +38,57 @@ browser.runtime.sendMessage({
         break;
       }
     }
+
+    addSubmissionListeners();
+  }
+
+  const removeSubmissionListeners = () => {
+    prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+    const profList = Array.from(prof);
+    currProfIndex = profList.findIndex(prof => prof.checked);
+    prof[currProfIndex].click();
+  }
+
+  const addSubmissionListeners = () => {
+    captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
+    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+    submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+
+    const submissionClickHandler = async () => {
+        await sleep(3000);
+        processSubmission();
+    };
+
+    const captchaTextEnterKeyDownHandler = (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            submitButton.click();
+        }
+    };
+
+    submitButton.addEventListener("click", submissionClickHandler);
+    captchaText.addEventListener("keydown", captchaTextEnterKeyDownHandler);
   };
-    
+
+  const processSubmission = () => {
+    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+    if (submitButton != null) {
+        if (!preference.all) {
+            fill_form();
+        }
+        else {
+            profCounter--; 
+            handleProf();
+        }
+    } else {
+        if (preference.all){
+            prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+            if (profCounter < prof.length) handleProf();
+            else handleCourse();
+        }
+    }
+  };
+
   const handleProf = () => {
     prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
     prof[profCounter].click(); profCounter++;
@@ -47,33 +96,7 @@ browser.runtime.sendMessage({
     submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
     if (submitButton != null){
       fill_form();
-
-      submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
-      submitButton.addEventListener("click", async () => {
-        await sleep(3000);
-        processSubmission();
-      });
-
-      captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
-      captchaText.addEventListener("keydown", async (event) => {
-        if (event.key === "Enter") {
-          await sleep(3000);
-          processSubmission();
-        }
-      });
     } else {
-      if (profCounter < prof.length) handleProf();
-      else handleCourse();
-    }
-  };
-
-  const processSubmission = () => {
-    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
-    if (submitButton != null) {
-      profCounter--;
-      handleProf();
-    } else {
-      prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
       if (profCounter < prof.length) handleProf();
       else handleCourse();
     }
@@ -88,12 +111,15 @@ browser.runtime.sendMessage({
   };
 
   try {
-    if (!preference.all)
-      fill_form();
-    else
-      if (courseCounter == 0) handleCourse();
+    if (preference.all && courseCounter == 0) {
+        handleCourse();
+    }
+    else if (!preference.all) {
+        removeSubmissionListeners();
+        fill_form();
+    }
   } catch (err) {
-    console.error(err);
+        console.error(err);
   }
 });
 
