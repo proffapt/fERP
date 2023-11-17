@@ -3,11 +3,14 @@
 ## Firefox Extension v1.5
 
 ### Added or Changed
-- Fixed bug where form was not submitted with Enter key
-- Now individual form filling mode handles when user enters incorrect captcha
-- Handled various other small edge cases
+- Individual form filling mode re-fills the form when user enters incorrect captcha
+- Handled various other small edge cases, making it robust
+
+### Bug Fixes
+- Form was not getting submitted with Enter key
 
 ## Chrome Extension v1.5
 
 ### Added or Changed
-- All bugs related to manifest v3 are resolved
+- Ported to Manifestv3
+- Includes all the features and patches similar to firefox v1.5
