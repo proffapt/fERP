@@ -37,29 +37,17 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#demo">Demo</a></li>
     <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#manual-installation">Manual Installation</a>
       <ul>
-        <li><a href="#installing-extension">Installing Extension</a></li>
-        <ul>
-          <li><a href="#chrome">Chrome</a></li>
-          <ul>
-            <li><a href="#chrome-webstore">Chrome WebStore</a></li>
-            <li><a href="#manual-chrome">Manually</a></li>
-          </ul>
-          <li><a href="#firefox">Firefox</a></li>
-          <ul>
-            <li><a href="#mozilla-add-on-store">Firefox Add-on Store</a></li>
-            <li><a href="#manual-firefox">Manually</a></li>
-          </ul>
-        </ul>
-        <li><a href="#features">Features</a></li>
+        <li><a href="#manual-chrome">Chrome</a></li>
+        <li><a href="#manual-firefox">Firefox</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#standalone-scripts">Standalone Scripts</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
     <li><a href="#additional-documentation">Additional Documentation</a></li>    
@@ -76,62 +64,7 @@ The `fERP` extension is a tool designed to automate the process of filling feedb
 
 With the extension, you have three options for the **type of feedback**: `positive`, `negative`, or `neutral`. The extension generates _randomized feedback responses for each submission_, so you don't have to think of what to write each time.
 
-There are **two modes available for using the extension**. The first mode allows you to select the type of feedback for each form submission, fill in the captcha, and then submit the form. The second mode allows you to select a common type of feedback for all forms and then fill in the captcha and submit each form in succession.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This project has undergone some changes and now incorporates scripts into an extension. If you're having issues with the extension, don't worry! You can still use the [scripts](./scripts) as standalone files. 
-
-### Installing Extension
-
-It is recommended to install the extension from the respective extension stores for your browsers. However, if you encounter any problems, you can also manually install the extension.
-
-#### Chrome
-
-###### Chrome Webstore
-
-<a href="https://chromewebstore.google.com/detail/ferp/cdmjkgfdjjebpjejjnckkgljdmijjnom">
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86282911/282809759-ccf656ff-1874-49ac-bdca-a83281520b4c.jpg" alt="get fERP from chrome web store" height="60">
-</a>
-
-<div id="manual-chrome"></div>
-
-###### Manual
-
-1. Either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
-2. Open new tab and type `chrome://extensions` on search bar.
-3. Toggle the **DEVELOPER MODE** on top right corner.
-4. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
-
-> [!Warning]
->  You have to select the whole folder not just any file in particular.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-#### Firefox
-
-###### Mozilla Add-on Store
-
-<a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
-  <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="60">
-</a>
-
-For android you can use this extension on [Nightly](https://play.google.com/store/apps/details?id=org.mozilla.fenix&hl=en&gl=US) version of Firefox. Follow this [article](https://blog.mozilla.org/addons/2020/09/29/expanded-extension-support-in-firefox-for-android-nightly/) to set it up.
-
-<div id="manual-firefox"></div>
-
-###### Manual
-
-1. Open new tab and type `about:debugging#/runtime/this-firefox` on search bar.
-2. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section.
-3. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
-4. Select the `manifest.json` file inside it and press **open**.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+There are **two modes available for using the extension**. The first mode allows you to select the type of feedback for each form submission, fill in the captcha, and then submit the form. The second mode allows you to select a common type of feedback for all forms and then fill in the captcha and submit each form in succession.<br/>
 
 ### Features
 
@@ -142,7 +75,7 @@ For android you can use this extension on [Nightly](https://play.google.com/stor
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Usage
+## Demo
 
 > [!Note]
 >  The form can also be submitted by pressing `Enter` key after filling the captcha.
@@ -154,6 +87,44 @@ For android you can use this extension on [Nightly](https://play.google.com/stor
 - `Method 2`: Un-select the checkbox - Select fedback type for each professor separately.
 
    https://github.com/proffapt/fERP/assets/86282911/3a4dfc63-b376-4785-9d1b-f32b03f1a849
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Manual Installation
+
+It is recommended to install the extension from the respective extension stores for your browsers. However, if you encounter any problems, you can also manually install the extension from the source files in this repository.
+
+<div id="manual-chrome"></div>
+
+### Chrome
+
+1. Either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
+2. Open new tab and type `chrome://extensions` on search bar.
+3. Toggle the **DEVELOPER MODE** on top right corner.
+4. Click **LOAD UNPACKED** option, browse to the cloned folder and select the [extension-src/chrome](./extension-src/chrome) folder.
+
+> [!Warning]
+>  You have to select the whole folder not just any file in particular.
+
+<div id="manual-firefox"></div>
+
+### Firefox
+
+1. Either [download](https://blog.hubspot.com/website/download-from-github?hubs_content=blog.hubspot.com/website/download-from-github&hubs_content-cta=downloading%20a%20repository#repository) or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository.
+2. Open new tab and type `about:debugging#/runtime/this-firefox` on search bar.
+3. Click on the `Load Temporary Add-on...` button under **Load Temporary Extensions** Section.
+4. Navigate to [extension-src/firefox](./extension-src/firefox) folder in your opened file navigator.
+5. Select the `manifest.json` file inside it and press **open**.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Standalone Scripts
+
+> [!Note]
+> This project has undergone various significant changes and now incorporates "_my versions_" of "_feedback fiilling scripts_" into a browser extension which supports firefox, chrome and their derivatives.
+
+- If you're facing any issues with the extension, don't worry! You can still use the [scripts](./scripts) as standalone files.
+- The steps to use these scripts for both firefox and chrome are mentioned [here](./scripts/README.md).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -187,8 +158,8 @@ For android you can use this extension on [Nightly](https://play.google.com/stor
 ## Acknowledgments
 
 * [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
 * [Browser Extension - MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
+* [Choose an Open Source License](https://choosealicense.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
