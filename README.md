@@ -9,37 +9,82 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
 <!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <a href="https://github.com/proffapt/fERP">
      <img width="200" src="https://user-images.githubusercontent.com/86282911/230894496-b9402384-bf0a-4bf7-afbf-2207aa2d31be.png">
-  </a>
-  
+  </a> 
   <p align="center">
-    <i>Say goodbye to tedious feedback forms</i>
-    <br />
-    <br />
-    <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
-      <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="60">
-    </a>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://chromewebstore.google.com/detail/ferp/cdmjkgfdjjebpjejjnckkgljdmijjnom">
-      <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86282911/282809759-ccf656ff-1874-49ac-bdca-a83281520b4c.jpg" alt="get fERP from chrome web store" height="60">
-    </a>
-    <br />
+    <i>Automates the process of filling up feedback form in ERP for IIT KGP students</i>
   </p>
 </div>
 
+***
+
+<table>
+  <tr>
+    <th>Mode 1</th>
+    <th>Mode 2</th>
+  </tr>
+  <tr>
+    <td>
+    
+  ![mode1][mode1-demo-gif]
+  
+  </td> 
+  <td>
+      
+  ![mode2][mode2-demo-gif]
+  
+  </td>
+  </tr>
+  <tr>
+  <td>
+
+  - Automatically moves from one form to the next
+  - Uses a common feedback type for all forms
+  - Continues from the first unfilled form
+
+  </td>
+  <td>
+    
+  - Allows selecting feedback type for each individual submission
+  - Gives user control over submitting each form    
+
+  </td>
+  </tr>
+  <tr>
+  <td colspan="2" align="center">
+      
+  The form can also be submitted by pressing `Enter` key just after typing the captcha
+  
+  </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">Re-fills the form with the same genre if wrong captcha was provided</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">Has three genres, namely - positive, negative & neutral</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">Each genre has various randomised patterns to spoof that this extension was used</td>
+  </tr>
+  <tr>
+  <td colspan="2" align="center">
+
+  [![firefox][firefox-shield]][mozilla-add-on-store-link]
+  [![chrome][chrome-shield]][chrome-webstore-link]
+      
+  </td>
+  </tr>
+</table>
+
+***
 
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#about-the-project">About The Project</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#demo">Demo</a></li>
     <li>
       <a href="#manual-installation">Manual Installation</a>
       <ul>
@@ -53,42 +98,6 @@
     <li><a href="#additional-documentation">Additional Documentation</a></li>    
   </ol>
 </details>
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-<img align="left" width="290" alt="image" src="https://github.com/proffapt/fERP/assets/86282911/d66c5b20-8c20-4c95-ba2a-220d509ed0ed">
-
-The `fERP` extension is a tool designed to automate the process of filling feedback forms for course professors in IIT KGP. This extension saves your time and effort by automatically filling out the forms for you.
-
-With the extension, you have three options for the **type of feedback**: `positive`, `negative`, or `neutral`. The extension generates _randomized feedback responses for each submission_, so you don't have to think of what to write each time.
-
-There are **two modes available for using the extension**. The first mode allows you to select the type of feedback for each form submission, fill in the captcha, and then submit the form. The second mode allows you to select a common type of feedback for all forms and then fill in the captcha and submit each form in succession.<br/>
-
-### Features
-
-- In default mode after filling one form it moves on to next form, be it professor or course.
-  - Continues from the point where first unfilled form exist.
-- Other mode gives user independance of choosing the feedback type for every form.
-- Re-fills the form when it fails to submit for some reason, like - wrong captcha.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Demo
-
-> [!Note]
->  The form can also be submitted by pressing `Enter` key after filling the captcha.
-
-- `Method 1 [Default]`: Just select the feedback type __once__ - `fill captcha then submit > fill cpatcha then submit > repeat`.
-
-   https://github.com/proffapt/fERP/assets/86282911/21ed8aef-855c-4e29-ab42-d87898f52a0c
-
-- `Method 2`: Un-select the checkbox - Select fedback type for each professor separately.
-
-   https://github.com/proffapt/fERP/assets/86282911/3a4dfc63-b376-4785-9d1b-f32b03f1a849
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Manual Installation
 
@@ -175,6 +184,12 @@ It is recommended to install the extension from the respective extension stores 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
+[mozilla-add-on-store-link]: https://addons.mozilla.org/en-US/firefox/addon/ferp/
+[chrome-webstore-link]: https://chromewebstore.google.com/detail/ferp/cdmjkgfdjjebpjejjnckkgljdmijjnom
+[firefox-shield]: https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg
+[chrome-shield]: https://github-production-user-asset-6210df.s3.amazonaws.com/86282911/282809759-ccf656ff-1874-49ac-bdca-a83281520b4c.jpg
+[mode1-demo-gif]: https://github.com/proffapt/fERP/assets/86282911/36034a97-f732-44da-a907-b8218e2927fe
+[mode2-demo-gif]: https://github.com/proffapt/fERP/assets/86282911/898114a1-e352-4d0e-9a68-e84a49e5d101
 [contributors-shield]: https://img.shields.io/github/contributors/proffapt/fERP.svg?style=for-the-badge
 [contributors-url]: https://github.com/proffapt/fERP/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/proffapt/fERP.svg?style=for-the-badge
