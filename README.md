@@ -25,7 +25,7 @@
       <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="60">
     </a>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="#manual-chrome">
+    <a href="https://chromewebstore.google.com/detail/ferp/cdmjkgfdjjebpjejjnckkgljdmijjnom">
       <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86282911/282809759-ccf656ff-1874-49ac-bdca-a83281520b4c.jpg" alt="get fERP from chrome web store" height="60">
     </a>
     <br />
@@ -94,7 +94,7 @@ It is recommended to install the extension from the respective extension stores 
 
 ###### Chrome Webstore
 
-<a href="#manual-chrome">
+<a href="https://chromewebstore.google.com/detail/ferp/cdmjkgfdjjebpjejjnckkgljdmijjnom">
   <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86282911/282809759-ccf656ff-1874-49ac-bdca-a83281520b4c.jpg" alt="get fERP from chrome web store" height="60">
 </a>
 
