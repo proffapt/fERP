@@ -1,17 +1,15 @@
 # Changelog
 
-## Firefox Extension v1.4
+## Firefox Extension v1.5
 
 ### Added or Changed
-- Updated images with transparent background.
-- Better UI/UX.
-    - Checkbox is checked by default.
-- Linting of code.
+- Individual form filling mode re-fills the form when user enters incorrect captcha
+- Handled various other small edge cases, making it robust
 
-## Chrome Extension v1.3
+### Bug Fixes
+- Form was not getting submitted with Enter key
 
-### Added or Changed
-- Updated images with transparent background.
-- Better UI/UX.
-    - Checkbox is checked by default.
-- Linting of code.
+## Chrome Extension v1.4
+
+### Bug Fixes
+- Form were not submitted with Enter key
