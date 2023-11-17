@@ -62,7 +62,7 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
-    <li><a href="#miscelleneous">Miscelleneous</a></li>    
+    <li><a href="#additional-documentation">Additional Documentation</a></li>    
   </ol>
 </details>
 
@@ -186,19 +186,19 @@ For android you can use this extension on [Nightly](https://play.google.com/stor
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Choose an Open Source License](https://choosealicense.com)
 * [Img Shields](https://shields.io)
+* [Choose an Open Source License](https://choosealicense.com)
 * [Browser Extension - MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Miscelleneous
+## Additional Documentation
 
-Do consider looking at other paradigms of this documentation
-  - [Change-logs](/.github/CHANGELOG.md)
-  - [License used](/LICENSE.txt)
+  - [License](/LICENSE.txt)
+  - [Changelogs](/.github/CHANGELOG.md)
+  - [Security Policy](/.github/SECURITY.md)
   - [Code Of Conduct](/.github/CODE_OF_CONDUCT.md)
-  - [How to contribute?](/.github/CONTRIBUTING.md)
+  - [Contribution Guidelines](/.github/CONTRIBUTING.md)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
