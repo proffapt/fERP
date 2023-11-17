@@ -9,7 +9,7 @@
 ### Bug Fixes
 - Form was not getting submitted with Enter key
 
-## Chrome Extension v1.3
+## Chrome Extension v1.4
 
 ### Bug Fixes
 - Form were not submitted with Enter key
