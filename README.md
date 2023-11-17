@@ -72,8 +72,12 @@
   <tr>
   <td colspan="2" align="center">
 
-  [![firefox][firefox-shield]][mozilla-add-on-store-link]
-  [![chrome][chrome-shield]][chrome-webstore-link]
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
+    <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="90">
+  </a>
+  <a href="https://chromewebstore.google.com/detail/ferp/cdmjkgfdjjebpjejjnckkgljdmijjnom">
+    <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/86282911/282809759-ccf656ff-1874-49ac-bdca-a83281520b4c.jpg" alt="get fERP from chrome web store" height="90">
+  </a>
       
   </td>
   </tr>
@@ -187,7 +191,7 @@ It is recommended to install the extension from the respective extension stores 
 [mozilla-add-on-store-link]: https://addons.mozilla.org/en-US/firefox/addon/ferp/
 [chrome-webstore-link]: https://chromewebstore.google.com/detail/ferp/cdmjkgfdjjebpjejjnckkgljdmijjnom
 [firefox-shield]: https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg
-[chrome-shield]: https://github-production-user-asset-6210df.s3.amazonaws.com/86282911/282809759-ccf656ff-1874-49ac-bdca-a83281520b4c.jpg
+[chrome-shield]: https://github-production-user-asset-6210df.s3.amazonaws.com/86282911/283838252-34120216-076d-46ab-8646-cd5845fd8eb5.jpg
 [mode1-demo-gif]: https://github.com/proffapt/fERP/assets/86282911/36034a97-f732-44da-a907-b8218e2927fe
 [mode2-demo-gif]: https://github.com/proffapt/fERP/assets/86282911/898114a1-e352-4d0e-9a68-e84a49e5d101
 [contributors-shield]: https://img.shields.io/github/contributors/proffapt/fERP.svg?style=for-the-badge
