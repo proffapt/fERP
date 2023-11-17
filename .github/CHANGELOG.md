@@ -9,8 +9,7 @@
 ### Bug Fixes
 - Form was not getting submitted with Enter key
 
-## Chrome Extension v1.5
+## Chrome Extension v1.3
 
-### Added or Changed
-- Ported to Manifestv3
-- Includes all the features and patches similar to firefox v1.5
+### Bug Fixes
+- Form were not submitted with Enter key
