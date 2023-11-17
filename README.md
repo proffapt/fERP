@@ -41,33 +41,41 @@
   <tr>
   <td>
 
-  - Automatically moves from one form to the next
+  - Automatically moves from one form to the next and fills it
   - Uses a common feedback type for all forms
   - Continues from the first unfilled form
 
   </td>
   <td>
     
-  - Allows selecting feedback type for each individual submission
-  - Gives user control over submitting each form    
+  - Allows selecting feedback type for each individual form
+  - User has the control over the order of form filling    
 
   </td>
   </tr>
   <tr>
   <td colspan="2" align="center">
       
-  The form can also be submitted by pressing `Enter` key just after typing the captcha
+  Form can be submitted by pressing `Enter` key just after typing the captcha
   
   </td>
   </tr>
   <tr>
-    <td colspan="2" align="center">Re-fills the form with the same genre if wrong captcha was provided</td>
+  <td colspan="2" align="center">
+    
+  Has three feedback types, namely - `positive`, `negative` & `neutral`
+  
+  </td>
   </tr>
   <tr>
-    <td colspan="2" align="center">Has three genres, namely - positive, negative & neutral</td>
+  <td colspan="2" align="center">
+      
+  Invoking a feedback type randomises the choice of _available options_
+  
+  </td>
   </tr>
   <tr>
-    <td colspan="2" align="center">Each genre has various randomised patterns to spoof that this extension was used</td>
+    <td colspan="2" align="center">Re-fills the form with previously given feedback type, if wrong captcha was typed</td>
   </tr>
   <tr>
   <td colspan="2" align="center">
