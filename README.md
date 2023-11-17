@@ -23,8 +23,8 @@
 
 <table>
   <tr>
-    <th>Mode 1</th>
-    <th>Mode 2</th>
+    <th>Cascading Mode (Default)</th>
+    <th>Selective Mode</th>
   </tr>
   <tr>
     <td>
@@ -41,15 +41,16 @@
   <tr>
   <td>
 
-  - Automatically moves from one form to the next and fills it
-  - Uses a common feedback type for all forms
-  - Continues from the first unfilled form
+  - Uses the same feedback type for all forms
+  - Fills the next form after user submits previous form
+  - Skips submitted forms, fills the remaining ones
 
   </td>
   <td>
     
-  - Allows selecting feedback type for each individual form
-  - User has the control over the order of form filling    
+  - User selects the feedback type for each form
+  - Type the captcha and submit the form
+  - User decides the order of form submission    
 
   </td>
   </tr>
