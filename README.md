@@ -15,7 +15,7 @@
      <img width="200" src="https://user-images.githubusercontent.com/86282911/230894496-b9402384-bf0a-4bf7-afbf-2207aa2d31be.png">
   </a> 
   <p align="center">
-    <i>Automates the process of filling up feedback form in ERP for IIT KGP students</i>
+    <i>Automates the fucking process of filling up feedback form in ERP for IIT KGP students</i>
   </p>
 </div>
 
