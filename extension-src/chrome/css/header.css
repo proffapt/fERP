@@ -2,20 +2,37 @@
   width: 35px;
   height: 35px;
   position: relative;
+  margin-left: 5px;
+  margin-top: 2px;
 }
 
 #heading{
-  font-style: normal;
-  font-weight: 530;
-  font-size: 20px;
-  line-height: 39px;
-  color: 000;
-  margin-left: 10px;
+width: 200px;
+height: 24px;
+flex-shrink: 0;
+color: #000;
+text-align: center;
+font-family: Ruda;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+margin-right: 40px;
+margin-top: 10px;
+  
+
 }
 
 .header{
   display: flex;
+  position: relative;
   flex-direction: row;
   width: 300px;
-  justify-content: center;
+  height: 40px;
+  justify-content: space-between;
+  background-color: #E5D4FF;
+  border-radius: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
+  
 }

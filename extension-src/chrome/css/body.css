@@ -1,24 +1,70 @@
-.button_container{
+.button_container {
   width: 300px;
   height: 250px;
-  background: rgba(245, 235, 160, 0.9);
-  border: 1px solid rgba(66, 65, 65, 0.3);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  text-align: center;
-  margin-top: 5px;
+  background: #E5D4FF;
+  position: relative;
+  margin-left: 5px;
+  margin-top: 0px;
 }
 
-.feedback{
-  font-style: medium;
+.feedback {
+  width: 212px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #000;
+  text-align: center;
+  font-family: Ruda;
+  font-size: 18px;
+  font-style: normal;
   font-weight: 600;
-  font-size: 20px;
-  text-align: center;
-  margin-top: 10px;
+  line-height: normal;
+  margin-top: 4px;
+  padding-top: 10px;
+  margin-left: 45px;
+  position: relative;
 }
 
-#use_for_all{
+.feedbackbutton_container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 22px;
+  width: 270px;
+  height: 40px;
+  flex-shrink: 0;
+  margin-bottom: 15px;
+
+
+}
+
+
+.text {
+  margin-left: 10px;
+  color: #000;
+
+  text-align: center;
+  font-family: Ruda;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 122px;
+  height: 18px;
+  flex-shrink: 0;
+
+}
+
+
+
+
+#use_for_all {
   align-items: center;
+  margin-left: 40px;
+
 }
 
 .tooltip {
@@ -29,54 +75,85 @@
   height: 5%;
 }
 
-.buttons{
+.buttons {
   text-align: center;
   margin: 15px;
 }
 
-.buttons :hover{
-  background-color: #333333; opacity: 70%;
+
+#positive_btn:hover{
+  background-color: #5df200; opacity: 70%;
+  scale: 1.03;
+  transition: 0.5s ease-in-out;
 }
 
-.buttons :active {
-  background-color: #333333;
-  box-shadow: 0 5px #333;
+#positive_btn:active {
+  background-color: #5df200;
+  box-shadow: 0 2px #d1d1d1;
+  transform: translateY(4px);
+}
+#neutral_btn:hover{
+  background-color: #ffce3a; opacity: 70%;
+  scale: 1.03;
+  transition: 0.5s ease-in-out;
+}
+
+#neutral_btn:active {
+  background-color: #ffce3a;
+  box-shadow: 0 2px #d1d1d1;
+  transform: translateY(4px);
+}
+#negative_btn:hover{
+  background-color: #ff3a3a; opacity: 70%;
+  scale: 1.03;
+  transition: 0.5s ease-in-out;
+
+}
+
+#negative_btn:active {
+  background-color: #ff3a3a;
+  box-shadow: 0 2px #d1d1d1;
   transform: translateY(4px);
 }
 
-#positive_btn{
-  width: 200px;
-  height: 40px;
-  background: #68BE31;
-  border-radius: 25px;
+#positive_btn {
+  width: 64px;
+  height: 23px;
+  flex-shrink: 0;
+  border-radius: 22px;
+  background-color: #F1EAFF;
   border: none;
   cursor: pointer;
-  color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 65px;
+
+
+
 }
 
-#neutral_btn{
-  width: 200px;
-  height: 40px;
-  background: #5858EC;
-  border-radius: 25px;
+
+#neutral_btn {
+  width: 64px;
+  height: 23px;
+  flex-shrink: 0;
+  border-radius: 22px;
+  background: #F1EAFF;
   border: none;
   cursor: pointer;
-  color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 65px;
 }
 
-#negative_btn{
-  width: 200px;
-  height: 40px;
-  background: #F23535;
-  border-radius: 25px;
+#negative_btn {
+  width: 64px;
+  height: 23px;
+  flex-shrink: 0;
+  border-radius: 22px;
+  background: #F1EAFF;
   border: none;
   cursor: pointer;
-  color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 65px;
 }
 
-.btn{
-  margin: 5px;
+.btn {
+  margin: 10px;
+
 }

@@ -1,6 +1,15 @@
 body {
   background-color: var(--body-background-color);
 }
+.container{
+  width: 310px;
+  height: 350px;
+  border-radius: 10px;
+  background: #F4EFFF;
+  position: absolute;
+
+
+}
 
 body * {
   color: var(--body-color);

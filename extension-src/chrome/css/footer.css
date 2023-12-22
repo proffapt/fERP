@@ -5,11 +5,10 @@
   align-items: center;
   width: 300px;
   height: 40px;
-  border-radius: 5px;
-  background: rgba(245, 235, 160, 0.9);
-  border: 1px solid rgba(66, 65, 65, 0.3);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 0;
+  border-radius: 10px;
+  background: #E5D4FF;
+  margin-left: 5px;
+  margin-top: 4px;
 }
 
 #footer svg {
@@ -21,10 +20,13 @@
   flex: 1;
   flex-shrink: 1;
   flex-grow: 1;
+  
 }
 
 #footer a:hover {
   cursor: pointer;
+  scale: 1.1;
+  transition: 0.5 ease-in-out;
 }
 
 #about_button:hover>svg>.footer-path {
