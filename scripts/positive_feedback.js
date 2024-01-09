@@ -1,9 +1,14 @@
-var textBox = myframe.document.querySelectorAll('textarea');
-var radioButton = myframe.document.querySelectorAll('input[type="radio"]');
+const textBox = myframe.document.querySelectorAll('textarea');
+const radioButton = myframe.document.querySelectorAll('input[type="radio"]');
 
 // Calculating the start index for filling up the radio buttons
 // Basically, ignoring radio buttons designated for selecting profs.
-var start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
+let start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
+
+function setRandomValueFromArray(array, index) {
+	textBox[index].value = array[Math.floor(Math.random() * array.length)];
+	return textBox[index].value;
+  }
 
 function theory_course() {
 	var teacherStrengths = [
@@ -15,7 +20,7 @@ function theory_course() {
 		"The teacher makes sure that the assignment load is not a lot on students"
 	];
 	// Randomly selecting teacher's strengths from the array created above
-	textBox[0].value = teacherStrengths[Math.floor(Math.random() * teacherStrengths.length)];
+	textBox[0].value = setRandomValueFromArray(teacherStrengths, 0);
 
 	textBox[1].value = "Nothing as such";  // this is the default Weakness
 	textBox[3].value = "Nothing as such";  // replace with relevant text
@@ -30,7 +35,7 @@ function theory_course() {
 		"Overall this course was interesting and fun to study!"
 	];
 	// Randomly selecting course's strengths from the array created above
-	textBox[2].value = courseStrengths[Math.floor(Math.random() * courseStrengths.length)];
+	textBox[2].value = setRandomValueFromArray(courseStrengths, 2);
 
 	textBox[4].value = "No suggestions as such, so far so good";
 
@@ -54,7 +59,7 @@ function lab_course() {
 		"The teacher ensures that the students get ample amount of time for the experiment"
 	];
 	// Randomly selecting teacher's strengths from the array created above
-	textBox[0].value = teacherStrengths[Math.floor(Math.random() * teacherStrengths.length)];
+	textBox[0].value = setRandomValueFromArray(teacherStrengths, 0);
 
 	textBox[1].value = "Nothing as such";  // this is the default Weakness
 	textBox[2].value = "No suggestions as such, so far so good";
