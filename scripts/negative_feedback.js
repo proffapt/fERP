@@ -1,9 +1,9 @@
-const textBox = myframe.document.querySelectorAll('textarea');
-const radioButton = myframe.document.querySelectorAll('input[type="radio"]');
+var textBox = myframe.document.querySelectorAll('textarea');
+var radioButton = myframe.document.querySelectorAll('input[type="radio"]');
 
 // Calculating the start index for filling up the radio buttons
 // Basically, ignoring radio buttons designated for selecting profs.
-let start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
+var start = 0; for (i = 0; radioButton[i].getAttribute('name') == 'check'; i++, start++) { }
 
 function setRandomValueFromArray(array, index) {
 	textBox[index].value = array[Math.floor(Math.random() * array.length)];
