@@ -7,90 +7,114 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
 
     const fill_form = () => {
-        textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
-        radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
-        prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+      textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
+      radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
+      prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 
-        if (textBox.length == 5) {
-            switch (request.preference) {
-                case "positive":
-                positive_theory_feedback();
-                break;
-                case "neutral":
-                neutral_theory_feedback();
-                break;
-                case "negative":
-                negative_theory_feedback();
-                break;
-            }
-        } else {
-            switch (request.preference) {
-                case "positive":
-                positive_lab_feedback();
-                break;
-                case "neutral":
-                neutral_lab_feedback();
-                break;
-                case "negative":
-                negative_lab_feedback();
-                break;
-            }
+      if (textBox.length == 5) {
+        switch (request.preference) {
+        case "positive":
+          positive_theory_feedback();
+          break;
+        case "neutral":
+          neutral_theory_feedback();
+          break;
+        case "negative":
+          negative_theory_feedback();
+          break;
         }
+      } else {
+        switch (request.preference) {
+        case "positive":
+          positive_lab_feedback();
+          break;
+        case "neutral":
+          neutral_lab_feedback();
+          break;
+        case "negative":
+          negative_lab_feedback();
+          break;
+        }
+      }
+
+      addSubmissionListeners();
     };
 
-    const handleProf = () => {
-      prof = document.querySelector('#myframe').contentDocument.querySelectorAll('input[name="check"]');
-      prof[profCounter].click(); profCounter++;
+    const removeSubmissionListeners = () => {
+      prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+      const profList = Array.from(prof);
+      currProfIndex = profList.findIndex(prof => prof.checked);
+      prof[currProfIndex].click();
+    }
 
-      submitButton = document.querySelector('#myframe').contentDocument.getElementById('sub');
-      if (submitButton != null) {
-        fill_form();
-
-        submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();");
-        submitButton.addEventListener("click", async () => {
-          await sleep(3000);
-          processSubmission();
-        });
-
-        captchaText = document.querySelector('#myframe').contentDocument.getElementById('passline');
-        captchaText.addEventListener("keydown", async (event) => {
-          if (event.key === "Enter") {
-			await sleep(3000);
-            processSubmission();
-          }
-        });
-      } else {
-        if (profCounter < prof.length) handleProf();
-        else handleCourse();
-      }
+    const addSubmissionListeners = () => {
+      captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
+      submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+      submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+  
+      const submissionClickHandler = async () => {
+        await sleep(3000);
+        processSubmission();
+      };
+  
+      const captchaTextEnterKeyDownHandler = (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          submitButton.click();
+        }
+      };
+  
+      submitButton.addEventListener("click", submissionClickHandler);
+      captchaText.addEventListener("keydown", captchaTextEnterKeyDownHandler);
     };
 
     const processSubmission = () => {
-      submitButton = document.querySelector('#myframe').contentDocument.getElementById('sub');
+      submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
       if (submitButton != null) {
-        profCounter--;
-        handleProf();
+        if (!request.all) {
+          fill_form();
+        }
+        else {
+          profCounter--; 
+          handleProf();
+        }
       } else {
-        prof = document.querySelector('#myframe').contentDocument.querySelectorAll('input[name="check"]');
+        if (request.all){
+          prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+          if (profCounter < prof.length) handleProf();
+          else handleCourse();
+        }
+      }
+    };
+
+    const handleProf = () => {
+      prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+      prof[profCounter].click(); profCounter++;
+
+      submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+      if (submitButton != null){
+        fill_form();
+      } else {
         if (profCounter < prof.length) handleProf();
         else handleCourse();
       }
     };
 
     const handleCourse = () => {
-      course = document.querySelector('#myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
+      course = document.getElementById('myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
       if (courseCounter == course.length) return;
-      console.log(courseCounter)
       course[courseCounter].click(); courseCounter++;
 
       profCounter = 0; handleProf();
     };
 
     try {
-      if (!request.all) {
-        fill_form();
-      } else if (courseCounter === 0) {
+      if (request.all && courseCounter == 0) {
         handleCourse();
+      }
+      else if (!request.all) {
+        removeSubmissionListeners();
+        fill_form();
       }
     } catch (err) {
       console.error(err);
