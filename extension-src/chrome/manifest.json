@@ -9,18 +9,15 @@
 	  "activeTab"
 	],
 
-	"content_scripts": [
-		{
-		  "matches": ["*://erp.iitkgp.ac.in/IIT_ERP*/*"],
-		  "js": ["js/feedback.js"]
-		}
-	],
+  "host_permissions": [
+    "*://erp.iitkgp.ac.in/IIT_ERP*/*"
+  ],
 
 	"action": {
 	  "default_popup": "main.html",
 	  "default_title": "fERP"
 	},
-  
+
 	"icons": {
 	  "16": "images/fERP16.png",
 	  "32": "images/fERP32.png",
