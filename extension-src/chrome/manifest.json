@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "fERP",
 	"description": "Automates the process of filling up feedback form in ERP for IIT KGP students",
-	"version": "1.4",
+	"version": "1.8.0",
 	
 	"permissions": [
 	  "scripting",
