@@ -6,7 +6,7 @@ on:
       - "v*"
 
 jobs:
-  release:
+  Github:
     runs-on: ubuntu-latest
 
     steps:
@@ -51,7 +51,7 @@ jobs:
           && sudo apt install gh -y
 
       - name: Configure GitHub CLI - gh
-        run: gh auth login --with-token <<< "${{ secrets.PAT }}"
+        run: gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
 
       - name: Draft Release
         run: |
@@ -115,3 +115,31 @@ jobs:
               echo "No changes in $file."
             fi
           done
+
+  Chrome:
+    name: Submit (Chrome)
+    runs-on: ubuntu-latest
+    needs: Github
+
+    steps:
+      - uses: actions/download-artifact@v3
+      - run: npx chrome-webstore-upload-cli@2 upload --auto-publish
+        working-directory: artifact
+        env:
+          EXTENSION_ID: ${{ secrets.GOOGLE_EXTENSION_ID }}
+          CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+
+  Firefox:
+    name: Submit (Firefox)
+    runs-on: ubuntu-latest
+    needs: Github
+
+    steps:
+      - uses: actions/download-artifact@v3
+      - run: npx web-ext@7 sign --use-submission-api --channel listed
+        working-directory: artifact
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
