@@ -118,7 +118,7 @@ jobs:
           done
 
   Chrome:
-    name: Chrome Web Store Release (Draft)
+    name: Chrome Web Store Release (Publish)
     runs-on: ubuntu-latest
 
     steps:
@@ -135,7 +135,7 @@ jobs:
 
       - name: Release to Chrome Web Store
         working-directory: extension-src/chrome
-        run: chrome-webstore-upload-cli upload
+        run: chrome-webstore-upload upload --auto-publish
         env:
           EXTENSION_ID: ${{ secrets.GOOGLE_EXTENSION_ID }}
           CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
