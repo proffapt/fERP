@@ -1,124 +1,124 @@
 var profCounter = 0, courseCounter = 0;
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  if (request.action == "getStatusOfAll&FeedbackType") {
-    function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-    }
+chrome.runtime.sendMessage({
+  action: "getStatusOfAll&FeedbackType",
+}).then((request) => {
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
-    const fill_form = () => {
-      textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
-      radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
-      prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+  const fill_form = () => {
+    textBox = document.getElementById('myframe').contentDocument.querySelectorAll('textarea');
+    radioButton = document.getElementById('myframe').contentDocument.querySelectorAll('input[type="radio"]');
+    prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
 
-      if (textBox.length == 5) {
-        switch (request.preference) {
-        case "positive":
-          positive_theory_feedback();
-          break;
-        case "neutral":
-          neutral_theory_feedback();
-          break;
-        case "negative":
-          negative_theory_feedback();
-          break;
-        }
-      } else {
-        switch (request.preference) {
-        case "positive":
-          positive_lab_feedback();
-          break;
-        case "neutral":
-          neutral_lab_feedback();
-          break;
-        case "negative":
-          negative_lab_feedback();
-          break;
-        }
+    if (textBox.length == 5) {
+      switch (request.preference) {
+      case "positive":
+        positive_theory_feedback();
+        break;
+      case "neutral":
+        neutral_theory_feedback();
+        break;
+      case "negative":
+        negative_theory_feedback();
+        break;
       }
-
-      addSubmissionListeners();
-    };
-
-    const removeSubmissionListeners = () => {
-      prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
-      const profList = Array.from(prof);
-      currProfIndex = profList.findIndex(prof => prof.checked);
-      prof[currProfIndex].click();
+    } else {
+      switch (request.preference) {
+      case "positive":
+        positive_lab_feedback();
+        break;
+      case "neutral":
+        neutral_lab_feedback();
+        break;
+      case "negative":
+        negative_lab_feedback();
+        break;
+      }
     }
 
-    const addSubmissionListeners = () => {
-      captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
-      submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
-      submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
-  
-      const submissionClickHandler = async () => {
-        await sleep(3000);
-        processSubmission();
-      };
-  
-      const captchaTextEnterKeyDownHandler = (event) => {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          submitButton.click();
-        }
-      };
-  
-      submitButton.addEventListener("click", submissionClickHandler);
-      captchaText.addEventListener("keydown", captchaTextEnterKeyDownHandler);
+    addSubmissionListeners();
+  };
+
+  const removeSubmissionListeners = () => {
+    prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+    const profList = Array.from(prof);
+    currProfIndex = profList.findIndex(prof => prof.checked);
+    prof[currProfIndex].click();
+  }
+
+  const addSubmissionListeners = () => {
+    captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
+    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+    submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
+
+    const submissionClickHandler = async () => {
+      await sleep(3000);
+      processSubmission();
     };
 
-    const processSubmission = () => {
-      submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
-      if (submitButton != null) {
-        if (!request.all) {
-          fill_form();
-        }
-        else {
-          profCounter--; 
-          handleProf();
-        }
-      } else {
-        if (request.all){
-          prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
-          if (profCounter < prof.length) handleProf();
-          else handleCourse();
-        }
+    const captchaTextEnterKeyDownHandler = (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        submitButton.click();
       }
     };
 
-    const handleProf = () => {
-      prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
-      prof[profCounter].click(); profCounter++;
+    submitButton.addEventListener("click", submissionClickHandler);
+    captchaText.addEventListener("keydown", captchaTextEnterKeyDownHandler);
+  };
 
-      submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
-      if (submitButton != null){
+  const processSubmission = () => {
+    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+    if (submitButton != null) {
+      if (!request.all) {
         fill_form();
-      } else {
+      }
+      else {
+        profCounter--; 
+        handleProf();
+      }
+    } else {
+      if (request.all){
+        prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
         if (profCounter < prof.length) handleProf();
         else handleCourse();
       }
-    };
-
-    const handleCourse = () => {
-      course = document.getElementById('myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
-      if (courseCounter == course.length) return;
-      course[courseCounter].click(); courseCounter++;
-
-      profCounter = 0; handleProf();
-    };
-
-    try {
-      if (request.all && courseCounter == 0) {
-        handleCourse();
-      }
-      else if (!request.all) {
-        removeSubmissionListeners();
-        fill_form();
-      }
-    } catch (err) {
-      console.error(err);
     }
+  };
+
+  const handleProf = () => {
+    prof = document.getElementById('myframe').contentDocument.querySelectorAll('input[name="check"]');
+    prof[profCounter].click(); profCounter++;
+
+    submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
+    if (submitButton != null){
+      fill_form();
+    } else {
+      if (profCounter < prof.length) handleProf();
+      else handleCourse();
+    }
+  };
+
+  const handleCourse = () => {
+    course = document.getElementById('myframe').contentDocument.querySelectorAll('a[href="javascript:void(0)"]');
+    if (courseCounter == course.length) return;
+    course[courseCounter].click(); courseCounter++;
+
+    profCounter = 0; handleProf();
+  };
+
+  try {
+    if (request.all && courseCounter == 0) {
+      handleCourse();
+    }
+    else if (!request.all) {
+      removeSubmissionListeners();
+      fill_form();
+    }
+  } catch (err) {
+    console.error(err);
   }
 });
 
