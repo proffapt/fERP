@@ -1,4 +1,12 @@
+# Setup Garbage
 .DS_Store
-findings
+
+# Builds
 web-ext-artifacts
+
+# ACT Action Testing
+.secrets
+
+# Private Research
+findings
 resources
