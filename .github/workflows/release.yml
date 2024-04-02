@@ -7,18 +7,19 @@ on:
 
 jobs:
   Github:
+    name: Github Release (Draft)
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "20"
 
       - name: Install standard-version npm package
         run: npm install -g standard-version
@@ -58,7 +59,7 @@ jobs:
           curr_release=$(cat release_tag.txt)
           gh release create --draft "$curr_release" --title "$curr_release" --notes-file release_notes.txt
 
-      - name: Configure SSH key
+      - name: Configure SSH keys
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
@@ -76,7 +77,7 @@ jobs:
           git pull origin main
           git fetch --tags
 
-      - name: Update changelogs
+      - name: Update changelog file
         run: |
           changelog_file=".github/CHANGELOG.md"
           logs=$(cat changelog.txt)
@@ -109,7 +110,7 @@ jobs:
           for file in "${files[@]}"; do
             if [ -n "$(git status --porcelain $file)" ]; then
               git add $file
-              git commit -S -m "docs(changelog): update $(basename $file)"
+              git commit -S -m "chore(release): update $(basename $file)"
               git push origin $(git rev-parse --abbrev-ref HEAD)
             else
               echo "No changes in $file."
@@ -117,14 +118,24 @@ jobs:
           done
 
   Chrome:
-    name: Submit (Chrome)
+    name: Chrome Web Store Release (Draft)
     runs-on: ubuntu-latest
-    needs: Github
 
     steps:
-      - uses: actions/download-artifact@v3
-      - run: npx chrome-webstore-upload-cli@2 upload --auto-publish
-        working-directory: artifact
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Install chrome-webstore-upload-cli npm package
+        run: npm install -g chrome-webstore-upload-cli
+
+      - name: Release to Chrome Web Store
+        working-directory: extension-src/chrome
+        run: chrome-webstore-upload-cli upload
         env:
           EXTENSION_ID: ${{ secrets.GOOGLE_EXTENSION_ID }}
           CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
@@ -132,14 +143,28 @@ jobs:
           REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
 
   Firefox:
-    name: Submit (Firefox)
+    name: Mozilla Add-On Store Release (Draft)
     runs-on: ubuntu-latest
-    needs: Github
 
     steps:
-      - uses: actions/download-artifact@v3
-      - run: npx web-ext@7 sign --use-submission-api --channel listed
-        working-directory: artifact
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Install web-ext npm package
+        run: npm install -g web-ext
+
+      - name: Build the extension
+        working-directory: extension-src/firefox
+        run: web-ext build
+
+      - name: Release to Mozilla Add-On Store
+        working-directory: extension-src/firefox
+        run: web-ext sign --use-submission-api --channel unlisted
         env:
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
