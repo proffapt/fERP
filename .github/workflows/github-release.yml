@@ -1,0 +1,117 @@
+name: Publish Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install standard-version npm package
+        run: npm install -g standard-version
+
+      - name: Generate changelog notes
+        run: |
+          curr_release=$(git describe --tags)
+          prev_release=$(git describe --tags --abbrev=0 $(git rev-list --tags --skip=1 --max-count=1) 2>/dev/null || echo "")
+          echo ">> ${prev_release}..${curr_release} <<"
+          git log ${prev_release}..${curr_release} --pretty=format:"%s" > commits.txt
+          git tag -d "$curr_release"
+          standard-version --release-as "$curr_release" --skip.commit --skip.tag --dry-run | tail -n +5 | awk '/---/{exit} {print}' > changelog.txt
+          echo "$curr_release" > release_tag.txt
+          echo "CHANGELOGS: "
+          cat changelog.txt
+
+      - name: Generate release notes
+        run: |
+          cat changelog.txt | tail -n +3 > release_notes.txt
+          echo "RELEASE NOTES: "
+          cat release_notes.txt
+
+      - name: Install GitHub CLI - gh
+        run: |
+          type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+          && sudo apt update \
+          && sudo apt install gh -y
+
+      - name: Configure GitHub CLI - gh
+        run: gh auth login --with-token <<< "${{ secrets.PAT }}"
+
+      - name: Draft Release
+        run: |
+          curr_release=$(cat release_tag.txt)
+          gh release create --draft "$curr_release" --title "$curr_release" --notes-file release_notes.txt
+
+      - name: Configure SSH key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/proffapt
+          echo "$SSH_PUBLIC_KEY" > ~/.ssh/proffapt.pub
+          chmod 600 ~/.ssh/proffapt
+          chmod 600 ~/.ssh/proffapt.pub
+
+      - name: Clean repository
+        run: |
+          rm commits.txt release_notes.txt
+          git checkout -b main
+          git pull origin main
+          git fetch --tags
+
+      - name: Update changelogs
+        run: |
+          changelog_file=".github/CHANGELOG.md"
+          logs=$(cat changelog.txt)
+          if [ -s "$changelog_file" ]; then
+            old_logs=$(tail -n +2 "$changelog_file")
+            
+            latest_tag=$(cat release_tag.txt)
+            if grep -q "${latest_tag}" "$changelog_file"; then
+              echo "Changelog already up-to-date"
+            else
+              echo -e "# CHANGELOG\n\n $logs\n\n $old_logs" > "$changelog_file"
+              echo "Changelog updated successfully"
+            fi
+          else
+            echo -e "# CHANGELOG\n\n $logs" > "$changelog_file"
+            echo "Changelog generated successfully"
+          fi
+
+      - name: Configure git
+        run: |
+          git config user.email "proffapt@pm.me"
+          git config user.name "proffapt"
+          git config gpg.format ssh
+          git config user.signingkey ~/.ssh/proffapt.pub
+
+      - name: Commit & push changes
+        run: |
+          rm changelog.txt
+          files=(".github/CHANGELOG.md")
+          for file in "${files[@]}"; do
+            if [ -n "$(git status --porcelain $file)" ]; then
+              git add $file
+              git commit -S -m "docs(changelog): update $(basename $file)"
+              git push origin $(git rev-parse --abbrev-ref HEAD)
+            else
+              echo "No changes in $file."
+            fi
+          done
