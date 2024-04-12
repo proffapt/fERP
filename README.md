@@ -62,6 +62,13 @@
   </td>
   </tr>
   <tr>
+  <tr>
+  <td colspan="2" align="center">
+      
+  Bypass confirmation pop-ups, which appear everytime a form is submitted
+  
+  </td>
+  </tr>
   <td colspan="2" align="center">
     
   Has three feedback types, namely - `positive`, `negative` & `neutral`
