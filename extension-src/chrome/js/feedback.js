@@ -51,25 +51,41 @@ chrome.runtime.sendMessage({
   const addSubmissionListeners = () => {
     captchaText = document.getElementById('myframe').contentDocument.getElementById('passline');
     submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
-    submitButton.setAttribute("onclick", "document.form1.method = 'POST'; document.form1.action = 'rev_feed_submit.jsp'; document.form1.submit();")
 
-    const submissionClickHandler = async () => {
-      await sleep(3000);
-      processSubmission();
+    // Delete existing submit button and create a new button
+    parentElement = submitButton.parentNode;
+    submitButton.remove();
+    newSubmitButton = document.createElement('input');
+    newSubmitButton.id = 'mybutton';
+    newSubmitButton.className = 'button';
+    newSubmitButton.type = 'button';
+    newSubmitButton.value = 'Submit Feedback';
+    parentElement.appendChild(newSubmitButton);
+
+    const submitForm = async () => {
+        var form = document.getElementById('myframe').contentDocument.getElementsByName('form1');
+        form[0].method = 'POST';
+        form[0].action = 'rev_feed_submit.jsp';
+        form[0].submit();
+
+        await processSubmission();
     };
 
-    const captchaTextEnterKeyDownHandler = (event) => {
+    newSubmitButton.addEventListener("click", async (event) => {
+        event.preventDefault();
+        await submitForm();
+    });
+    captchaText.addEventListener("keydown", async (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
-        submitButton.click();
+        await submitForm();
       }
-    };
-
-    submitButton.addEventListener("click", submissionClickHandler);
-    captchaText.addEventListener("keydown", captchaTextEnterKeyDownHandler);
+    });
   };
 
-  const processSubmission = () => {
+  const processSubmission = async () => {
+    await sleep(3000);
+      
     submitButton = document.getElementById('myframe').contentDocument.getElementById('sub');
     if (submitButton != null) {
       if (!request.all) {
