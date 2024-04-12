@@ -1,21 +1,21 @@
-#logo{
-  width: 35px;
-  height: 35px;
-  position: relative;
+#logo {
+    width: 35px;
+    height: 35px;
+    position: relative;
 }
 
-#heading{
-  font-style: normal;
-  font-weight: 530;
-  font-size: 20px;
-  line-height: 39px;
-  color: 000;
-  margin-left: 10px;
+#heading {
+    font-style: normal;
+    font-weight: 530;
+    font-size: 20px;
+    line-height: 39px;
+    color: 000;
+    margin-left: 10px;
 }
 
-.header{
-  display: flex;
-  flex-direction: row;
-  width: 300px;
-  justify-content: center;
+.header {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    justify-content: center;
 }
