@@ -1,5 +1,13 @@
 # CHANGELOG
 
+ ### [1.8.1](https://github.com/proffapt/fERP/compare/v1.8.0...v1.8.1) (2024-04-13)
+
+
+### Features
+
+* bypass browser alerts on success/failure of form submission ([bb9e85b](https://github.com/proffapt/fERP/commit/bb9e85bcd975df75fa11adf50521c4e2fa01dad3))
+
+ 
  ## 1.8.0 (2024-04-12)
 
 
