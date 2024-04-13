@@ -48,6 +48,29 @@ browser.runtime
             }
 
             addSubmissionListeners();
+
+            captchaText = document
+                .getElementById("myframe")
+                .contentDocument.getElementById("passline");
+            captchaText.value = solveCaptcha();
+
+            submitButton = document
+                .getElementById("myframe")
+                .contentDocument.getElementById("mybutton");
+            submitButton.click();
+        };
+
+        const solveCaptcha = () => {
+            captchaImage = document
+                .getElementById("myframe")
+                .contentDocument.getElementsByTagName("img");
+
+            captchaImageSrc = captchaImage[0].src;
+            captchaImage = `${captchaImageSrc}?ssoToken=`
+            console.log(captchaImage)
+
+            captchaValue = "xxxxxx";
+            return captchaValue;
         };
 
         const removeSubmissionListeners = () => {
