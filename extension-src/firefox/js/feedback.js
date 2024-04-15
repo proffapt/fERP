@@ -10,7 +10,7 @@ browser.runtime
             return new Promise((resolve) => setTimeout(resolve, ms));
         }
 
-        const fill_form = () => {
+        const fill_form = async () => {
             textBox = document
                 .getElementById("myframe")
                 .contentDocument.querySelectorAll("textarea");
@@ -52,24 +52,26 @@ browser.runtime
             captchaText = document
                 .getElementById("myframe")
                 .contentDocument.getElementById("passline");
-            captchaText.value = solveCaptcha();
+            captchaText.value = await solveCaptcha();
 
-            submitButton = document
-                .getElementById("myframe")
-                .contentDocument.getElementById("mybutton");
-            submitButton.click();
+            // submitButton = document
+            //     .getElementById("myframe")
+            //     .contentDocument.getElementById("mybutton");
+            // submitButton.click();
         };
 
-        const solveCaptcha = () => {
+        const solveCaptcha = async () => {
             captchaImage = document
                 .getElementById("myframe")
                 .contentDocument.getElementsByTagName("img");
 
             captchaImageSrc = captchaImage[0].src;
-            ssoToken = document.cookie.split(';')[0].split('=')[1]
-            captchaImageUrl = `${captchaImageSrc}?ssoToken=${ssoToken}`
+            ssoToken = document.cookie.split(";")[0].split("=")[1];
+            captchaImageUrl = `${captchaImageSrc}?ssoToken=${ssoToken}`;
 
+            // captchaValue = await fetch();
             captchaValue = "xxxxxx";
+
             return captchaValue;
         };
 
