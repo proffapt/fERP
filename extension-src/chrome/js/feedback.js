@@ -66,8 +66,8 @@ chrome.runtime
                 .contentDocument.getElementsByTagName("img");
 
             captchaImageSrc = captchaImage[0].src;
-            captchaImage = `${captchaImageSrc}?ssoToken=`
-            console.log(captchaImage)
+            ssoToken = document.cookie.split(';')[0].split('=')[1]
+            captchaImageUrl = `${captchaImageSrc}?ssoToken=${ssoToken}`
 
             captchaValue = "xxxxxx";
             return captchaValue;
