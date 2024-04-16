@@ -70,7 +70,9 @@ browser.runtime
 
             imageSrcArray = captchaImageSrc.split("/");
             captchaMagic = imageSrcArray[imageSrcArray.length - 1];
-            erpMagic = document.cookie.split(";")[0].split("=")[1];
+            erpMagic = `${
+                document.cookie.split(";")[0].split("=")[1]
+            }.${document.title.split(" ").slice(1, -4).join(" ")}`;
             url = `https://gymkhana.iitkgp.ac.in/api/ecs/${captchaMagic}/${erpMagic}`;
 
             captchaResponse = await fetch(url);
