@@ -2,12 +2,17 @@
 const positiveFeedbackButton = document.getElementById("positive_btn");
 const neutralFeedbackButton = document.getElementById("neutral_btn");
 const negativeFeedbackButton = document.getElementById("negative_btn");
-const checkBox = document.getElementById("use_for_all");
+const allCheckBox = document.getElementById("use_for_all");
+const captchaCheckBox = document.getElementById("auto_fill_captcha");
 
-// Sending status of checkBox to content scripts
-var isChecked = true;
-checkBox.addEventListener("click", () => {
-    isChecked = checkBox.checked;
+// Sending status of checkboxes  to content scripts
+var isAllChecked = true;
+allCheckBox.addEventListener("click", () => {
+    isAllChecked = allCheckBox.checked;
+});
+var isCaptchaChecked = true;
+captchaCheckBox.addEventListener("click", () => {
+    isCaptchaChecked = captchaCheckBox.checked;
 });
 
 var feedback;
@@ -17,8 +22,9 @@ positiveFeedbackButton.addEventListener("click", () => {
     browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (request.request == "getStatusOfAll&FeedbackType")
             sendResponse({
-                all: isChecked,
                 feedback: feedback,
+                all: isAllChecked,
+                afc: isCaptchaChecked,
             });
     });
     browser.tabs.executeScript({ file: "/js/feedback.js" });
@@ -32,8 +38,9 @@ neutralFeedbackButton.addEventListener("click", () => {
     browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (request.request == "getStatusOfAll&FeedbackType")
             sendResponse({
-                all: isChecked,
                 feedback: feedback,
+                all: isAllChecked,
+                afc: isCaptchaChecked,
             });
     });
     browser.tabs.executeScript({ file: "/js/feedback.js" });
@@ -47,8 +54,9 @@ negativeFeedbackButton.addEventListener("click", () => {
     browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (request.request == "getStatusOfAll&FeedbackType")
             sendResponse({
-                all: isChecked,
                 feedback: feedback,
+                all: isAllChecked,
+                afc: isCaptchaChecked,
             });
     });
     browser.tabs.executeScript({ file: "/js/feedback.js" });

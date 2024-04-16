@@ -2,12 +2,17 @@
 const positiveFeedbackButton = document.getElementById("positive_btn");
 const neutralFeedbackButton = document.getElementById("neutral_btn");
 const negativeFeedbackButton = document.getElementById("negative_btn");
-const checkBox = document.getElementById("use_for_all");
+const allCheckBox = document.getElementById("use_for_all");
+const captchaCheckBox = document.getElementById("auto_fill_captcha");
 
-// Sending status of checkBox to content scripts
-var isChecked = true;
-checkBox.addEventListener("click", () => {
-    isChecked = checkBox.checked;
+// Sending status of checkboxes  to content scripts
+var isAllChecked = true;
+allCheckBox.addEventListener("click", () => {
+    isAllChecked = allCheckBox.checked;
+});
+var isCaptchaChecked = true;
+captchaCheckBox.addEventListener("click", () => {
+    isCaptchaChecked = captchaCheckBox.checked;
 });
 
 var feedback;
@@ -26,7 +31,11 @@ positiveFeedbackButton.addEventListener("click", () => {
         sendResponse
     ) {
         if (request.action === "getStatusOfAll&FeedbackType") {
-            sendResponse({ preference: feedback, all: isChecked });
+            sendResponse({
+                preference: feedback,
+                all: isAllChecked,
+                afc: isCaptchaChecked,
+            });
         }
         chrome.runtime.onMessage.removeListener(arguments.callee);
     });
@@ -46,7 +55,11 @@ neutralFeedbackButton.addEventListener("click", () => {
         sendResponse
     ) {
         if (request.action === "getStatusOfAll&FeedbackType") {
-            sendResponse({ preference: feedback, all: isChecked });
+            sendResponse({
+                preference: feedback,
+                all: isAllChecked,
+                afc: isCaptchaChecked,
+            });
         }
         chrome.runtime.onMessage.removeListener(arguments.callee);
     });
@@ -66,7 +79,11 @@ negativeFeedbackButton.addEventListener("click", () => {
         sendResponse
     ) {
         if (request.action === "getStatusOfAll&FeedbackType") {
-            sendResponse({ preference: feedback, all: isChecked });
+            sendResponse({
+                preference: feedback,
+                all: isAllChecked,
+                afc: isCaptchaChecked,
+            });
         }
         chrome.runtime.onMessage.removeListener(arguments.callee);
     });

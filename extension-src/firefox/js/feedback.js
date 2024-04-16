@@ -10,7 +10,7 @@ browser.runtime
             return new Promise((resolve) => setTimeout(resolve, ms));
         }
 
-        const fill_form = () => {
+        const fill_form = async () => {
             textBox = document
                 .getElementById("myframe")
                 .contentDocument.querySelectorAll("textarea");
@@ -48,6 +48,38 @@ browser.runtime
             }
 
             addSubmissionListeners();
+
+            if (preference.afc) {
+                captchaText = document
+                    .getElementById("myframe")
+                    .contentDocument.getElementById("passline");
+                captchaText.value = await solveCaptcha();
+
+                submitButton = document
+                    .getElementById("myframe")
+                    .contentDocument.getElementById("mybutton");
+                submitButton.click();
+            }
+        };
+
+        const solveCaptcha = async () => {
+            captchaImage = document
+                .getElementById("myframe")
+                .contentDocument.getElementsByTagName("img");
+            captchaImageSrc = captchaImage[0].src;
+
+            imageSrcArray = captchaImageSrc.split("/");
+            captchaMagic = imageSrcArray[imageSrcArray.length - 1];
+            erpMagic = `${
+                document.cookie.split(";")[0].split("=")[1]
+            }.${document.title.split(" ").slice(1, -4).join(" ")}`;
+            url = `https://gymkhana.iitkgp.ac.in/api/ecs/${captchaMagic}/${erpMagic}`;
+
+            captchaResponse = await fetch(url);
+            captchaResult = await captchaResponse.json();
+            captchaValue = captchaResult.captcha;
+
+            return captchaValue;
         };
 
         const removeSubmissionListeners = () => {
