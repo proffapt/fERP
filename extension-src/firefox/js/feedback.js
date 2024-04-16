@@ -64,13 +64,27 @@ browser.runtime
             captchaImage = document
                 .getElementById("myframe")
                 .contentDocument.getElementsByTagName("img");
-
             captchaImageSrc = captchaImage[0].src;
-            ssoToken = document.cookie.split(";")[0].split("=")[1];
-            captchaImageUrl = `${captchaImageSrc}?ssoToken=${ssoToken}`;
 
-            // captchaValue = await fetch();
-            captchaValue = "xxxxxx";
+            imageSrcArray = captchaImageSrc.split("/");
+            hash = imageSrcArray[imageSrcArray.length - 1];
+            token = document.cookie.split(";")[0].split("=")[1];
+
+            captchaResponse = await fetch(
+                "https://gymkhana.iitkgp.ac.in/api/ecs",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        hash: hash,
+                        token: token,
+                    }),
+                }
+            );
+            captchaResult = await captchaResponse.json();
+            captchaValue = captchaResult.captcha
 
             return captchaValue;
         };

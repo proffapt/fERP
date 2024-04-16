@@ -5,7 +5,11 @@
     "homepage_url": "https://github.com/proffapt/fERP",
     "version": "1.8.1",
 
-    "permissions": ["activeTab", "*://erp.iitkgp.ac.in/IIT_ERP*/*"],
+    "permissions": [
+        "activeTab",
+        "*://erp.iitkgp.ac.in/IIT_ERP*/*",
+        "https://gymkhana.iitkgp.ac.in/api/ecs"
+    ],
 
     "browser_action": {
         "default_title": "fERP",

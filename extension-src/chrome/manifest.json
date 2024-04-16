@@ -6,7 +6,10 @@
 
     "permissions": ["scripting", "activeTab"],
 
-    "host_permissions": ["*://erp.iitkgp.ac.in/IIT_ERP*/*"],
+    "host_permissions": [
+        "*://erp.iitkgp.ac.in/IIT_ERP*/*",
+        "https://gymkhana.iitkgp.ac.in/api/ecs"
+    ],
 
     "action": {
         "default_popup": "main.html",
