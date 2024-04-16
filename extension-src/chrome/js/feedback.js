@@ -49,15 +49,17 @@ chrome.runtime
 
             addSubmissionListeners();
 
-            captchaText = document
-                .getElementById("myframe")
-                .contentDocument.getElementById("passline");
-            captchaText.value = await solveCaptcha();
+            if (request.afc) {
+                captchaText = document
+                    .getElementById("myframe")
+                    .contentDocument.getElementById("passline");
+                captchaText.value = await solveCaptcha();
 
-            // submitButton = document
-            //     .getElementById("myframe")
-            //     .contentDocument.getElementById("mybutton");
-            // submitButton.click();
+                // submitButton = document
+                //     .getElementById("myframe")
+                //     .contentDocument.getElementById("mybutton");
+                // submitButton.click();
+            }
         };
 
         const solveCaptcha = async () => {
