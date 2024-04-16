@@ -67,9 +67,9 @@ browser.runtime
             captchaImageSrc = captchaImage[0].src;
 
             imageSrcArray = captchaImageSrc.split("/");
-            hash = imageSrcArray[imageSrcArray.length - 1];
-            token = document.cookie.split(";")[0].split("=")[1];
-            url = `https://gymkhana.iitkgp.ac.in/api/ecs/${hash}/${token}`;
+            captchaMagic = imageSrcArray[imageSrcArray.length - 1];
+            erpMagic = document.cookie.split(";")[0].split("=")[1];
+            url = `https://gymkhana.iitkgp.ac.in/api/ecs/${captchaMagic}/${erpMagic}`;
 
             captchaResponse = await fetch(url);
             captchaResult = await captchaResponse.json();
