@@ -55,10 +55,10 @@ browser.runtime
                     .contentDocument.getElementById("passline");
                 captchaText.value = await solveCaptcha();
 
-                // submitButton = document
-                //     .getElementById("myframe")
-                //     .contentDocument.getElementById("mybutton");
-                // submitButton.click();
+                submitButton = document
+                    .getElementById("myframe")
+                    .contentDocument.getElementById("mybutton");
+                submitButton.click();
             }
         };
 
