@@ -61,6 +61,49 @@ browser.runtime
                 submitButton.click();
             }
         };
+        const downloadAdmitCard = () => {
+            const newWindow = window.open(
+                "https://erp.iitkgp.ac.in/Acad/studentExamTimeView.jsp"
+            );
+
+            if (newWindow) {
+                newWindow.addEventListener("load", async () => {
+                    try {
+                        // Fetch the PDF data from the URL
+                        const response = await fetch(
+                            "https://erp.iitkgp.ac.in/Acad/StudentAdmitCard.jsp"
+                        );
+
+                        // Check if the response is successful
+                        if (response.ok) {
+                            // Get the PDF data as a Blob (binary large object)
+                            const pdfBlob = await response.blob();
+
+                            // Create a temporary link to initiate the download
+                            const downloadLink = document.createElement("a");
+                            downloadLink.href =
+                                window.URL.createObjectURL(pdfBlob);
+                            downloadLink.download = "endsem_admitcard.pdf";
+                            document.body.appendChild(downloadLink);
+                            downloadLink.click();
+                            document.body.removeChild(downloadLink);
+
+                            // Close the window after successfull download
+                            newWindow.close();
+                        } else {
+                            console.error(
+                                "Failed to fetch the PDF:",
+                                response.status
+                            );
+                        }
+                    } catch (error) {
+                        console.error("Error occurred:", error);
+                    }
+                });
+            } else {
+                console.error("Failed to open new window.");
+            }
+        };
 
         const solveCaptcha = async () => {
             captchaImage = document
@@ -182,7 +225,10 @@ browser.runtime
                 .contentDocument.querySelectorAll(
                     'a[href="javascript:void(0)"]'
                 );
-            if (courseCounter == course.length) return;
+            if (courseCounter == course.length) {
+                downloadAdmitCard();
+                return;
+            }
             course[courseCounter].click();
             courseCounter++;
 
