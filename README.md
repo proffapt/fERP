@@ -21,35 +21,23 @@
 
 ***
 
-<table>
+<div align="center">
+  <table>
   <tr>
     <th>Cascading Mode (Default)</th>
     <th>Selective Mode</th>
-  </tr>
-  <tr>
-    <td>
-    
-  ![mode1][mode1-demo-gif]
-  
-  </td> 
-  <td>
-      
-  ![mode2][mode2-demo-gif]
-  
-  </td>
-  </tr>
   <tr>
   <td>
 
   - Uses the same feedback type for all forms
-  - Fills the next form after user submits previous form
+  - Fills next form after previous form is submitted
   - Skips submitted forms, fills the remaining ones
 
   </td>
   <td>
     
   - User selects the feedback type for each form
-  - Type the captcha and submit the form
+  - Fills captcha & submit the form (<b>auto</b>/<b>manual</b>)
   - User decides the order of form submission    
 
   </td>
@@ -57,9 +45,26 @@
   <tr>
   <td colspan="2" align="center">
       
-  Form can be submitted by pressing `Enter` key just after typing the captcha
+  Fills the captcha, submits the feedback form (in case of `cascade mode` - repeats, until all forms are submitted)
+    
+  </td>
+  </tr>
+  <tr>
+  <td colspan="2" align="center">
+      
+  Automatically downloads the admit card after all the forms are submitted using `cascade mode`
+    
+  </td>
+  </tr>
+  <tr>
+  <td colspan="2" align="center">
+      
+  Form can be submitted by pressing `Enter` key after typing captcha in manual mode
   
   </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">Re-fills the form with previously given feedback type, if wrong captcha was filled</td>
   </tr>
   <tr>
   <tr>
@@ -83,9 +88,6 @@
   </td>
   </tr>
   <tr>
-    <td colspan="2" align="center">Re-fills the form with previously given feedback type, if wrong captcha was typed</td>
-  </tr>
-  <tr>
   <td colspan="2" align="center">
 
   <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
@@ -98,6 +100,7 @@
   </td>
   </tr>
 </table>
+</div>
 
 ***
 
@@ -208,8 +211,6 @@ It is recommended to install the extension from the respective extension stores 
 [chrome-webstore-link]: https://chromewebstore.google.com/detail/ferp/cdmjkgfdjjebpjejjnckkgljdmijjnom
 [firefox-shield]: https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg
 [chrome-shield]: https://github-production-user-asset-6210df.s3.amazonaws.com/86282911/283838252-34120216-076d-46ab-8646-cd5845fd8eb5.jpg
-[mode1-demo-gif]: https://github.com/proffapt/fERP/assets/86282911/36034a97-f732-44da-a907-b8218e2927fe
-[mode2-demo-gif]: https://github.com/proffapt/fERP/assets/86282911/898114a1-e352-4d0e-9a68-e84a49e5d101
 [contributors-shield]: https://img.shields.io/github/contributors/proffapt/fERP.svg?style=for-the-badge
 [contributors-url]: https://github.com/proffapt/fERP/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/proffapt/fERP.svg?style=for-the-badge
