@@ -19,9 +19,11 @@
   </p>
 </div>
 
+[![Tutorial v1.9.0](https://img.youtube.com/vi/uUf2_91boco/maxresdefault.jpg)](https://www.youtube.com/watch?v=uUf2_91boco)
+
 ***
 
-<div align="center">
+<div align="center">  
   <table>
   <tr>
     <th>Cascading Mode (Default)</th>
