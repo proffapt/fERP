@@ -1,5 +1,14 @@
 # CHANGELOG
 
+ ## [1.9.0](https://github.com/proffapt/fERP/compare/v1.8.1...v1.9.0) (2024-04-17)
+
+
+### Features
+
+*  auto fill captcha ([4297fa2](https://github.com/proffapt/fERP/commit/4297fa294b143af4e6f4c6265e9f244fcb26c287))
+* auto download admit card ([b489f26](https://github.com/proffapt/fERP/commit/b489f26daf9387401bf8a4ae1b14649afaa0788f))
+
+ 
  ### [1.8.1](https://github.com/proffapt/fERP/compare/v1.8.0...v1.8.1) (2024-04-13)
 
 
