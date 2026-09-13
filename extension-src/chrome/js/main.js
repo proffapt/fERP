@@ -22,7 +22,7 @@ positiveFeedbackButton.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
-            files: ["/js/feedback.js"],
+            files: ["/libs/tesseract.min.js", "/js/feedback.js"],
         });
     });
     chrome.runtime.onMessage.addListener(function (
@@ -46,7 +46,7 @@ neutralFeedbackButton.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
-            files: ["/js/feedback.js"],
+            files: ["/libs/tesseract.min.js", "/js/feedback.js"],
         });
     });
     chrome.runtime.onMessage.addListener(function (
@@ -70,7 +70,7 @@ negativeFeedbackButton.addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
-            files: ["/js/feedback.js"],
+            files: ["/libs/tesseract.min.js", "/js/feedback.js"],
         });
     });
     chrome.runtime.onMessage.addListener(function (

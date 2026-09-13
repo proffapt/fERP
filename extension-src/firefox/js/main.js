@@ -27,7 +27,9 @@ positiveFeedbackButton.addEventListener("click", () => {
                 afc: isCaptchaChecked,
             });
     });
-    browser.tabs.executeScript({ file: "/js/feedback.js" });
+    browser.tabs
+        .executeScript({ file: "/libs/tesseract.min.js" })
+        .then(() => browser.tabs.executeScript({ file: "/js/feedback.js" }));
     browser.runtime.onMessage.removeListener(
         (request, sender, sendResponse) => {}
     );
@@ -43,7 +45,9 @@ neutralFeedbackButton.addEventListener("click", () => {
                 afc: isCaptchaChecked,
             });
     });
-    browser.tabs.executeScript({ file: "/js/feedback.js" });
+    browser.tabs
+        .executeScript({ file: "/libs/tesseract.min.js" })
+        .then(() => browser.tabs.executeScript({ file: "/js/feedback.js" }));
     browser.runtime.onMessage.removeListener(
         (request, sender, sendResponse) => {}
     );
@@ -59,7 +63,9 @@ negativeFeedbackButton.addEventListener("click", () => {
                 afc: isCaptchaChecked,
             });
     });
-    browser.tabs.executeScript({ file: "/js/feedback.js" });
+    browser.tabs
+        .executeScript({ file: "/libs/tesseract.min.js" })
+        .then(() => browser.tabs.executeScript({ file: "/js/feedback.js" }));
     browser.runtime.onMessage.removeListener(
         (request, sender, sendResponse) => {}
     );
