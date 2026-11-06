@@ -3,25 +3,20 @@
     "name": "fERP",
     "description": "Automates the process of filling up feedback form in ERP for IIT KGP students",
     "homepage_url": "https://github.com/proffapt/fERP",
-    "version": "1.9.0",
-
+    "version": "2.0.0",
     "permissions": [
         "activeTab",
-        "*://erp.iitkgp.ac.in/IIT_ERP*/*",
-        "https://gymkhana.iitkgp.ac.in/api/ecs"
+        "*://erp.iitkgp.ac.in/*"
     ],
-
     "browser_action": {
         "default_title": "fERP",
         "default_popup": "main.html"
     },
-
     "browser_specific_settings": {
         "gecko": {
             "id": "proffapt@pm.me"
         }
     },
-
     "icons": {
         "16": "images/fERP16.png",
         "32": "images/fERP32.png",

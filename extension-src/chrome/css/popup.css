@@ -1,0 +1,156 @@
+:root {
+    --bg: #ffffff;
+    --surface: #f4f4f6;
+    --border: #e4e4e8;
+    --text: #1d1d22;
+    --muted: #6b6b76;
+    --positive: #2f9e44;
+    --neutral: #4c6ef5;
+    --negative: #e03131;
+    --ok-bg: #ebfbee;
+    --warn-bg: #fff4e6;
+    --warn: #d9480f;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #1c1c21;
+        --surface: #26262d;
+        --border: #34343c;
+        --text: #ececf1;
+        --muted: #9a9aa6;
+        --positive: #51cf66;
+        --neutral: #748ffc;
+        --negative: #ff6b6b;
+        --ok-bg: #1f3326;
+        --warn-bg: #3a2a1c;
+        --warn: #ffa94d;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    width: 300px;
+    padding: 14px;
+    background: var(--bg);
+    color: var(--text);
+    font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+header img {
+    width: 34px;
+    height: 34px;
+    display: block;
+}
+
+h1 {
+    font-size: 16px;
+    font-weight: 650;
+}
+
+header p,
+.hint {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btn {
+    display: grid;
+    grid-template-columns: 12px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.12s, transform 0.06s;
+}
+
+.btn small {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 11.5px;
+}
+
+.btn:hover {
+    border-color: var(--accent);
+}
+
+.btn:active {
+    transform: scale(0.985);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: progress;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.positive { --accent: var(--positive); }
+.neutral { --accent: var(--neutral); }
+.negative { --accent: var(--negative); }
+
+.status {
+    padding: 9px 11px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    background: var(--ok-bg);
+}
+
+.status.warn {
+    background: var(--warn-bg);
+    color: var(--warn);
+}
+
+.hint {
+    margin-top: 2px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+}
+
+footer a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--text);
+}

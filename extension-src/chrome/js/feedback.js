@@ -1,425 +1,182 @@
-var profCounter = 0,
-    courseCounter = 0;
+// Injected into the ERP tab when a feedback type is picked in the popup.
+// Wrapped in an IIFE so it can be injected more than once per page.
+(() => {
+    const api = typeof browser !== "undefined" ? browser : chrome;
 
-chrome.runtime
-    .sendMessage({
-        action: "getStatusOfAll&FeedbackType",
-    })
-    .then((request) => {
-        function sleep(ms) {
-            return new Promise((resolve) => setTimeout(resolve, ms));
+    const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+    // The form may sit inside the "myframe" iframe or in the page itself.
+    const getDoc = () => {
+        const frame = document.getElementById("myframe");
+        return frame ? frame.contentDocument || frame.contentWindow.document : document;
+    };
+
+    const report = (result) => api.runtime.sendMessage({ type: "ferp:result", ...result });
+
+    // ---------------------------------------------------------------- text
+    // The new portal rejects comments under 10 words or with double spaces.
+    const TEXT = {
+        positive: {
+            teacher: [
+                "The teacher is understanding approachable and ensures all students understand the fundamental concepts thoroughly.",
+                "The teacher has deep clarity of the subject and explains complex topics very intuitively.",
+                "The teacher clears all doubts with patience and provides excellent real world practical examples.",
+                "The teacher maintains an optimum pace of teaching and keeps the lectures interactive and engaging.",
+                "The teacher releases lecture slides and course reference materials promptly for all students.",
+                "The teacher provides very constructive feedback on assignments and assessments throughout the semester.",
+            ],
+            course: [
+                "This course is exceptionally well structured and gave me a great understanding of the subject.",
+                "This course has well planned tutorials and assignments that significantly support real world learning.",
+                "This course provides ample opportunities to understand and apply core concepts beyond simple memorization.",
+                "This course conveys the essence of the subject with well balanced continuous assessment activities.",
+            ],
+            difficulty: [
+                "Everything taught in the class has been explained nicely and there are no specific difficulties.",
+                "The learning activities and continuous assessments are very helpful for understanding the topics properly.",
+            ],
+            suggestion: [
+                "No changes are required at this stage as the current teaching pace is completely satisfactory.",
+                "The course structure and content delivery are already well organized and completely meeting all learning objectives.",
+            ],
+        },
+        neutral: {
+            teacher: [
+                "The teacher covers the syllabus adequately and answers student questions when approached in class.",
+                "The teacher follows standard curriculum slides and conducts lectures at a reasonable normal speed.",
+                "The teacher provides standard coursework material and conducts assessments as scheduled in the academic calendar.",
+            ],
+            course: [
+                "The course content is standard and covers the foundational syllabus topics with moderate workload.",
+                "The assignments and tutorials are of regular difficulty and adequate for examination preparation purposes.",
+                "The subject topics are covered normally and the overall learning experience is completely standard.",
+            ],
+            difficulty: [
+                "No major difficulties were faced and the course requirements were moderately manageable for students.",
+                "The assessment practices and continuous evaluation load are moderate throughout this academic semester.",
+            ],
+            suggestion: [
+                "No specific changes are necessary as the overall course structure remains standard and satisfactory.",
+            ],
+        },
+        negative: {
+            teacher: [
+                "The lectures could be made significantly more engaging and approachable for all participating students.",
+                "The teacher could explain core theoretical concepts more clearly with additional illustrative practical examples.",
+                "The teacher should consider pacing the lectures more evenly so that students can follow along better.",
+            ],
+            course: [
+                "The course content feels overwhelming and would benefit greatly from better organization and structured tutorials.",
+                "The continuous assessment workload is quite heavy and requires better distribution across the academic semester.",
+                "More practical problem solving sessions are needed to understand the difficult concepts in this course.",
+            ],
+            difficulty: [
+                "Several topics in this course were challenging to follow without sufficient prerequisite background explanations.",
+                "The pace and difficulty of assignments should be adjusted to allow sufficient time for conceptual understanding.",
+            ],
+            suggestion: [
+                "The instructor could provide more reference materials and clear examples to facilitate better learning.",
+            ],
+        },
+    };
+
+    // Picks a comment for a textarea from its name/placeholder.
+    const commentFor = (type, ta, idx) => {
+        const t = TEXT[type];
+        const hint = `${ta.getAttribute("name") || ""} ${ta.getAttribute("placeholder") || ""}`.toLowerCase();
+        let pool;
+        if (/6|aspect|helped/.test(hint)) pool = type === "negative" ? t.teacher : t.teacher.concat(t.course);
+        else if (/7|difficult/.test(hint)) pool = type === "negative" ? t.course : t.difficulty;
+        else if (/8|change|improve|suggest/.test(hint)) pool = t.suggestion;
+        else {
+            const all = t.teacher.concat(t.course, t.difficulty, t.suggestion);
+            return all[idx % all.length];
         }
+        return pick(pool).replace(/\s{2,}/g, " ").trim();
+    };
 
-        const fill_form = async () => {
-            textBox = document
-                .getElementById("myframe")
-                .contentDocument.querySelectorAll("textarea");
-            radioButton = document
-                .getElementById("myframe")
-                .contentDocument.querySelectorAll('input[type="radio"]');
-            prof = document
-                .getElementById("myframe")
-                .contentDocument.querySelectorAll('input[name="check"]');
+    // ------------------------------------------------------------ new portal
+    const isNewPortal = (doc) =>
+        !!(
+            doc.getElementById("studentFeedbackResponseForm") ||
+            doc.querySelector(".radio_row") ||
+            doc.querySelector(".questionContainer_Class")
+        );
 
-            if (textBox.length == 5) {
-                switch (request.preference) {
-                    case "positive":
-                        positive_theory_feedback();
-                        break;
-                    case "neutral":
-                        neutral_theory_feedback();
-                        break;
-                    case "negative":
-                        negative_theory_feedback();
-                        break;
-                }
-            } else {
-                switch (request.preference) {
-                    case "positive":
-                        positive_lab_feedback();
-                        break;
-                    case "neutral":
-                        neutral_lab_feedback();
-                        break;
-                    case "negative":
-                        negative_lab_feedback();
-                        break;
-                }
-            }
+    const choose = (type, radios, isPace) => {
+        const byValue = (...vals) => vals.map((v) => radios.find((r) => r.value === v)).find(Boolean);
+        if (isPace) {
+            // Pace is "too slow ... too fast": the middle option is the good one.
+            const label = (r) =>
+                `${r.value} ${
+                    (r.id && r.ownerDocument.querySelector(`label[for="${r.id}"]`)?.textContent) ||
+                    r.closest("label")?.textContent ||
+                    r.nextSibling?.textContent ||
+                    ""
+                }`;
+            const middle = radios[Math.floor(radios.length / 2)];
+            if (type === "negative") return pick([radios[0], radios[radios.length - 1]]);
+            return radios.find((r) => /optimum|just right|appropriate|moderate/i.test(label(r))) || middle;
+        }
+        if (type === "positive") return byValue(Math.random() < 0.5 ? "5" : "4", "5") || radios[0];
+        if (type === "neutral") return byValue(Math.random() < 0.5 ? "3" : "4", "3") || radios[Math.min(2, radios.length - 1)];
+        return byValue(Math.random() < 0.5 ? "1" : "2", "1") || radios[radios.length - 1];
+    };
 
-            addSubmissionListeners();
+    const fillNewPortal = (doc, type) => {
+        let ratings = 0;
+        let comments = 0;
 
-            if (request.afc) {
-                captchaText = document
-                    .getElementById("myframe")
-                    .contentDocument.getElementById("passline");
-                captchaText.value = await solveCaptcha();
+        doc.querySelectorAll(".radio_row").forEach((row) => {
+            const radios = Array.from(row.querySelectorAll("input.question_cls, input[type='radio']"));
+            if (!radios.length) return;
+            const rowText = (row.closest("tr")?.textContent || row.textContent || "").toLowerCase();
+            const target = choose(type, radios, rowText.includes("pace"));
+            if (!target) return;
+            target.checked = true;
+            ["input", "change", "click"].forEach((e) => target.dispatchEvent(new Event(e, { bubbles: true })));
+            const err = row.querySelector(".error");
+            if (err) err.textContent = "";
+            ratings++;
+        });
 
-                submitButton = document
-                    .getElementById("myframe")
-                    .contentDocument.getElementById("mybutton");
-                submitButton.click();
-            }
-        };
+        doc.querySelectorAll("textarea").forEach((ta, idx) => {
+            ta.value = commentFor(type, ta, idx);
+            ["input", "change"].forEach((e) => ta.dispatchEvent(new Event(e, { bubbles: true })));
+            const err = ta.parentElement?.querySelector(".errorTextarea");
+            if (err) err.textContent = "";
+            comments++;
+        });
 
-        const downloadAdmitCard = () => {
-            const newWindow = window.open(
-                "https://erp.iitkgp.ac.in/Acad/studentExamTimeView.jsp"
-            );
-
-            if (newWindow) {
-                newWindow.addEventListener("load", async () => {
-                    try {
-                        // Fetch the PDF data from the URL
-                        const response = await fetch(
-                            "https://erp.iitkgp.ac.in/Acad/StudentAdmitCard.jsp"
-                        );
-
-                        // Check if the response is successful
-                        if (response.ok) {
-                            // Get the PDF data as a Blob (binary large object)
-                            const pdfBlob = await response.blob();
-
-                            // Create a temporary link to initiate the download
-                            const downloadLink = document.createElement("a");
-                            downloadLink.href =
-                                window.URL.createObjectURL(pdfBlob);
-                            downloadLink.download = "endsem_admitcard.pdf";
-                            document.body.appendChild(downloadLink);
-                            downloadLink.click();
-                            document.body.removeChild(downloadLink);
-
-                            // Close the window after successfull download
-                            newWindow.close();
-                        } else {
-                            console.error(
-                                "Failed to fetch the PDF:",
-                                response.status
-                            );
-                        }
-                    } catch (error) {
-                        console.error("Error occurred:", error);
+        // Leave the captcha to the user; Enter in the captcha box submits.
+        const captcha = doc.getElementById("captchaInput");
+        const save = doc.getElementById("save_btn");
+        if (captcha) {
+            if (save && !captcha.dataset.ferp) {
+                captcha.dataset.ferp = "1";
+                captcha.addEventListener("keydown", (e) => {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        save.click();
                     }
                 });
-            } else {
-                console.error("Failed to open new window.");
             }
-        };
+            captcha.scrollIntoView({ behavior: "smooth", block: "center" });
+            captcha.focus();
+        }
 
-        const solveCaptcha = async () => {
-            captchaImage = document
-                .getElementById("myframe")
-                .contentDocument.getElementsByTagName("img");
-            captchaImageSrc = captchaImage[0].src;
+        report({ ok: ratings + comments > 0, ratings, comments });
+    };
 
-            imageSrcArray = captchaImageSrc.split("/");
-            captchaMagic = imageSrcArray[imageSrcArray.length - 1];
-            erpMagic = `${
-                document.cookie.split(";")[0].split("=")[1]
-            }.${document.title.split(" ").slice(1, -4).join(" ")}`;
-            url = `https://gymkhana.iitkgp.ac.in/api/ecs/${captchaMagic}/${erpMagic}`;
-
-            captchaResponse = await fetch(url);
-            captchaResult = await captchaResponse.json();
-            captchaValue = captchaResult.captcha;
-
-            return captchaValue;
-        };
-
-        const removeSubmissionListeners = () => {
-            prof = document
-                .getElementById("myframe")
-                .contentDocument.querySelectorAll('input[name="check"]');
-            const profList = Array.from(prof);
-            currProfIndex = profList.findIndex((prof) => prof.checked);
-            prof[currProfIndex].click();
-        };
-
-        const addSubmissionListeners = () => {
-            captchaText = document
-                .getElementById("myframe")
-                .contentDocument.getElementById("passline");
-            submitButton = document
-                .getElementById("myframe")
-                .contentDocument.getElementById("sub");
-
-            // Delete existing submit button and create a new button
-            parentElement = submitButton.parentNode;
-            submitButton.remove();
-            newSubmitButton = document.createElement("input");
-            newSubmitButton.id = "mybutton";
-            newSubmitButton.className = "button";
-            newSubmitButton.type = "button";
-            newSubmitButton.value = "Submit Feedback";
-            parentElement.appendChild(newSubmitButton);
-
-            const submitForm = async () => {
-                var form = document
-                    .getElementById("myframe")
-                    .contentDocument.getElementsByName("form1");
-                form[0].method = "POST";
-                form[0].action = "rev_feed_submit.jsp";
-                form[0].submit();
-
-                await processSubmission();
-            };
-
-            newSubmitButton.addEventListener("click", async (event) => {
-                event.preventDefault();
-                await submitForm();
-            });
-            captchaText.addEventListener("keydown", async (event) => {
-                if (event.key === "Enter") {
-                    event.preventDefault();
-                    await submitForm();
-                }
-            });
-        };
-
-        const processSubmission = async () => {
-            await sleep(3000);
-
-            submitButton = document
-                .getElementById("myframe")
-                .contentDocument.getElementById("sub");
-            if (submitButton != null) {
-                if (!request.all) {
-                    fill_form();
-                } else {
-                    profCounter--;
-                    handleProf();
-                }
-            } else {
-                if (request.all) {
-                    prof = document
-                        .getElementById("myframe")
-                        .contentDocument.querySelectorAll(
-                            'input[name="check"]'
-                        );
-                    if (profCounter < prof.length) handleProf();
-                    else handleCourse();
-                }
-            }
-        };
-
-        const handleProf = () => {
-            prof = document
-                .getElementById("myframe")
-                .contentDocument.querySelectorAll('input[name="check"]');
-            prof[profCounter].click();
-            profCounter++;
-
-            submitButton = document
-                .getElementById("myframe")
-                .contentDocument.getElementById("sub");
-            if (submitButton != null) {
-                fill_form();
-            } else {
-                if (profCounter < prof.length) handleProf();
-                else handleCourse();
-            }
-        };
-
-        const handleCourse = () => {
-            course = document
-                .getElementById("myframe")
-                .contentDocument.querySelectorAll(
-                    'a[href="javascript:void(0)"]'
-                );
-            if (courseCounter == course.length) {
-                downloadAdmitCard();
-                return;
-            }
-            course[courseCounter].click();
-            courseCounter++;
-
-            profCounter = 0;
-            handleProf();
-        };
-
+    // ------------------------------------------------------------------ run
+    api.runtime.sendMessage({ type: "ferp:getPreference" }).then(({ feedback }) => {
         try {
-            if (request.all && courseCounter == 0) {
-                handleCourse();
-            } else if (!request.all) {
-                removeSubmissionListeners();
-                fill_form();
-            }
+            const doc = getDoc();
+            if (isNewPortal(doc)) fillNewPortal(doc, feedback);
+            else report({ ok: false, reason: "no-form" });
         } catch (err) {
-            console.error(err);
+            console.error("[fERP]", err);
+            report({ ok: false, reason: "error" });
         }
     });
-
-function positive_theory_feedback() {
-    var teacherStrengths = [
-        "The teacher is understanding, approachable and caring",
-        "The teacher has deep understanding and clarity of the subject",
-        "The teacher clears doubts and make sure the students understand the concepts",
-        "The teacher ensures that the speed of the lecture is perfect for everyone",
-        "The teacher releases the slides and materials as soon as possible",
-        "The teacher makes sure that the assignment load is not a lot on students",
-    ];
-    // Randomly selecting teacher's strengths from the array created above
-    textBox[0].value =
-        teacherStrengths[Math.floor(Math.random() * teacherStrengths.length)];
-
-    textBox[1].value = "Nothing as such"; // this is the default Weakness
-    textBox[3].value = "Nothing as such"; // replace with relevant text
-
-    courseStrengths = [
-        "This course is well structured and gave me a great understanding of the fundamental concepts",
-        "This course is good for real life applications",
-        "This course had enough number of tests to make the course thorough",
-        "This course conveys the essence of the subject to the students at its best",
-        "This course's content is intuitive",
-        "This course is designed to ensure that the students are not left behind",
-        "Overall this course was interesting and fun to study!",
-    ];
-    // Randomly selecting course's strengths from the array created above
-    textBox[2].value =
-        courseStrengths[Math.floor(Math.random() * courseStrengths.length)];
-
-    textBox[4].value = "No suggestions as such, so far so good";
-
-    for (i = 5; i < textBox.length; i++) textBox[i].value = "NIL"; // extra spaces "NIL"ed
-
-    // Clicks `Excellent` OR `Very Good` everywhere
-    for (i = prof.length; i < radioButton.length - 10; i += 5)
-        if (Math.floor(Math.random() * 2)) radioButton[i + 3].click();
-        else radioButton[i + 4].click();
-    radioButton[prof.length + 17].click(); // Clicks `Just Right` for pace
-    radioButton[prof.length + 52].click(); // Clicks `Average` for efforts
-    radioButton[prof.length + 57].click(); // Clicks `Average` for Workload
-}
-
-function positive_lab_feedback() {
-    var teacherStrengths = [
-        "The teacher is understanding, approachable and caring",
-        "The teacher has deep understanding and clarity of the subject",
-        "The teacher clears doubts and make sure the students understand the concepts",
-        "The teacher ensures that the students get ample amount of time for the experiment",
-    ];
-    // Randomly selecting teacher's strengths from the array created above
-    textBox[0].value =
-        teacherStrengths[Math.floor(Math.random() * teacherStrengths.length)];
-
-    textBox[1].value = "Nothing as such"; // this is the default Weakness
-    textBox[2].value = "No suggestions as such, so far so good";
-
-    for (i = 3; i < textBox.length; i++) textBox[i].value = "NIL"; // extra spaces "NIL"ed
-
-    // Clicks `Excellent` OR `Very Good` everywhere
-    for (i = prof.length; i < radioButton.length; i += 5)
-        if (Math.floor(Math.random() * 2)) radioButton[i + 3].click();
-        else radioButton[i + 4].click();
-    radioButton[prof.length + 47].click(); // Clicks `Average` for efforts
-    radioButton[prof.length + 52].click(); // Clicks `Average` for Workload
-}
-
-function neutral_theory_feedback() {
-    for (i = 0; i < textBox.length; i++) textBox[i].value = "Nothing as such";
-
-    // Clicks `Good` OR `Very Good` everywhere
-    for (i = prof.length; i < radioButton.length - 10; i += 5)
-        if (Math.floor(Math.random() * 2)) radioButton[i + 2].click();
-        else radioButton[i + 3].click();
-    // Randomising selection between `Heavy` & `Average` for Efforts and Workload
-    for (i = prof.length + 52; i < radioButton.length; i += 5)
-        if (Math.floor(Math.random() * 2)) radioButton[i].click();
-        else radioButton[i + 1].click();
-}
-
-function neutral_lab_feedback() {
-    for (i = 0; i < textBox.length; i++) textBox[i].value = "Nothing as such";
-
-    // Clicks `Good` OR `Very Good` everywhere
-    for (i = prof.length; i < radioButton.length; i += 5)
-        if (Math.floor(Math.random() * 2)) radioButton[i + 2].click();
-        else radioButton[i + 3].click();
-    // Randomising selection between `Heavy` & `Average` for Efforts and Workload
-    for (i = prof.length + 47; i < prof.length + 53; i += 5)
-        if (Math.floor(Math.random() * 2)) radioButton[i].click();
-        else radioButton[i + 1].click();
-}
-
-function negative_theory_feedback() {
-    var teacherWeaknesses = [
-        "The teacher is not approachable",
-        "The teacher doesn't make sure the students understand the concepts",
-        "The teacher doesn't ensures that the speed of the lecture is perfect for everyone",
-        "The teacher is less engaging",
-        "The teacher doesn't release the slides and materials on time",
-        "The teacher gives too much workload in form of assignments",
-    ];
-    // Randomly selecting teacher's weaknesses from the array created above
-    textBox[1].value =
-        teacherWeaknesses[Math.floor(Math.random() * teacherWeaknesses.length)];
-
-    textBox[0].value = "Unfortunately, can not remember any."; // this is the default Strength
-    textBox[2].value = "Unfortunately, can not remember any."; // replace with relevant text
-
-    courseWeaknesses = [
-        "This course is not well structured and assumed the students to already have the basic knowledge of it",
-        "This course doesn't reflect any real life applications for the subject of study",
-        "This course conveys the essence of the subject in a hard to grasp manner",
-        "This course's content is not intuitive",
-        "This course has a steep learning curve",
-        "Overall this course was not interesting to study!",
-    ];
-    // Randomly selecting course's weaknesses from the array created above
-    textBox[3].value =
-        courseWeaknesses[Math.floor(Math.random() * courseWeaknesses.length)];
-
-    suggestions = [
-        "Update the course's content",
-        "Make the course more engaging",
-    ];
-    // Randomly selecting suggestions from the array created above
-    textBox[4].value =
-        suggestions[Math.floor(Math.random() * suggestions.length)];
-
-    for (i = 5; i < textBox.length; i++) textBox[i].value = "NIL"; // extra spaces "NIL"ed
-
-    // Clicks `Poor` OR `Fair` everywhere
-    for (i = prof.length; i < radioButton.length - 10; i += 5)
-        if (Math.floor(Math.random() * 2)) radioButton[i].click();
-        else radioButton[i + 1].click();
-    // Randomising selection between `Too Slow` & `Too Fast`
-    if (Math.floor(Math.random() * 2)) radioButton[prof.length + 15].click();
-    else radioButton[prof.length + 19].click();
-    // Randomising selection between `Heavy` & `Very Heavy` for Efforts and Workload
-    for (i = prof.length + 53; i < radioButton.length; i += 5)
-        if (Math.floor(Math.random() * 2)) radioButton[i].click();
-        else radioButton[i + 1].click();
-}
-
-function negative_lab_feedback() {
-    var teacherWeaknesses = [
-        "The teacher is not approachable",
-        "The teacher doesn't make sure the students understand the concepts",
-        "The teacher is less engaging",
-        "The teacher doesn't release the experiment theory and reference material on time",
-    ];
-    // Randomly selecting teacher's weaknesses from the array created above
-    textBox[1].value =
-        teacherWeaknesses[Math.floor(Math.random() * teacherWeaknesses.length)];
-
-    textBox[0].value = "Unfortunately, can not remember any."; // this is the default Strength
-
-    suggestions = [
-        "Fix broken or faulty equipments, wastes a lot of time",
-        "Give some extra theory regarding the experiments",
-    ];
-    textBox[2].value =
-        suggestions[Math.floor(Math.random() * suggestions.length)];
-
-    for (i = 3; i < textBox.length; i++) textBox[i].value = "NIL"; // extra spaces "NIL"ed
-
-    // Clicks `Poor` OR `Fair` everywhere
-    for (i = prof.length; i < radioButton.length; i += 5)
-        if (Math.floor(Math.random() * 2)) radioButton[i].click();
-        else radioButton[i + 1].click();
-    // Randomising selection between `Heavy` & `Very Heavy` for Efforts and Workload
-    for (i = prof.length + 48; i < prof.length + 54; i += 5)
-        if (Math.floor(Math.random() * 2)) radioButton[i].click();
-        else radioButton[i + 1].click();
-}
+})();
