@@ -2,20 +2,18 @@
     "manifest_version": 3,
     "name": "fERP",
     "description": "Automates the process of filling up feedback form in ERP for IIT KGP students",
-    "version": "1.9.0",
-
-    "permissions": ["scripting", "activeTab"],
-
-    "host_permissions": [
-        "*://erp.iitkgp.ac.in/IIT_ERP*/*",
-        "https://gymkhana.iitkgp.ac.in/api/ecs"
+    "version": "2.0.0",
+    "permissions": [
+        "scripting",
+        "activeTab"
     ],
-
+    "host_permissions": [
+        "*://erp.iitkgp.ac.in/*"
+    ],
     "action": {
         "default_popup": "main.html",
         "default_title": "fERP"
     },
-
     "icons": {
         "16": "images/fERP16.png",
         "32": "images/fERP32.png",

@@ -26,71 +26,35 @@
 <div align="center">  
   <table>
   <tr>
-    <th>Cascading Mode (Default)</th>
-    <th>Selective Mode</th>
-  <tr>
-  <td>
+  <td align="center">
 
-  - Uses the same feedback type for all forms
-  - Fills next form after previous form is submitted
-  - Skips submitted forms, fills the remaining ones
-
-  </td>
-  <td>
-    
-  - User selects the feedback type for each form
-  - Fills captcha & submit the form (<b>auto</b>/<b>manual</b>)
-  - User decides the order of form submission    
+  Works with the new ERP feedback portal
 
   </td>
   </tr>
   <tr>
-  <td colspan="2" align="center">
-      
-  Fills the captcha, submits the feedback form (in case of `cascade mode` - repeats, until all forms are submitted)
-    
+  <td align="center">
+
+  Three feedback types: `positive`, `neutral` & `negative`, with randomised ratings and comments
+
   </td>
   </tr>
   <tr>
-  <td colspan="2" align="center">
-      
-  Automatically downloads the admit card after all the forms are submitted using `cascade mode`
-    
+  <td align="center">
+
+  Comments meet the portal's rules (10+ words, no double spaces)
+
   </td>
   </tr>
   <tr>
-  <td colspan="2" align="center">
-      
-  Form can be submitted by pressing `Enter` key after typing captcha in manual mode
-  
+  <td align="center">
+
+  You review the form, type the captcha and press `Enter` to submit
+
   </td>
   </tr>
   <tr>
-    <td colspan="2" align="center">Re-fills the form with previously given feedback type, if wrong captcha was filled</td>
-  </tr>
-  <tr>
-  <tr>
-  <td colspan="2" align="center">
-      
-  Bypass confirmation pop-ups, which appear everytime a form is submitted
-  
-  </td>
-  </tr>
-  <td colspan="2" align="center">
-    
-  Has three feedback types, namely - `positive`, `negative` & `neutral`
-  
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2" align="center">
-      
-  Invoking a feedback type randomises the choice of _available options_
-  
-  </td>
-  </tr>
-  <tr>
-  <td colspan="2" align="center">
+  <td align="center">
 
   <a href="https://addons.mozilla.org/en-US/firefox/addon/ferp/">
     <img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="get fERP from mozilla add-on store" height="90">

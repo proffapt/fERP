@@ -1,90 +1,52 @@
-// getting required elements from the extension
-const positiveFeedbackButton = document.getElementById("positive_btn");
-const neutralFeedbackButton = document.getElementById("neutral_btn");
-const negativeFeedbackButton = document.getElementById("negative_btn");
-const allCheckBox = document.getElementById("use_for_all");
-const captchaCheckBox = document.getElementById("auto_fill_captcha");
+const api = typeof browser !== "undefined" ? browser : chrome;
 
-// Sending status of checkboxes  to content scripts
-var isAllChecked = true;
-allCheckBox.addEventListener("click", () => {
-    isAllChecked = allCheckBox.checked;
-});
-var isCaptchaChecked = true;
-captchaCheckBox.addEventListener("click", () => {
-    isCaptchaChecked = captchaCheckBox.checked;
-});
+const statusEl = document.getElementById("status");
+const buttons = document.querySelectorAll(".btn");
+let feedback = null;
 
-var feedback;
+const setStatus = (text, warn = false) => {
+    statusEl.textContent = text;
+    statusEl.classList.toggle("warn", warn);
+    statusEl.hidden = false;
+};
 
-positiveFeedbackButton.addEventListener("click", () => {
-    feedback = "positive";
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.scripting.executeScript({
-            target: { tabId: tabs[0].id },
-            files: ["/js/feedback.js"],
-        });
-    });
-    chrome.runtime.onMessage.addListener(function (
-        request,
-        sender,
-        sendResponse
-    ) {
-        if (request.action === "getStatusOfAll&FeedbackType") {
-            sendResponse({
-                preference: feedback,
-                all: isAllChecked,
-                afc: isCaptchaChecked,
-            });
+const setBusy = (busy) => buttons.forEach((b) => (b.disabled = busy));
+
+api.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+    if (msg.type === "ferp:getPreference") {
+        sendResponse({ feedback });
+        return;
+    }
+    if (msg.type === "ferp:result") {
+        setBusy(false);
+        if (msg.ok) {
+            setStatus(`✓ Filled ${msg.ratings} ratings and ${msg.comments} comments. Review, type the captcha, press Enter.`);
+        } else if (msg.reason === "no-form") {
+            setStatus("No feedback form found on this page. Open a course's feedback form first.", true);
+        } else {
+            setStatus("Something went wrong while filling. Please report an issue.", true);
         }
-        chrome.runtime.onMessage.removeListener(arguments.callee);
-    });
+    }
 });
 
-neutralFeedbackButton.addEventListener("click", () => {
-    feedback = "neutral";
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.scripting.executeScript({
-            target: { tabId: tabs[0].id },
-            files: ["/js/feedback.js"],
-        });
-    });
-    chrome.runtime.onMessage.addListener(function (
-        request,
-        sender,
-        sendResponse
-    ) {
-        if (request.action === "getStatusOfAll&FeedbackType") {
-            sendResponse({
-                preference: feedback,
-                all: isAllChecked,
-                afc: isCaptchaChecked,
-            });
+const run = async (type) => {
+    feedback = type;
+    const [tab] = await api.tabs.query({ active: true, currentWindow: true });
+    if (!tab || !/^https?:\/\/erp\.iitkgp\.ac\.in\//.test(tab.url || "")) {
+        setStatus("Open your ERP feedback form (erp.iitkgp.ac.in) first.", true);
+        return;
+    }
+    setBusy(true);
+    try {
+        if (api.scripting) {
+            await api.scripting.executeScript({ target: { tabId: tab.id }, files: ["js/feedback.js"] });
+        } else {
+            await api.tabs.executeScript(tab.id, { file: "/js/feedback.js" });
         }
-        chrome.runtime.onMessage.removeListener(arguments.callee);
-    });
-});
+    } catch (err) {
+        setBusy(false);
+        setStatus("Couldn't access this page. Reload the ERP tab and try again.", true);
+    }
+};
 
-negativeFeedbackButton.addEventListener("click", () => {
-    feedback = "negative";
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        chrome.scripting.executeScript({
-            target: { tabId: tabs[0].id },
-            files: ["/js/feedback.js"],
-        });
-    });
-    chrome.runtime.onMessage.addListener(function (
-        request,
-        sender,
-        sendResponse
-    ) {
-        if (request.action === "getStatusOfAll&FeedbackType") {
-            sendResponse({
-                preference: feedback,
-                all: isAllChecked,
-                afc: isCaptchaChecked,
-            });
-        }
-        chrome.runtime.onMessage.removeListener(arguments.callee);
-    });
-});
+buttons.forEach((b) => b.addEventListener("click", () => run(b.dataset.type)));
